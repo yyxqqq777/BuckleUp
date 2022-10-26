@@ -15,12 +15,14 @@ struct TripView: View {
     let trips = locationRepository.trips
   
     VStack {
-      Text(trips[0].tripName)
+      ForEach(trips) { trip in
+        Text(trip.tripName)
+      }
     }
   }
 }
 
-struct ScanListView_Previews: PreviewProvider {
+struct TripView_Previews: PreviewProvider {
   static var previews: some View {
     TripView()
   }

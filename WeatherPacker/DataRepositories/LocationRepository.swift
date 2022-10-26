@@ -22,6 +22,7 @@ class LocationRepository: ObservableObject {
   private let clothesPath: String = "Clothes"
   
   private let store = Firestore.firestore()
+  
   @Published var user: [User] = []
   @Published var items: [Item] = []
   @Published var trips: [Trip] = []
@@ -46,6 +47,7 @@ class LocationRepository: ObservableObject {
         self.user = querySnapshot?.documents.compactMap { document in
           try? document.data(as: User.self)
         } ?? []
+        
       }
     
     // get items data
@@ -69,9 +71,11 @@ class LocationRepository: ObservableObject {
           return
         }
         
-        self.user = querySnapshot?.documents.compactMap { document in
-          try? document.data(as: User.self)
+        self.trips = querySnapshot?.documents.compactMap { document in
+          try? document.data(as: Trip.self)
         } ?? []
+        
+        print(self.trips)
       }
     
     // get clothes data

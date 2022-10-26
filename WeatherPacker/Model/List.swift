@@ -8,9 +8,10 @@
 import Foundation
 import SwiftUI
 
-struct List: Decodable {
+struct List: Identifiable, Codable {
   
-  var tripId: UUID
+  var id: UUID
+  var tripId: String
   var lowTemp: Float
   var highTemp: Float
   var date: Date
@@ -18,6 +19,7 @@ struct List: Decodable {
   
   // To conform to Codable protocol
   enum CodingKeys: String, CodingKey {
+    case id
     case tripId
     case lowTemp
     case highTemp

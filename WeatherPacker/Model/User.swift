@@ -8,15 +8,15 @@
 import Foundation
 import SwiftUI
 
-struct User: Decodable {
+struct User: Identifiable, Codable {
   
-  var userId: UUID
-  var userName: String
+  var id: UUID
+  var name: String
   
   // To conform to Codable protocol
   enum CodingKeys: String, CodingKey {
-    case userId
-    case userName
+    case id
+    case name = "userName"
   }
   
 }

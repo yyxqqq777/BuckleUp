@@ -10,9 +10,11 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
       VStack {
-        NavigationLink(destination: TripView()) {Text("trip")
+        NavigationView {
+          NavigationLink(destination: TripView()) {Text("trip")
+          }
         }
-        .navigationTitle("Navigation")
+        
       }
     }
 }

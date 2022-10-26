@@ -8,15 +8,15 @@
 import Foundation
 import SwiftUI
 
-struct Clothes: Decodable {
+struct Clothes: Identifiable, Codable {
   
-  var clothesId: UUID
+  var id: UUID
   var clothesTitle: String
   var category: String
   var temperatureAdded: Float
   
   enum CodingKeys: String, CodingKey {
-    case clothesId
+    case id
     case clothesTitle
     case category
     case temperatureAdded

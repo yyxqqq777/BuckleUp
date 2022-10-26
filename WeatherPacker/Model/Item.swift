@@ -6,20 +6,20 @@
 //
 
 import Foundation
-struct Item: Decodable {
+struct Item: Identifiable, Codable {
   
-  var tripId: UUID
-  var date: Date
-  var listCategory: String
-  var itemTitle: Float
+  var id: UUID
+  var listId: String
+  var tripId: String
+  var itemTitle: String
   var category: String
   var isChecked: Bool
   
   
   enum CodingKeys: String, CodingKey {
+    case id
+    case listId
     case tripId
-    case date
-    case listCategory
     case itemTitle
     case category
     case isChecked

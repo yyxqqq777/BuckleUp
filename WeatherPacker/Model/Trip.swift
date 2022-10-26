@@ -8,9 +8,9 @@
 import Foundation
 import SwiftUI
 
-struct Trip: Decodable {
+struct Trip: Identifiable, Codable {
   
-  var tripId: UUID
+  var id: UUID
   var tripName: String
   var tripLocation: String
   var tripStartDate: Date
@@ -19,13 +19,22 @@ struct Trip: Decodable {
   
   // To conform to Codable protocol
   enum CodingKeys: String, CodingKey {
-    case tripId
+    case id
     case tripName
     case tripLocation
     case tripStartDate
     case tripEndDate
     case userId
   }
+  
+//  // To conform to Comparable protocol
+//  static func < (lhs: Trip, rhs: Trip) -> Bool {
+//    lhs.tripStartDate < rhs.tripStartDate
+//  }
+//  
+//  static func == (lhs: Trip, rhs: Trip) -> Bool {
+//    lhs.tripStartDate == rhs.tripStartDate
+//  }
   
 }
 
