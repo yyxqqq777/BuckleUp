@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>113840212936-7et75i3pplhg0b8o04bpsk1at8g3rbqo.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.113840212936-7et75i3pplhg0b8o04bpsk1at8g3rbqo</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDa8ed5rFYXY2FEbXDOrEfaTGru9nX6oRM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>113840212936</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>cmu.edu.f22.WeatherPacker</string>
+	<key>PROJECT_ID</key>
+	<string>weatherpacker</string>
+	<key>STORAGE_BUCKET</key>
+	<string>weatherpacker.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:113840212936:ios:289e425e6db7c6b1654efd</string>
+</dict>
+</plist>
