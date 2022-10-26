@@ -14,6 +14,13 @@
 		271393972908299E007363E2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 271393962908299E007363E2 /* FirebaseFirestore */; };
 		271393992908299E007363E2 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 271393982908299E007363E2 /* FirebaseFirestoreSwift */; };
 		2713939B290829F0007363E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2713939A290829F0007363E2 /* GoogleService-Info.plist */; };
+		2738AC2C2908B74200DE90CF /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC2B2908B74200DE90CF /* LocationRepository.swift */; };
+		2738AC2F2908B7B800DE90CF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC2E2908B7B800DE90CF /* User.swift */; };
+		2738AC312908B83300DE90CF /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC302908B83300DE90CF /* Item.swift */; };
+		2738AC332908B8DA00DE90CF /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC322908B8DA00DE90CF /* Trip.swift */; };
+		2738AC352908B8FA00DE90CF /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC342908B8FA00DE90CF /* List.swift */; };
+		2738AC372908B92400DE90CF /* Clothes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC362908B92400DE90CF /* Clothes.swift */; };
+		2738AC392908C05000DE90CF /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC382908C05000DE90CF /* TripView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,13 @@
 		2713938E290828B1007363E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2713939A290829F0007363E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2713939C29082C4B007363E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2738AC2B2908B74200DE90CF /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
+		2738AC2E2908B7B800DE90CF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2738AC302908B83300DE90CF /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		2738AC322908B8DA00DE90CF /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		2738AC342908B8FA00DE90CF /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		2738AC362908B92400DE90CF /* Clothes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clothes.swift; sourceTree = "<group>"; };
+		2738AC382908C05000DE90CF /* TripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +73,11 @@
 		27139386290828B0007363E2 /* WeatherPacker */ = {
 			isa = PBXGroup;
 			children = (
+				2738AC2A2908B71900DE90CF /* DataRepositories */,
+				2738AC292908B6ED00DE90CF /* View */,
+				2738AC282908B6E200DE90CF /* Model */,
 				2713939C29082C4B007363E2 /* GoogleService-Info.plist */,
 				27139387290828B0007363E2 /* WeatherPackerApp.swift */,
-				27139389290828B0007363E2 /* ContentView.swift */,
 				2713938B290828B1007363E2 /* Assets.xcassets */,
 				2713938D290828B1007363E2 /* Preview Content */,
 			);
@@ -74,6 +90,35 @@
 				2713938E290828B1007363E2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		2738AC282908B6E200DE90CF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2738AC2E2908B7B800DE90CF /* User.swift */,
+				2738AC302908B83300DE90CF /* Item.swift */,
+				2738AC322908B8DA00DE90CF /* Trip.swift */,
+				2738AC342908B8FA00DE90CF /* List.swift */,
+				2738AC362908B92400DE90CF /* Clothes.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2738AC292908B6ED00DE90CF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				27139389290828B0007363E2 /* ContentView.swift */,
+				2738AC382908C05000DE90CF /* TripView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2738AC2A2908B71900DE90CF /* DataRepositories */ = {
+			isa = PBXGroup;
+			children = (
+				2738AC2B2908B74200DE90CF /* LocationRepository.swift */,
+			);
+			path = DataRepositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +199,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2738AC392908C05000DE90CF /* TripView.swift in Sources */,
+				2738AC332908B8DA00DE90CF /* Trip.swift in Sources */,
+				2738AC312908B83300DE90CF /* Item.swift in Sources */,
+				2738AC372908B92400DE90CF /* Clothes.swift in Sources */,
+				2738AC352908B8FA00DE90CF /* List.swift in Sources */,
+				2738AC2F2908B7B800DE90CF /* User.swift in Sources */,
+				2738AC2C2908B74200DE90CF /* LocationRepository.swift in Sources */,
 				2713938A290828B0007363E2 /* ContentView.swift in Sources */,
 				27139388290828B0007363E2 /* WeatherPackerApp.swift in Sources */,
 			);
