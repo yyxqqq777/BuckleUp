@@ -11,8 +11,6 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 
-
-
 class LocationRepository: ObservableObject {
   // Set up properties here
   private let userPath: String = "User"
@@ -43,11 +41,19 @@ class LocationRepository: ObservableObject {
           print("Error getting user: \(error.localizedDescription)")
           return
         }
-        
+//        if let err = error {
+//                print("Error getting documents: \(err)")
+//            } else {
+//              for data in querySnapshot!.documents {
+//                let id =  UUID(uuidString: data.documentID) ?? UUID()
+//                let name = data["userName"] as? String ?? "USER"
+//                print(id)
+//                self.user.append(User(id: id, name: name))
+//              }
+//            }
         self.user = querySnapshot?.documents.compactMap { document in
           try? document.data(as: User.self)
         } ?? []
-        
       }
     
     // get items data
@@ -57,7 +63,7 @@ class LocationRepository: ObservableObject {
           print("Error getting items: \(error.localizedDescription)")
           return
         }
-        
+
         self.items = querySnapshot?.documents.compactMap { document in
           try? document.data(as: Item.self)
         } ?? []
@@ -74,21 +80,7 @@ class LocationRepository: ObservableObject {
         self.trips = querySnapshot?.documents.compactMap { document in
           try? document.data(as: Trip.self)
         } ?? []
-        
-        print(self.trips)
-      }
-    
-    // get clothes data
-    store.collection(clothesPath)
-      .addSnapshotListener { querySnapshot, error in
-        if let error = error {
-          print("Error getting clothes: \(error.localizedDescription)")
-          return
-        }
-        
-        self.clothes = querySnapshot?.documents.compactMap { document in
-          try? document.data(as: Clothes.self)
-        } ?? []
+      
       }
     
     // get lists data
@@ -102,9 +94,23 @@ class LocationRepository: ObservableObject {
         self.lists = querySnapshot?.documents.compactMap { document in
           try? document.data(as: List.self)
         } ?? []
+        
       }
     
-  
+    // get clothes data
+    store.collection(clothesPath)
+      .addSnapshotListener { querySnapshot, error in
+        if let error = error {
+          print("Error getting clothes: \(error.localizedDescription)")
+          return
+        }
+        
+        self.clothes = querySnapshot?.documents.compactMap { document in
+          try? document.data(as: Clothes.self)
+        } ?? []
+      
+      }
+    
   }
 }
 

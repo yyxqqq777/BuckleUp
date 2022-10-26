@@ -13,8 +13,8 @@ struct Trip: Identifiable, Codable {
   var id: UUID
   var tripName: String
   var tripLocation: String
-  var tripStartDate: Date
-  var tripEndDate: Date
+  var tripStartDate: String
+  var tripEndDate: String
   var userId: String
   
   // To conform to Codable protocol

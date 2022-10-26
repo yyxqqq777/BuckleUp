@@ -8,15 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
+  var body: some View {
+    NavigationView {
       VStack {
-        NavigationView {
-          NavigationLink(destination: TripView()) {Text("trip")
-          }
-        }
-        
+        NavigationLink(destination: UserView()) {Text("User")
+        }.padding()
+        NavigationLink(destination: ListView()) {Text("List")
+        }.padding()
+        NavigationLink(destination: TripView()) {Text("Trip")
+        }.padding()
+        NavigationLink(destination: ItemView()) {Text("Item")
+        }.padding()
+        NavigationLink(destination: ClothesView()) {Text("Clothes")
+        }.padding()
       }
     }
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {

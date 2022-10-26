@@ -14,7 +14,7 @@ struct List: Identifiable, Codable {
   var tripId: String
   var lowTemp: Float
   var highTemp: Float
-  var date: Date
+  var date: String
   var listCategory: String
   
   // To conform to Codable protocol

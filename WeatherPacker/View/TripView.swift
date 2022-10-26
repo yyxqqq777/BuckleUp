@@ -16,7 +16,15 @@ struct TripView: View {
   
     VStack {
       ForEach(trips) { trip in
-        Text(trip.tripName)
+        VStack {
+          Text(trip.id.uuidString)
+          Text(trip.tripName)
+          Text(trip.tripLocation)
+          Text(trip.tripStartDate)
+          Text(trip.tripEndDate)
+          Text(trip.userId)
+        }
+        
       }
     }
   }
