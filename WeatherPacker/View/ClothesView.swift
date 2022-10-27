@@ -18,9 +18,9 @@ struct ClothesView: View {
       ForEach(clothes) { cloth in
         VStack {
           Text("id: " + cloth.id.uuidString)
-          Text(cloth.clothesTitle)
-          Text(cloth.category)
-          Text("\(Int(cloth.temperatureAdded))")
+          Text("Cloth Title: " + cloth.clothesTitle)
+          Text("Category: " + cloth.category)
+          Text("Temp added: \(Int(cloth.temperatureAdded))°C")
         }
       }
     }

@@ -17,12 +17,12 @@ struct ListView: View {
     VStack {
       ForEach(lists) { list in
         VStack {
-          Text(list.id.uuidString)
-          Text(list.listCategory)
-          Text(list.date)
-          Text(list.tripId)
-          Text("\(Int(list.highTemp))")
-          Text("\(Int(list.lowTemp))")
+          Text("Id: " + list.id.uuidString)
+          Text("Category: " + list.listCategory)
+          Text("Date: " + list.date)
+          Text("Trip Id: " + list.tripId)
+          Text("High temp: \(Int(list.highTemp))°C")
+          Text("Low temp: \(Int(list.lowTemp))°C")
         }
       }
     }

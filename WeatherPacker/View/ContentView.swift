@@ -11,6 +11,7 @@ struct ContentView: View {
   var body: some View {
     NavigationView {
       VStack {
+        Text("Tap any link below to see the data pull from Firebase")
         NavigationLink(destination: UserView()) {Text("User")
         }.padding()
         NavigationLink(destination: ListView()) {Text("List")

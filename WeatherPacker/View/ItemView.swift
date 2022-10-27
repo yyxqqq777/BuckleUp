@@ -18,8 +18,11 @@ struct ItemView: View {
       ForEach(items) { item in
         VStack {
           Text("ID: " + item.id.uuidString)
-          Text(item.category)
-          Text(item.isChecked ? "true" : "false")
+          Text("Category: " + item.category)
+          HStack {
+            Text("IsChecked: ")
+            Text(item.isChecked ? "true" : "false")
+          }
         }
       }
     }
