@@ -16,6 +16,7 @@ struct List: Identifiable, Codable {
   var highTemp: Float
   var date: String
   var listCategory: String
+  var weatherCode: String
   
   // To conform to Codable protocol
   enum CodingKeys: String, CodingKey {
@@ -25,6 +26,7 @@ struct List: Identifiable, Codable {
     case highTemp
     case date
     case listCategory
+    case weatherCode
   }
   
 }

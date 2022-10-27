@@ -15,6 +15,7 @@ struct ClothesView: View {
     let clothes = locationRepository.clothes
   
     VStack {
+      Text("Clothes Data").padding(12).font(Font.headline.weight(.bold))
       ForEach(clothes) { cloth in
         VStack {
           Text("id: " + cloth.id.uuidString)

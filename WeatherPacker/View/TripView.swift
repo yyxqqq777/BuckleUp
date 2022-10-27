@@ -15,6 +15,7 @@ struct TripView: View {
     let trips = locationRepository.trips
   
     VStack {
+      Text("Trip Data").padding(12).font(Font.headline.weight(.bold))
       ForEach(trips) { trip in
         VStack {
           Text("Id: " + trip.id.uuidString)

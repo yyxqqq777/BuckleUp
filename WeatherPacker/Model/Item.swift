@@ -14,6 +14,7 @@ struct Item: Identifiable, Codable {
   var itemTitle: String
   var category: String
   var isChecked: Bool
+  var quantity: Int
   
   
   enum CodingKeys: String, CodingKey {
@@ -23,6 +24,7 @@ struct Item: Identifiable, Codable {
     case itemTitle
     case category
     case isChecked
+    case quantity
   }
   
 }

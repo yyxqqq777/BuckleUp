@@ -15,6 +15,7 @@ struct ListView: View {
     let lists = locationRepository.lists
   
     VStack {
+      Text("List Data").padding(12).font(Font.headline.weight(.bold))
       ForEach(lists) { list in
         VStack {
           Text("Id: " + list.id.uuidString)
@@ -23,6 +24,7 @@ struct ListView: View {
           Text("Trip Id: " + list.tripId)
           Text("High temp: \(Int(list.highTemp))°C")
           Text("Low temp: \(Int(list.lowTemp))°C")
+          Text("Weather Code: " + list.weatherCode)
         }
       }
     }

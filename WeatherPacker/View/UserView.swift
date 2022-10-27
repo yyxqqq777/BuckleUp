@@ -15,6 +15,7 @@ struct UserView: View {
     let users = locationRepository.user
   
     VStack {
+      Text("User Data").padding(12).font(Font.headline.weight(.bold))
       ForEach(users) { user in
         Text("ID: " + user.id.uuidString).padding()
         Text("User Name: " + user.name).padding()
