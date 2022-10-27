@@ -12,11 +12,13 @@ struct User: Identifiable, Codable {
   
   var id: UUID
   var name: String
+  var pwd: String
   
   // To conform to Codable protocol
   enum CodingKeys: String, CodingKey {
     case id
     case name = "userName"
+    case pwd
   }
   
 }

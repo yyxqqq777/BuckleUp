@@ -19,6 +19,7 @@ struct UserView: View {
       ForEach(users) { user in
         Text("ID: " + user.id.uuidString).padding()
         Text("User Name: " + user.name).padding()
+        Text("User Pwd: " + user.pwd).padding()
       }
     }
   }
