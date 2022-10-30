@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ClothesView: View {
-  @ObservedObject var locationRepository = LocationRepository()
+  @ObservedObject var clothesRepository = ClothesRepository()
   
   var body: some View {
     
-    let clothes = locationRepository.clothes
+    let clothes = clothesRepository.clothes
   
     VStack {
       Text("Clothes Data").padding(12).font(Font.headline.weight(.bold))

@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ListView: View {
-  @ObservedObject var locationRepository = LocationRepository()
+  @ObservedObject var listRepository = ListRepository()
   
   var body: some View {
     
-    let lists = locationRepository.lists
+    let lists = listRepository.lists
   
     VStack {
       Text("List Data").padding(12).font(Font.headline.weight(.bold))

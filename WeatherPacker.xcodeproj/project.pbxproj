@@ -13,7 +13,7 @@
 		2713938F290828B1007363E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2713938E290828B1007363E2 /* Preview Assets.xcassets */; };
 		271393972908299E007363E2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 271393962908299E007363E2 /* FirebaseFirestore */; };
 		271393992908299E007363E2 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 271393982908299E007363E2 /* FirebaseFirestoreSwift */; };
-		2738AC2C2908B74200DE90CF /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC2B2908B74200DE90CF /* LocationRepository.swift */; };
+		2738AC2C2908B74200DE90CF /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC2B2908B74200DE90CF /* UserRepository.swift */; };
 		2738AC2F2908B7B800DE90CF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC2E2908B7B800DE90CF /* User.swift */; };
 		2738AC312908B83300DE90CF /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC302908B83300DE90CF /* Item.swift */; };
 		2738AC332908B8DA00DE90CF /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC322908B8DA00DE90CF /* Trip.swift */; };
@@ -25,6 +25,15 @@
 		2738AC402908EA5200DE90CF /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC3F2908EA5200DE90CF /* ListView.swift */; };
 		2738AC422908EBB200DE90CF /* ClothesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC412908EBB200DE90CF /* ClothesView.swift */; };
 		2738AC462908ED9400DE90CF /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC452908ED9400DE90CF /* ItemView.swift */; };
+		27A1345B290F1A750082F3AA /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A1345A290F1A750082F3AA /* ItemController.swift */; };
+		27A1345D290F1B100082F3AA /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A1345C290F1B100082F3AA /* ListController.swift */; };
+		27A1345F290F1B250082F3AA /* ClothesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A1345E290F1B250082F3AA /* ClothesController.swift */; };
+		27A13461290F1B430082F3AA /* TripController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A13460290F1B430082F3AA /* TripController.swift */; };
+		27A13463290F1B930082F3AA /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A13462290F1B930082F3AA /* UserController.swift */; };
+		27A13465290F3BF50082F3AA /* ClothesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A13464290F3BF50082F3AA /* ClothesRepository.swift */; };
+		27A13467290F3CAC0082F3AA /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A13466290F3CAC0082F3AA /* ItemRepository.swift */; };
+		27A13469290F3CC30082F3AA /* TripRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A13468290F3CC30082F3AA /* TripRepository.swift */; };
+		27A1346B290F3CCF0082F3AA /* ListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A1346A290F3CCF0082F3AA /* ListRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +43,7 @@
 		2713938B290828B1007363E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2713938E290828B1007363E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2713939C29082C4B007363E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		2738AC2B2908B74200DE90CF /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
+		2738AC2B2908B74200DE90CF /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		2738AC2E2908B7B800DE90CF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2738AC302908B83300DE90CF /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		2738AC322908B8DA00DE90CF /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
@@ -46,6 +55,15 @@
 		2738AC3F2908EA5200DE90CF /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		2738AC412908EBB200DE90CF /* ClothesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesView.swift; sourceTree = "<group>"; };
 		2738AC452908ED9400DE90CF /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		27A1345A290F1A750082F3AA /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
+		27A1345C290F1B100082F3AA /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
+		27A1345E290F1B250082F3AA /* ClothesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesController.swift; sourceTree = "<group>"; };
+		27A13460290F1B430082F3AA /* TripController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripController.swift; sourceTree = "<group>"; };
+		27A13462290F1B930082F3AA /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		27A13464290F3BF50082F3AA /* ClothesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesRepository.swift; sourceTree = "<group>"; };
+		27A13466290F3CAC0082F3AA /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
+		27A13468290F3CC30082F3AA /* TripRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRepository.swift; sourceTree = "<group>"; };
+		27A1346A290F3CCF0082F3AA /* ListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +98,7 @@
 		27139386290828B0007363E2 /* WeatherPacker */ = {
 			isa = PBXGroup;
 			children = (
+				27A13459290F12EC0082F3AA /* Controller */,
 				2738AC3B2908DB1E00DE90CF /* GoogleService-Info.plist */,
 				2738AC2A2908B71900DE90CF /* DataRepositories */,
 				2738AC292908B6ED00DE90CF /* View */,
@@ -128,9 +147,25 @@
 		2738AC2A2908B71900DE90CF /* DataRepositories */ = {
 			isa = PBXGroup;
 			children = (
-				2738AC2B2908B74200DE90CF /* LocationRepository.swift */,
+				2738AC2B2908B74200DE90CF /* UserRepository.swift */,
+				27A13464290F3BF50082F3AA /* ClothesRepository.swift */,
+				27A13466290F3CAC0082F3AA /* ItemRepository.swift */,
+				27A13468290F3CC30082F3AA /* TripRepository.swift */,
+				27A1346A290F3CCF0082F3AA /* ListRepository.swift */,
 			);
 			path = DataRepositories;
+			sourceTree = "<group>";
+		};
+		27A13459290F12EC0082F3AA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				27A1345A290F1A750082F3AA /* ItemController.swift */,
+				27A1345C290F1B100082F3AA /* ListController.swift */,
+				27A1345E290F1B250082F3AA /* ClothesController.swift */,
+				27A13460290F1B430082F3AA /* TripController.swift */,
+				27A13462290F1B930082F3AA /* UserController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +246,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27A13463290F1B930082F3AA /* UserController.swift in Sources */,
+				27A1345B290F1A750082F3AA /* ItemController.swift in Sources */,
 				2738AC392908C05000DE90CF /* TripView.swift in Sources */,
 				2738AC332908B8DA00DE90CF /* Trip.swift in Sources */,
 				2738AC312908B83300DE90CF /* Item.swift in Sources */,
@@ -218,9 +255,16 @@
 				2738AC352908B8FA00DE90CF /* List.swift in Sources */,
 				2738AC422908EBB200DE90CF /* ClothesView.swift in Sources */,
 				2738AC2F2908B7B800DE90CF /* User.swift in Sources */,
-				2738AC2C2908B74200DE90CF /* LocationRepository.swift in Sources */,
+				27A1345F290F1B250082F3AA /* ClothesController.swift in Sources */,
+				2738AC2C2908B74200DE90CF /* UserRepository.swift in Sources */,
+				27A13469290F3CC30082F3AA /* TripRepository.swift in Sources */,
+				27A13465290F3BF50082F3AA /* ClothesRepository.swift in Sources */,
 				2738AC3E2908E31E00DE90CF /* UserView.swift in Sources */,
 				2738AC462908ED9400DE90CF /* ItemView.swift in Sources */,
+				27A13467290F3CAC0082F3AA /* ItemRepository.swift in Sources */,
+				27A13461290F1B430082F3AA /* TripController.swift in Sources */,
+				27A1346B290F3CCF0082F3AA /* ListRepository.swift in Sources */,
+				27A1345D290F1B100082F3AA /* ListController.swift in Sources */,
 				2738AC402908EA5200DE90CF /* ListView.swift in Sources */,
 				2713938A290828B0007363E2 /* ContentView.swift in Sources */,
 				27139388290828B0007363E2 /* WeatherPackerApp.swift in Sources */,

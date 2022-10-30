@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct UserView: View {
-  @ObservedObject var locationRepository = LocationRepository()
+  @ObservedObject var userRepository = UserRepository()
   
   var body: some View {
     
-    let users = locationRepository.user
+    let users = userRepository.user
   
     VStack {
       Text("User Data").padding(12).font(Font.headline.weight(.bold))

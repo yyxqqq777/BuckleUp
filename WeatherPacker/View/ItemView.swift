@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ItemView: View {
-  @ObservedObject var locationRepository = LocationRepository()
+  @ObservedObject var itemRepository = ItemRepository()
   
   var body: some View {
     
-    let items = locationRepository.items
+    let items = itemRepository.items
   
     VStack {
       Text("Item Data").padding(12).font(Font.headline.weight(.bold))

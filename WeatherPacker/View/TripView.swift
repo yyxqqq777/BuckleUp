@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct TripView: View {
-  @ObservedObject var locationRepository = LocationRepository()
+  @ObservedObject var tripRepository = TripRepository()
   
   var body: some View {
     
-    let trips = locationRepository.trips
+    let trips = tripRepository.trips
   
     VStack {
       Text("Trip Data").padding(12).font(Font.headline.weight(.bold))
