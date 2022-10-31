@@ -43,7 +43,7 @@ class UserRepository: ObservableObject {
   func add(_ user: User) {
     do {
       let newUser = user
-      _ = try store.collection(path).addDocument(from: newUser)
+      _ = try store.collection(path).document(newUser.id.uuidString).setData(from: newUser)
     } catch {
       fatalError("Unable to add user: \(error.localizedDescription).")
     }
