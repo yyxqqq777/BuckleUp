@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270A47122915CF78002D46A2 /* TripCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270A47112915CF78002D46A2 /* TripCollection.swift */; };
+		270A47142915D3BD002D46A2 /* DailyOutfitCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270A47132915D3BD002D46A2 /* DailyOutfitCollection.swift */; };
+		270A47162915D98E002D46A2 /* TripCollectionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270A47152915D98E002D46A2 /* TripCollectionRepository.swift */; };
+		270A47182915DB8C002D46A2 /* DailyOutfitCollectionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270A47172915DB8C002D46A2 /* DailyOutfitCollectionRepository.swift */; };
+		270A471A2915DC7A002D46A2 /* DailyOutfitCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270A47192915DC7A002D46A2 /* DailyOutfitCollectionView.swift */; };
 		27139388290828B0007363E2 /* WeatherPackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27139387290828B0007363E2 /* WeatherPackerApp.swift */; };
 		2713938A290828B0007363E2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27139389290828B0007363E2 /* ContentView.swift */; };
 		2713938C290828B1007363E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2713938B290828B1007363E2 /* Assets.xcassets */; };
@@ -17,12 +22,12 @@
 		2738AC2F2908B7B800DE90CF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC2E2908B7B800DE90CF /* User.swift */; };
 		2738AC312908B83300DE90CF /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC302908B83300DE90CF /* Item.swift */; };
 		2738AC332908B8DA00DE90CF /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC322908B8DA00DE90CF /* Trip.swift */; };
-		2738AC352908B8FA00DE90CF /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC342908B8FA00DE90CF /* List.swift */; };
+		2738AC352908B8FA00DE90CF /* Outfit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC342908B8FA00DE90CF /* Outfit.swift */; };
 		2738AC372908B92400DE90CF /* Clothes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC362908B92400DE90CF /* Clothes.swift */; };
 		2738AC392908C05000DE90CF /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC382908C05000DE90CF /* TripView.swift */; };
 		2738AC3C2908DB1E00DE90CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2738AC3B2908DB1E00DE90CF /* GoogleService-Info.plist */; };
 		2738AC3E2908E31E00DE90CF /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC3D2908E31E00DE90CF /* UserView.swift */; };
-		2738AC402908EA5200DE90CF /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC3F2908EA5200DE90CF /* ListView.swift */; };
+		2738AC402908EA5200DE90CF /* OutfitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC3F2908EA5200DE90CF /* OutfitView.swift */; };
 		2738AC422908EBB200DE90CF /* ClothesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC412908EBB200DE90CF /* ClothesView.swift */; };
 		2738AC462908ED9400DE90CF /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC452908ED9400DE90CF /* ItemView.swift */; };
 		27A1345B290F1A750082F3AA /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A1345A290F1A750082F3AA /* ItemController.swift */; };
@@ -37,6 +42,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		270A47112915CF78002D46A2 /* TripCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCollection.swift; sourceTree = "<group>"; };
+		270A47132915D3BD002D46A2 /* DailyOutfitCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyOutfitCollection.swift; sourceTree = "<group>"; };
+		270A47152915D98E002D46A2 /* TripCollectionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCollectionRepository.swift; sourceTree = "<group>"; };
+		270A47172915DB8C002D46A2 /* DailyOutfitCollectionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyOutfitCollectionRepository.swift; sourceTree = "<group>"; };
+		270A47192915DC7A002D46A2 /* DailyOutfitCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyOutfitCollectionView.swift; sourceTree = "<group>"; };
 		27139384290828B0007363E2 /* WeatherPacker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherPacker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27139387290828B0007363E2 /* WeatherPackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPackerApp.swift; sourceTree = "<group>"; };
 		27139389290828B0007363E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,12 +57,12 @@
 		2738AC2E2908B7B800DE90CF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2738AC302908B83300DE90CF /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		2738AC322908B8DA00DE90CF /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
-		2738AC342908B8FA00DE90CF /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		2738AC342908B8FA00DE90CF /* Outfit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outfit.swift; sourceTree = "<group>"; };
 		2738AC362908B92400DE90CF /* Clothes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clothes.swift; sourceTree = "<group>"; };
 		2738AC382908C05000DE90CF /* TripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
 		2738AC3B2908DB1E00DE90CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/6a8f3712721b709c811a6e291cb3c19c/Message/MessageTemp/8d0f2cfed67fead283aecf7f6a1f1c00/OpenData/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2738AC3D2908E31E00DE90CF /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
-		2738AC3F2908EA5200DE90CF /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		2738AC3F2908EA5200DE90CF /* OutfitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitView.swift; sourceTree = "<group>"; };
 		2738AC412908EBB200DE90CF /* ClothesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesView.swift; sourceTree = "<group>"; };
 		2738AC452908ED9400DE90CF /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		27A1345A290F1A750082F3AA /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
@@ -125,8 +135,10 @@
 				2738AC2E2908B7B800DE90CF /* User.swift */,
 				2738AC302908B83300DE90CF /* Item.swift */,
 				2738AC322908B8DA00DE90CF /* Trip.swift */,
-				2738AC342908B8FA00DE90CF /* List.swift */,
+				2738AC342908B8FA00DE90CF /* Outfit.swift */,
 				2738AC362908B92400DE90CF /* Clothes.swift */,
+				270A47112915CF78002D46A2 /* TripCollection.swift */,
+				270A47132915D3BD002D46A2 /* DailyOutfitCollection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -137,9 +149,10 @@
 				27139389290828B0007363E2 /* ContentView.swift */,
 				2738AC382908C05000DE90CF /* TripView.swift */,
 				2738AC3D2908E31E00DE90CF /* UserView.swift */,
-				2738AC3F2908EA5200DE90CF /* ListView.swift */,
+				2738AC3F2908EA5200DE90CF /* OutfitView.swift */,
 				2738AC412908EBB200DE90CF /* ClothesView.swift */,
 				2738AC452908ED9400DE90CF /* ItemView.swift */,
+				270A47192915DC7A002D46A2 /* DailyOutfitCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -152,6 +165,8 @@
 				27A13466290F3CAC0082F3AA /* ItemRepository.swift */,
 				27A13468290F3CC30082F3AA /* TripRepository.swift */,
 				27A1346A290F3CCF0082F3AA /* ListRepository.swift */,
+				270A47152915D98E002D46A2 /* TripCollectionRepository.swift */,
+				270A47172915DB8C002D46A2 /* DailyOutfitCollectionRepository.swift */,
 			);
 			path = DataRepositories;
 			sourceTree = "<group>";
@@ -248,11 +263,15 @@
 			files = (
 				27A13463290F1B930082F3AA /* UserController.swift in Sources */,
 				27A1345B290F1A750082F3AA /* ItemController.swift in Sources */,
+				270A47122915CF78002D46A2 /* TripCollection.swift in Sources */,
 				2738AC392908C05000DE90CF /* TripView.swift in Sources */,
+				270A471A2915DC7A002D46A2 /* DailyOutfitCollectionView.swift in Sources */,
 				2738AC332908B8DA00DE90CF /* Trip.swift in Sources */,
 				2738AC312908B83300DE90CF /* Item.swift in Sources */,
+				270A47182915DB8C002D46A2 /* DailyOutfitCollectionRepository.swift in Sources */,
 				2738AC372908B92400DE90CF /* Clothes.swift in Sources */,
-				2738AC352908B8FA00DE90CF /* List.swift in Sources */,
+				270A47162915D98E002D46A2 /* TripCollectionRepository.swift in Sources */,
+				2738AC352908B8FA00DE90CF /* Outfit.swift in Sources */,
 				2738AC422908EBB200DE90CF /* ClothesView.swift in Sources */,
 				2738AC2F2908B7B800DE90CF /* User.swift in Sources */,
 				27A1345F290F1B250082F3AA /* ClothesController.swift in Sources */,
@@ -265,7 +284,8 @@
 				27A13461290F1B430082F3AA /* TripController.swift in Sources */,
 				27A1346B290F3CCF0082F3AA /* ListRepository.swift in Sources */,
 				27A1345D290F1B100082F3AA /* ListController.swift in Sources */,
-				2738AC402908EA5200DE90CF /* ListView.swift in Sources */,
+				270A47142915D3BD002D46A2 /* DailyOutfitCollection.swift in Sources */,
+				2738AC402908EA5200DE90CF /* OutfitView.swift in Sources */,
 				2713938A290828B0007363E2 /* ContentView.swift in Sources */,
 				27139388290828B0007363E2 /* WeatherPackerApp.swift in Sources */,
 			);

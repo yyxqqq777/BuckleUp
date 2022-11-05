@@ -8,25 +8,23 @@
 import Foundation
 import SwiftUI
 
-struct List: Identifiable, Codable {
+struct Outfit: Identifiable, Codable {
   
   var id: UUID
-  var tripId: String
   var lowTemp: Float
   var highTemp: Float
   var date: String
-  var listCategory: String
   var weatherCode: String
+  var itemLists: [Item]
   
   // To conform to Codable protocol
   enum CodingKeys: String, CodingKey {
-    case id
-    case tripId
+    case id = "outfitId"
     case lowTemp
     case highTemp
-    case date
-    case listCategory
+    case date = "tripDate"
     case weatherCode
+    case itemLists
   }
   
 }

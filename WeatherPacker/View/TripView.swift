@@ -22,7 +22,6 @@ struct TripView: View {
           Text("Location: " + trip.tripLocation)
           Text("Start: " + trip.tripStartDate)
           Text("End: " + trip.tripEndDate)
-          Text("User ID: " + trip.userId)
         }
         
       }

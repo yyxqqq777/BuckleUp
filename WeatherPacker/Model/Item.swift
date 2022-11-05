@@ -9,22 +9,18 @@ import Foundation
 struct Item: Identifiable, Codable {
   
   var id: UUID
-  var listId: String
-  var tripId: String
   var itemTitle: String
-  var category: String
+  var itemCategory: String
   var isChecked: Bool
-  var quantity: Int
+  var itemQuantity: Int
   
   
   enum CodingKeys: String, CodingKey {
-    case id
-    case listId
-    case tripId
+    case id = "itemId"
     case itemTitle
-    case category
+    case itemCategory
     case isChecked
-    case quantity
+    case itemQuantity
   }
   
 }

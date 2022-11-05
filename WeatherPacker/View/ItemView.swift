@@ -8,26 +8,24 @@
 import SwiftUI
 
 struct ItemView: View {
-  @ObservedObject var itemRepository = ItemRepository()
+  @ObservedObject var dailyOutfitCollectionRepository = DailyOutfitCollectionRepository()
   
   var body: some View {
     
-    let items = itemRepository.items
+    let items = dailyOutfitCollectionRepository.items
   
     VStack {
       Text("Item Data").padding(12).font(Font.headline.weight(.bold))
       ForEach(items) { item in
         VStack {
           Text("ID: " + item.id.uuidString)
-          Text("Category: " + item.category)
+          Text("Category: " + item.itemCategory)
           Text("Title: " + item.itemTitle)
           HStack {
             Text("IsChecked: ")
             Text(item.isChecked ? "true" : "false")
           }
-          Text("Quantity: \(item.quantity)")
-          Text("Trip Id: " + item.tripId)
-          Text("List Id: " + item.listId)
+          Text("Quantity: \(item.itemQuantity)")
         }
       }
     }

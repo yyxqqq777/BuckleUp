@@ -14,7 +14,7 @@ struct ContentView: View {
         Text("Tap any link below to see the data pull from Firebase")
         NavigationLink(destination: UserView()) {Text("User")
         }.padding()
-        NavigationLink(destination: ListView()) {Text("List")
+        NavigationLink(destination: OutfitView()) {Text("Outfit")
         }.padding()
         NavigationLink(destination: TripView()) {Text("Trip")
         }.padding()

@@ -40,33 +40,33 @@ class UserRepository: ObservableObject {
   }
   
   // MARK: CRUD methods
-  func add(_ user: User) {
-    do {
-      let newUser = user
-      _ = try store.collection(path).document(newUser.id.uuidString).setData(from: newUser)
-    } catch {
-      fatalError("Unable to add user: \(error.localizedDescription).")
-    }
-  }
-
-  func update(_ user: User) {
-    do {
-      let id = user.id.uuidString
-      try store.collection(path).document(id).setData(from: user)
-    } catch {
-      fatalError("Unable to update user: \(error.localizedDescription).")
-    }
-  }
-
-  func remove(_ user: User) {
-    do {
-      let id = user.id.uuidString
-      store.collection(path).document(id).delete { error in
-        if let error = error {
-          print("Unable to remove user: \(error.localizedDescription)")
-        }
-      }
-    }
-  }
+//  func add(_ user: User) {
+//    do {
+//      let newUser = user
+//      _ = try store.collection(path).document(newUser.id.uuidString).setData(from: newUser)
+//    } catch {
+//      fatalError("Unable to add user: \(error.localizedDescription).")
+//    }
+//  }
+//
+//  func update(_ user: User) {
+//    do {
+//      let id = user.id.uuidString
+//      try store.collection(path).document(id).setData(from: user)
+//    } catch {
+//      fatalError("Unable to update user: \(error.localizedDescription).")
+//    }
+//  }
+//
+//  func remove(_ user: User) {
+//    do {
+//      let id = user.id.uuidString
+//      store.collection(path).document(id).delete { error in
+//        if let error = error {
+//          print("Unable to remove user: \(error.localizedDescription)")
+//        }
+//      }
+//    }
+//  }
 }
 
