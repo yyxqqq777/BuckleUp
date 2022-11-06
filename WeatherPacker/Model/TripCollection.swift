@@ -15,7 +15,7 @@ struct TripCollection: Identifiable, Codable {
   
   // To conform to Codable protocol
   enum CodingKeys: String, CodingKey {
-    case id
+    case id = "UserId"
     case trips = "trips"
   }
   
