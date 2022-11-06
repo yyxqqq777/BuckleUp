@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct TripView: View {
-  @ObservedObject var tripRepository = TripRepository()
+  @ObservedObject var tripCollectionRepository = TripCollectionRepository()
   
   var body: some View {
     
-    let trips = tripRepository.trips
+    let trips = tripCollectionRepository.trips
   
     VStack {
       Text("Trip Data").padding(12).font(Font.headline.weight(.bold))
@@ -22,6 +22,8 @@ struct TripView: View {
           Text("Location: " + trip.tripLocation)
           Text("Start: " + trip.tripStartDate)
           Text("End: " + trip.tripEndDate)
+          Text("IsExpired: ")
+          Text(trip.isExpired ? "true" : "false")
         }
         
       }

@@ -18,13 +18,14 @@ class TripCollectionRepository: ObservableObject {
   private let store = Firestore.firestore()
   
   @Published var tripCollection: [TripCollection] = []
+  @Published var trips: [Trip] = []
   
   private var cancellables: Set<AnyCancellable> = []
-
+  
   init() {
     self.get()
   }
-
+  
   func get() {
     
     // get clothes data
@@ -38,40 +39,13 @@ class TripCollectionRepository: ObservableObject {
         self.tripCollection = querySnapshot?.documents.compactMap { document in
           try? document.data(as: TripCollection.self)
         } ?? []
-      
+        
+        for collection in self.tripCollection {
+          for trip in collection.trips {
+            self.trips.append(trip)
+          }
+        }
       }
-    
-    
-//    // MARK: CRUD methods
-//    func add(_ trip: Trip) {
-//      do {
-//        let newTrip = trip
-//        _ = try store.collection(path).addDocument(from: newTrip)
-//      } catch {
-//        fatalError("Unable to add trip: \(error.localizedDescription).")
-//      }
-//    }
-//
-//    func update(_ trip: Trip) {
-//      do {
-//        let id = trip.id.uuidString
-//        try store.collection(path).document(id).setData(from: trip)
-//      } catch {
-//        fatalError("Unable to update trip: \(error.localizedDescription).")
-//      }
-//    }
-//
-//    func remove(_ trip: Trip) {
-//      do {
-//        let id = trip.id.uuidString
-//        store.collection(path).document(id).delete { error in
-//          if let error = error {
-//            print("Unable to remove trip: \(error.localizedDescription)")
-//          }
-//        }
-//      }
-//    }
-    
   }
 }
 
