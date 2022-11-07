@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TripView: View {
-  @ObservedObject var tripCollectionRepository = TripCollectionRepository()
+//  @ObservedObject var tripCollectionRepository = TripCollectionRepository(userId:"A4B1A196-5E05-4A03-ADF8-7AD019C27410")
+    @ObservedObject var tripCollectionRepository = TripCollectionRepository()
   
   var body: some View {
     
@@ -25,7 +26,6 @@ struct TripView: View {
           Text("IsExpired: ")
           Text(trip.isExpired ? "true" : "false")
         }
-        
       }
     }
   }
@@ -35,4 +35,26 @@ struct TripView_Previews: PreviewProvider {
   static var previews: some View {
     TripView()
   }
+}
+
+struct LoginningView: View {
+    
+    @State var userName = ""
+    @State var pwd = ""
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                Form{
+                    TextField("User Name", text: $userName)
+                    TextField("Password", text: $pwd)
+                    NavigationLink(destination:TripView()){
+                        Button(action:{}) {
+                            Text("Login")
+                        }
+                    }.navigationBarHidden(true)
+                }
+            }
+        }
+    }
 }

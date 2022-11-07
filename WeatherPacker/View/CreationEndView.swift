@@ -11,14 +11,9 @@ struct CreationEndView: View {
     
     @State private var EndDate = Date()
     
-    let datefmt = DateFormatter()
     var Location = String()
     var StartDate = Date()
-    
-    func format(){
-        datefmt.dateFormat = "yyyy-MM-dd"
-        datefmt.string(from: EndDate)
-    }
+    var userId = String()
     
     var body: some View {
         NavigationView {
@@ -29,18 +24,16 @@ struct CreationEndView: View {
                 DatePicker("Start Date" ,selection: $EndDate, displayedComponents: [.date]).datePickerStyle(.graphical)
                 Text("StartDate: \(StartDate)")
                 Text("EndDate: \(EndDate)")
-                Button( action: {
-                    format()
-                    print(datefmt)
-                } ){
-                    Text("Formatting")
+                NavigationLink(destination:TripView()){
+                      Text("Create Trip")
                 }
-                Text("Formatting: \(datefmt)")
-//                NavigationLink(destination:CreationEndView(Location:Location, StartDate:StartDate)){
-//                      Text("Next Step")
-//                }
             }
         }
+    }
+    
+    func create() {
+        var tripController = TripController()
+//        tripController.update(userId: UUID.init(uuidString: userId), location: Location, startDate: StartDate, endDate: EndDate)
     }
 }
 

@@ -38,6 +38,29 @@ class UserRepository: ObservableObject {
         } ?? []
       }
   }
+    
+    func verify(userName:String, pwd:String) -> Bool{
+        var isVerified = false
+        for _user in user {
+            if (_user.name == userName && _user.pwd == pwd) {
+                isVerified = true
+                break
+            }
+        }
+        return isVerified
+    }
+    
+    func getUserId(userName:String) -> UUID {
+        var userId = UUID()
+        for _user in user {
+            if (_user.name == userName) {
+                userId = _user.id
+                break
+            }
+        }
+        return userId
+    }
+        
   
   // MARK: CRUD methods
 //  func add(_ user: User) {

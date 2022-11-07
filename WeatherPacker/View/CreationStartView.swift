@@ -13,6 +13,7 @@ struct CreationStartView: View {
     @State private var StartDate = Date()
     
     var Location = String()
+    var userId = String()
     
     var body: some View {
         NavigationView {
@@ -22,9 +23,10 @@ struct CreationStartView: View {
                     .fontWeight(.bold)
                 DatePicker("Start Date" ,selection: $StartDate, displayedComponents: [.date]).datePickerStyle(.graphical)
                 Text("Location: \(Location)")
-                NavigationLink(destination:CreationEndView(Location:Location, StartDate:StartDate)){
+                NavigationLink(destination:CreationEndView(Location:Location, StartDate:StartDate,userId:"A4B1A196-5E05-4A03-ADF8-7AD019C27410")){
                       Text("Next Step")
-                }
+                        .navigationBarHidden(true)
+                }.navigationBarHidden(true)
             }
         }
     }
