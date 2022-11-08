@@ -20,11 +20,11 @@ struct CreationLocationView: View {
                 Form {
                     TextField("Location", text: $Location)
                 }
-                NavigationLink(destination:CreationStartView(Location:Location)){
+                NavigationLink(destination:CreationStartView(Location:Location,userId:"A4B1A196-5E05-4A03-ADF8-7AD019C27410")){
                       Text("Next Step")
 //                      Button("Next Step") {
 //                  }
-                }
+                }.navigationBarHidden(true)
             }
         }
     }
