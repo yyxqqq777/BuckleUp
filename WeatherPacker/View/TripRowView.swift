@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct TripRowView: View {
-    var trip : Trip
+    var trip: Trip
+    @EnvironmentObject var listBg: ListBackground
+    
     var body: some View {
         VStack {
             Spacer()
@@ -25,7 +27,8 @@ struct TripRowView: View {
                 .foregroundColor(.white)
             Spacer()
         }
-        .listRowBackground(Color("PrimaryOrange"))
+        .frame(height: 130)
+        .listRowBackground(Image("ListBG_\(listBg.getIndex())"))
     }
 }
 
