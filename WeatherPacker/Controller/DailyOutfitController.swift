@@ -14,4 +14,8 @@ class DailyOutfitController: ObservableObject {
     self.dailyOutfitRepo = DailyOutfitCollectionRepository()
   }
   
+  func changeIndex(index: Int) {
+    self.dailyOutfitRepo.index = index
+  }
+  
 }

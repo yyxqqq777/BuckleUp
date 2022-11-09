@@ -34,7 +34,8 @@ struct DailyOutfitCollectionView: View {
             
             // Tab2:
             NavigationView {
-                Text("This is the second tab.")
+                ChecklistView().navigationBarTitle(Text("New York").font(.largeTitle), displayMode: .inline)
+                .navigationBarItems(leading: leftNavButton)
             }.tabItem {
               Image(uiImage: UIImage(named: "Luggage")!
               )
