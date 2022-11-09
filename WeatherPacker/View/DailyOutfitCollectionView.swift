@@ -11,20 +11,22 @@ struct DailyOutfitCollectionView: View {
     
     @State var isLeftNav = false
     @State var isRightNav = false
+    var tripLocation = String()
+    var tripId = UUID()
+    var dailyOutfitCollectionRepo = DailyOutfitCollectionRepository()
     
-    init() {
-        //修改导航栏文字颜色
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.black]
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
-        UINavigationBar.appearance().tintColor = .black
-    }
+//    init() {
+//        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
+//        UINavigationBar.appearance().tintColor = .black
+//    }
     
     var body: some View {
         TabView {
             // Tab1:
             NavigationView {
               PlanOutfitsView()
-                .navigationBarTitle(Text("New York").font(.largeTitle), displayMode: .inline)
+                    .navigationBarTitle(Text("\(tripLocation)").font(.largeTitle), displayMode: .inline)
                 .navigationBarItems(leading: leftNavButton)
             }.tabItem {
               Image(uiImage: UIImage(named: "Tabbar_Cloth")!
@@ -34,13 +36,20 @@ struct DailyOutfitCollectionView: View {
             
             // Tab2:
             NavigationView {
-                Text("This is the second tab.")
+                ChecklistView()
+                    .navigationBarTitle(Text("New York").font(.largeTitle), displayMode: .inline)
+                .navigationBarItems(leading: leftNavButton)
             }.tabItem {
               Image(uiImage: UIImage(named: "Luggage")!
               )
               Text("Pack My Bag").font(.subheadline)
             }
         }
+        .onAppear(perform: {
+            dailyOutfitCollectionRepo.reclear()
+            dailyOutfitCollectionRepo.get(tripId: tripId)
+        })
+        .environmentObject(dailyOutfitCollectionRepo)
     }
     
     var leftNavButton: some View {
