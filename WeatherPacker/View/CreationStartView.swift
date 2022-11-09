@@ -10,10 +10,11 @@ import SwiftUI
 struct CreationStartView: View {
     
     
-    @State private var StartDate = Date()
+    @State private var startDate = Date()
     
-    var Location = String()
-    var userId = String()
+    var location = String()
+    var userId = UUID()
+    var clothesController = ClothesController()
     
     var body: some View {
         NavigationView {
@@ -21,14 +22,14 @@ struct CreationStartView: View {
                 Text("When does your trip start?")
                     .font(.title)
                     .fontWeight(.bold)
-                DatePicker("Start Date" ,selection: $StartDate, displayedComponents: [.date]).datePickerStyle(.graphical)
-                Text("Location: \(Location)")
-                NavigationLink(destination:CreationEndView(Location:Location, StartDate:StartDate,userId:"A4B1A196-5E05-4A03-ADF8-7AD019C27410")){
+                DatePicker("Start Date" ,selection: $startDate, displayedComponents: [.date])
+                    .datePickerStyle(.graphical)
+                Text("Location: \(location)")
+                NavigationLink(destination:CreationEndView(location:location, startDate:startDate,userId:userId,clothesController: clothesController)){
                       Text("Next Step")
-                        .navigationBarHidden(true)
-                }.navigationBarHidden(true)
+                }
             }
-        }
+        }.navigationBarHidden(true)
     }
 }
 

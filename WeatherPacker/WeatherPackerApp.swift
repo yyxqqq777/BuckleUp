@@ -25,6 +25,7 @@ struct WeatherPackerApp: App {
   var body: some Scene {
     WindowGroup {
       MainView()
+//        CreationLocationView()
     }
   }
 }

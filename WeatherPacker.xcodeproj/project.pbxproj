@@ -42,6 +42,8 @@
 		87ADF5D92918712E00748EFA /* CreationEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF5D62918712E00748EFA /* CreationEndView.swift */; };
 		87ADF5DA2918712E00748EFA /* CreationStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF5D72918712E00748EFA /* CreationStartView.swift */; };
 		87ADF5DE291893EC00748EFA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF5DD291893EC00748EFA /* MainView.swift */; };
+		87ADF5E3291B6CFD00748EFA /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF5E2291B6CFD00748EFA /* UserAuth.swift */; };
+		87ADF5E7291B7DBB00748EFA /* TripRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF5E6291B7DBB00748EFA /* TripRowView.swift */; };
 		87D1664529185564003C0EDB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 87D1664429185564003C0EDB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +83,8 @@
 		87ADF5D62918712E00748EFA /* CreationEndView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationEndView.swift; sourceTree = "<group>"; };
 		87ADF5D72918712E00748EFA /* CreationStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationStartView.swift; sourceTree = "<group>"; };
 		87ADF5DD291893EC00748EFA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		87ADF5E2291B6CFD00748EFA /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
+		87ADF5E6291B7DBB00748EFA /* TripRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRowView.swift; sourceTree = "<group>"; };
 		87D1664429185564003C0EDB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Project/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +120,7 @@
 		27139386290828B0007363E2 /* WeatherPacker */ = {
 			isa = PBXGroup;
 			children = (
+				87ADF5E1291B6C8400748EFA /* ViewModel */,
 				87D1664429185564003C0EDB /* GoogleService-Info.plist */,
 				27A13459290F12EC0082F3AA /* Controller */,
 				2738AC2A2908B71900DE90CF /* DataRepositories */,
@@ -165,6 +170,7 @@
 				2738AC452908ED9400DE90CF /* ItemView.swift */,
 				270A47192915DC7A002D46A2 /* DailyOutfitCollectionView.swift */,
 				87ADF5DD291893EC00748EFA /* MainView.swift */,
+				87ADF5E6291B7DBB00748EFA /* TripRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -193,6 +199,14 @@
 				27A13462290F1B930082F3AA /* UserController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		87ADF5E1291B6C8400748EFA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				87ADF5E2291B6CFD00748EFA /* UserAuth.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +307,7 @@
 				27A13469290F3CC30082F3AA /* TripRepository.swift in Sources */,
 				27A13465290F3BF50082F3AA /* ClothesRepository.swift in Sources */,
 				2738AC3E2908E31E00DE90CF /* UserView.swift in Sources */,
+				87ADF5E3291B6CFD00748EFA /* UserAuth.swift in Sources */,
 				2738AC462908ED9400DE90CF /* ItemView.swift in Sources */,
 				27A13467290F3CAC0082F3AA /* ItemRepository.swift in Sources */,
 				27A13461290F1B430082F3AA /* TripController.swift in Sources */,
@@ -302,6 +317,7 @@
 				2738AC402908EA5200DE90CF /* OutfitView.swift in Sources */,
 				2713938A290828B0007363E2 /* ContentView.swift in Sources */,
 				87ADF5DE291893EC00748EFA /* MainView.swift in Sources */,
+				87ADF5E7291B7DBB00748EFA /* TripRowView.swift in Sources */,
 				87ADF5D82918712E00748EFA /* CreationLocationView.swift in Sources */,
 				27139388290828B0007363E2 /* WeatherPackerApp.swift in Sources */,
 			);
