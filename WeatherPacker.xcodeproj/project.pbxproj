@@ -29,6 +29,11 @@
 		2738AC402908EA5200DE90CF /* OutfitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC3F2908EA5200DE90CF /* OutfitView.swift */; };
 		2738AC422908EBB200DE90CF /* ClothesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC412908EBB200DE90CF /* ClothesView.swift */; };
 		2738AC462908ED9400DE90CF /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC452908ED9400DE90CF /* ItemView.swift */; };
+		275BB7BA291A050800A6A876 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 275BB7B9291A050800A6A876 /* GoogleService-Info.plist */; };
+		275BB7BD291A201000A6A876 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BB7BC291A201000A6A876 /* Symbols.swift */; };
+		275BB7BF291A202B00A6A876 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BB7BE291A202B00A6A876 /* ListRow.swift */; };
+		275BB7C1291A204200A6A876 /* ListDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BB7C0291A204200A6A876 /* ListDetail.swift */; };
+		275BB7C3291AB79900A6A876 /* PlanOutfitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BB7C2291AB79900A6A876 /* PlanOutfitsView.swift */; };
 		27A1345B290F1A750082F3AA /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A1345A290F1A750082F3AA /* ItemController.swift */; };
 		27A1345D290F1B100082F3AA /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A1345C290F1B100082F3AA /* ListController.swift */; };
 		27A1345F290F1B250082F3AA /* ClothesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A1345E290F1B250082F3AA /* ClothesController.swift */; };
@@ -42,7 +47,6 @@
 		87ADF5D92918712E00748EFA /* CreationEndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF5D62918712E00748EFA /* CreationEndView.swift */; };
 		87ADF5DA2918712E00748EFA /* CreationStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF5D72918712E00748EFA /* CreationStartView.swift */; };
 		87ADF5DE291893EC00748EFA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF5DD291893EC00748EFA /* MainView.swift */; };
-		87D1664529185564003C0EDB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 87D1664429185564003C0EDB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +60,6 @@
 		27139389290828B0007363E2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2713938B290828B1007363E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2713938E290828B1007363E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2713939C29082C4B007363E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2738AC2B2908B74200DE90CF /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		2738AC2E2908B7B800DE90CF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2738AC302908B83300DE90CF /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -68,6 +71,11 @@
 		2738AC3F2908EA5200DE90CF /* OutfitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitView.swift; sourceTree = "<group>"; };
 		2738AC412908EBB200DE90CF /* ClothesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesView.swift; sourceTree = "<group>"; };
 		2738AC452908ED9400DE90CF /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		275BB7B9291A050800A6A876 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		275BB7BC291A201000A6A876 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
+		275BB7BE291A202B00A6A876 /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
+		275BB7C0291A204200A6A876 /* ListDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetail.swift; sourceTree = "<group>"; };
+		275BB7C2291AB79900A6A876 /* PlanOutfitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanOutfitsView.swift; sourceTree = "<group>"; };
 		27A1345A290F1A750082F3AA /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		27A1345C290F1B100082F3AA /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
 		27A1345E290F1B250082F3AA /* ClothesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesController.swift; sourceTree = "<group>"; };
@@ -81,7 +89,6 @@
 		87ADF5D62918712E00748EFA /* CreationEndView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationEndView.swift; sourceTree = "<group>"; };
 		87ADF5D72918712E00748EFA /* CreationStartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationStartView.swift; sourceTree = "<group>"; };
 		87ADF5DD291893EC00748EFA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		87D1664429185564003C0EDB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Project/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,12 +123,12 @@
 		27139386290828B0007363E2 /* WeatherPacker */ = {
 			isa = PBXGroup;
 			children = (
-				87D1664429185564003C0EDB /* GoogleService-Info.plist */,
+				275BB7BB291A1FCF00A6A876 /* Components */,
+				275BB7B9291A050800A6A876 /* GoogleService-Info.plist */,
 				27A13459290F12EC0082F3AA /* Controller */,
 				2738AC2A2908B71900DE90CF /* DataRepositories */,
 				2738AC292908B6ED00DE90CF /* View */,
 				2738AC282908B6E200DE90CF /* Model */,
-				2713939C29082C4B007363E2 /* GoogleService-Info.plist */,
 				27139387290828B0007363E2 /* WeatherPackerApp.swift */,
 				2713938B290828B1007363E2 /* Assets.xcassets */,
 				2713938D290828B1007363E2 /* Preview Content */,
@@ -165,6 +172,7 @@
 				2738AC452908ED9400DE90CF /* ItemView.swift */,
 				270A47192915DC7A002D46A2 /* DailyOutfitCollectionView.swift */,
 				87ADF5DD291893EC00748EFA /* MainView.swift */,
+				275BB7C2291AB79900A6A876 /* PlanOutfitsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -181,6 +189,16 @@
 				270A47172915DB8C002D46A2 /* DailyOutfitCollectionRepository.swift */,
 			);
 			path = DataRepositories;
+			sourceTree = "<group>";
+		};
+		275BB7BB291A1FCF00A6A876 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				275BB7BC291A201000A6A876 /* Symbols.swift */,
+				275BB7BE291A202B00A6A876 /* ListRow.swift */,
+				275BB7C0291A204200A6A876 /* ListDetail.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		27A13459290F12EC0082F3AA /* Controller */ = {
@@ -262,7 +280,7 @@
 			files = (
 				2713938F290828B1007363E2 /* Preview Assets.xcassets in Resources */,
 				2713938C290828B1007363E2 /* Assets.xcassets in Resources */,
-				87D1664529185564003C0EDB /* GoogleService-Info.plist in Resources */,
+				275BB7BA291A050800A6A876 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,15 +299,19 @@
 				2738AC332908B8DA00DE90CF /* Trip.swift in Sources */,
 				2738AC312908B83300DE90CF /* Item.swift in Sources */,
 				270A47182915DB8C002D46A2 /* DailyOutfitCollectionRepository.swift in Sources */,
+				275BB7BF291A202B00A6A876 /* ListRow.swift in Sources */,
 				87ADF5D92918712E00748EFA /* CreationEndView.swift in Sources */,
 				2738AC372908B92400DE90CF /* Clothes.swift in Sources */,
 				270A47162915D98E002D46A2 /* TripCollectionRepository.swift in Sources */,
 				2738AC352908B8FA00DE90CF /* Outfit.swift in Sources */,
 				2738AC422908EBB200DE90CF /* ClothesView.swift in Sources */,
 				2738AC2F2908B7B800DE90CF /* User.swift in Sources */,
+				275BB7C3291AB79900A6A876 /* PlanOutfitsView.swift in Sources */,
 				87ADF5DA2918712E00748EFA /* CreationStartView.swift in Sources */,
+				275BB7C1291A204200A6A876 /* ListDetail.swift in Sources */,
 				27A1345F290F1B250082F3AA /* ClothesController.swift in Sources */,
 				2738AC2C2908B74200DE90CF /* UserRepository.swift in Sources */,
+				275BB7BD291A201000A6A876 /* Symbols.swift in Sources */,
 				27A13469290F3CC30082F3AA /* TripRepository.swift in Sources */,
 				27A13465290F3BF50082F3AA /* ClothesRepository.swift in Sources */,
 				2738AC3E2908E31E00DE90CF /* UserView.swift in Sources */,
