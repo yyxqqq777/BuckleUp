@@ -110,7 +110,6 @@ struct CreationView: View {
                 Form {
                     TextField("Location", text: $location)
                 }
-                Text("UserId:\(userAuth.userId)")
                 NavigationLink(
                     destination:TripStartView(
                         rootIsActive: self.$isActive,
@@ -123,6 +122,11 @@ struct CreationView: View {
                             clothesController.getWeatherInfo(city: location)
                             self.isActive = true
                         }
+                        .frame(maxWidth: .infinity, maxHeight: 40)
+                        .font(.title3.bold())
+                        .foregroundColor(.white)
+                        .background(Color("PrimaryOrange"))
+                        .cornerRadius(20)
                 }
             }
         }//.navigationBarHidden(true)
@@ -144,16 +148,26 @@ struct TripStartView: View {
                 Text("When does your trip start?")
                     .font(.title)
                     .fontWeight(.bold)
-                DatePicker("Start Date" ,selection: $startDate, displayedComponents: [.date])
-                    .datePickerStyle(.graphical)
-                Text("Location: \(location)")
+                DatePicker(
+                    "Start Date",
+                    selection: $startDate,
+                    in:Date()...Date().addingTimeInterval(529200),
+                    displayedComponents: [.date])
+                .datePickerStyle(.graphical)
+                .accentColor(Color("PrimaryOrange"))
+                Spacer()
                 NavigationLink(
                     destination:TripEndView(
                         shouldPopToRootView: self.$rootIsActive,
                         location: location,
                         startDate: startDate,
                         clothesController: clothesController)){
-                      Text("Next Step")
+                            Text("Next Step")
+                                .frame(maxWidth: .infinity, maxHeight: 40)
+                                .font(.title3.bold())
+                                .foregroundColor(.white)
+                                .background(Color("PrimaryOrange"))
+                                .cornerRadius(20)
                 }
             }
         }.navigationBarHidden(true)
@@ -179,10 +193,14 @@ struct TripEndView: View {
             Text("When does your trip end?")
                 .font(.title)
                 .fontWeight(.bold)
-            DatePicker("Start Date" ,selection: $endDate, displayedComponents: [.date]).datePickerStyle(.graphical)
-            Text("StartDate: \(location)")
-            Text("StartDate: \(startDate)")
-            Text("EndDate: \(endDate)")
+            DatePicker(
+                "Start Date",
+                selection: $endDate,
+                in:Date()...Date().addingTimeInterval(529200),
+                displayedComponents: [.date])
+            .datePickerStyle(.graphical)
+            .accentColor(Color("PrimaryOrange"))
+            Spacer()
             Button(action:{
                 var tripId = tripController.update(userId: userAuth.userId, location: location, startDate: startDate, endDate: endDate, tripRepo: tripCollectionReposiroty)
                 clothesController.calculate_date(startDate: startDate, endDate: endDate)
@@ -191,6 +209,11 @@ struct TripEndView: View {
                 self.shouldPopToRootView = false
             }){
                 Text("Create Trip")
+                    .frame(maxWidth: .infinity, maxHeight: 40)
+                    .font(.title3.bold())
+                    .foregroundColor(.white)
+                    .background(Color("PrimaryOrange"))
+                    .cornerRadius(20)
             }
         }.navigationBarHidden(true)
     }

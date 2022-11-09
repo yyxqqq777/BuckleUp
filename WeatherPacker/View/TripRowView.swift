@@ -25,6 +25,7 @@ struct TripRowView: View {
                 .foregroundColor(.white)
             Spacer()
         }
+        .frame(width: .infinity, height: 140)
         .listRowBackground(Color("PrimaryOrange"))
     }
 }
