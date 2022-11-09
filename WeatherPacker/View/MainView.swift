@@ -12,6 +12,7 @@ struct MainView: View {
     @State var userId = UUID()
     var tripCollectionRepository = TripCollectionRepository()
     var userAuth = UserAutn()
+    var listBg = ListBackground()
     
     var body: some View {
         return Group {
@@ -23,6 +24,7 @@ struct MainView: View {
         }
         .environmentObject(tripCollectionRepository)
         .environmentObject(userAuth)
+        .environmentObject(listBg)
     }
 }
 
