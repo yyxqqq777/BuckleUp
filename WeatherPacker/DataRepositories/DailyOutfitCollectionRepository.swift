@@ -21,6 +21,7 @@ class DailyOutfitCollectionRepository: ObservableObject {
   @Published var dailyOutfitCollection: [DailyOutfitCollection] = []
   @Published var outfits: [Outfit] = []
   @Published var items: [Item] = []
+  @Published var index: Int = 0
   
   private var cancellables: Set<AnyCancellable> = []
 
@@ -44,14 +45,15 @@ class DailyOutfitCollectionRepository: ObservableObject {
         
         
         for collection in self.dailyOutfitCollection {
-          for outfit in collection.outfits {
-            self.outfits.append(outfit)
-            for item in outfit.itemLists {
-              self.items.append(item)
+          if collection.id == UUID(uuidString: "37BA2F60-ED6D-45FC-8D34-AB2261D75A60")! {
+            for outfit in collection.outfits {
+              self.outfits.append(outfit)
+              for item in outfit.itemLists {
+                self.items.append(item)
+              }
             }
           }
         }
-        
       }
   }
     

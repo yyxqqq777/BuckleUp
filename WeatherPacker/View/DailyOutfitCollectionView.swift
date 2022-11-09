@@ -21,7 +21,6 @@ struct DailyOutfitCollectionView: View {
     
     var body: some View {
         TabView {
-            
             // Tab1:
             NavigationView {
               PlanOutfitsView()

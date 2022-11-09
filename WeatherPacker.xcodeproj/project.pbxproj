@@ -29,12 +29,12 @@
 		2738AC402908EA5200DE90CF /* OutfitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC3F2908EA5200DE90CF /* OutfitView.swift */; };
 		2738AC422908EBB200DE90CF /* ClothesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC412908EBB200DE90CF /* ClothesView.swift */; };
 		2738AC462908ED9400DE90CF /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC452908ED9400DE90CF /* ItemView.swift */; };
-		275BB7BA291A050800A6A876 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 275BB7B9291A050800A6A876 /* GoogleService-Info.plist */; };
 		275BB7BD291A201000A6A876 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BB7BC291A201000A6A876 /* Symbols.swift */; };
 		275BB7BF291A202B00A6A876 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BB7BE291A202B00A6A876 /* ListRow.swift */; };
 		275BB7C1291A204200A6A876 /* ListDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BB7C0291A204200A6A876 /* ListDetail.swift */; };
 		275BB7C5291B624900A6A876 /* PlanOutfitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BB7C4291B624900A6A876 /* PlanOutfitsView.swift */; };
 		275BB7C8291B63B900A6A876 /* DailyOutfitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BB7C7291B63B900A6A876 /* DailyOutfitController.swift */; };
+		275BB7E0291B708000A6A876 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 275BB7DF291B708000A6A876 /* GoogleService-Info.plist */; };
 		27A1345B290F1A750082F3AA /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A1345A290F1A750082F3AA /* ItemController.swift */; };
 		27A1345D290F1B100082F3AA /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A1345C290F1B100082F3AA /* ListController.swift */; };
 		27A1345F290F1B250082F3AA /* ClothesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A1345E290F1B250082F3AA /* ClothesController.swift */; };
@@ -72,12 +72,12 @@
 		2738AC3F2908EA5200DE90CF /* OutfitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitView.swift; sourceTree = "<group>"; };
 		2738AC412908EBB200DE90CF /* ClothesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesView.swift; sourceTree = "<group>"; };
 		2738AC452908ED9400DE90CF /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
-		275BB7B9291A050800A6A876 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		275BB7BC291A201000A6A876 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		275BB7BE291A202B00A6A876 /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
 		275BB7C0291A204200A6A876 /* ListDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetail.swift; sourceTree = "<group>"; };
 		275BB7C4291B624900A6A876 /* PlanOutfitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanOutfitsView.swift; sourceTree = "<group>"; };
 		275BB7C7291B63B900A6A876 /* DailyOutfitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyOutfitController.swift; sourceTree = "<group>"; };
+		275BB7DF291B708000A6A876 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		27A1345A290F1A750082F3AA /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		27A1345C290F1B100082F3AA /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
 		27A1345E290F1B250082F3AA /* ClothesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesController.swift; sourceTree = "<group>"; };
@@ -125,8 +125,8 @@
 		27139386290828B0007363E2 /* WeatherPacker */ = {
 			isa = PBXGroup;
 			children = (
+				275BB7DF291B708000A6A876 /* GoogleService-Info.plist */,
 				275BB7BB291A1FCF00A6A876 /* Components */,
-				275BB7B9291A050800A6A876 /* GoogleService-Info.plist */,
 				27A13459290F12EC0082F3AA /* Controller */,
 				2738AC2A2908B71900DE90CF /* DataRepositories */,
 				2738AC292908B6ED00DE90CF /* View */,
@@ -282,8 +282,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2713938F290828B1007363E2 /* Preview Assets.xcassets in Resources */,
+				275BB7E0291B708000A6A876 /* GoogleService-Info.plist in Resources */,
 				2713938C290828B1007363E2 /* Assets.xcassets in Resources */,
-				275BB7BA291A050800A6A876 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

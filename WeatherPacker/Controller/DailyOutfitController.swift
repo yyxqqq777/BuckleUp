@@ -8,19 +8,22 @@
 import Foundation
 
 class DailyOutfitController: ObservableObject {
-  @Published var dailyOutfitRepo: DailyOutfitCollectionRepository
-  @Published var outfits: [Outfit] = []
+  private var dailyOutfitRepo: DailyOutfitCollectionRepository
+  
+  @Published var currentDailyOutfits: DailyOutfitCollection
+  @Published var index: Int
   
   init() {
     self.dailyOutfitRepo = DailyOutfitCollectionRepository()
-    self.outfits = dailyOutfitRepo.outfits
+    self.currentDailyOutfits = DailyOutfitCollection(id: UUID(), location: "", outfits: [])
+    for collection in self.dailyOutfitRepo.dailyOutfitCollection {
+      if collection.id == UUID(uuidString: "37BA2F60-ED6D-45FC-8D34-AB2261D75A60")! {
+        self.currentDailyOutfits = collection
+        break
+      }
+    }
+    
+    self.index = 0
   }
   
-//  func update(userId:UUID,location:String,startDate:Date,endDate:Date) {
-    //        let datefmt = DateFormatter()
-    //        datefmt.dateFormat = "yyyy-MM-dd"
-    //        var trip = Trip(id:userId, tripLocation: location, tripStartDate: datefmt.string(from: startDate), tripEndDate: datefmt.string(from: endDate), isExpired: false)
-    //        tripRepo.trips.append(trip)
-    //        tripRepo.updateTrip(tripCollection: TripCollection(id: userId, trips: tripRepo.trips))
-  }
 }
