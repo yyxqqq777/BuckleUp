@@ -10,16 +10,19 @@ import SwiftUI
 struct MainView: View {
     @State var signInSuccess = false
     @State var userId = UUID()
-    @State var tripCollectionRepository = TripCollectionRepository()
+    var tripCollectionRepository = TripCollectionRepository()
+    var userAuth = UserAutn()
     
     var body: some View {
         return Group {
             if signInSuccess {
-                TrippView(userId:userId, tripCollectionRepository: tripCollectionRepository)
+                TrippView()
             } else {
-                LoginView(signInSuccess: $signInSuccess,userId: $userId, tripCollectionRepository: $tripCollectionRepository)
+                LoginView(signInSuccess: $signInSuccess)
             }
         }
+        .environmentObject(tripCollectionRepository)
+        .environmentObject(userAuth)
     }
 }
 
@@ -30,29 +33,26 @@ struct MainView_Previews: PreviewProvider {
 }
 
 struct TrippView: View {
-    var userId : UUID
-    var tripCollectionRepository:TripCollectionRepository
+    @EnvironmentObject var userAuth: UserAutn
+    @EnvironmentObject var tripCollectionRepository:TripCollectionRepository
     
   var body: some View {
-    let trips = tripCollectionRepository.trips
       NavigationView {
           VStack {
-            Text("Trip Data").padding(12).font(Font.headline.weight(.bold))
-              Text("UserId:\(userId.uuidString)")
-            ForEach(trips) { trip in
-              VStack {
-                Text("Id: " + trip.id.uuidString)
-                Text("Location: " + trip.tripLocation)
-                Text("Start: " + trip.tripStartDate)
-                Text("End: " + trip.tripEndDate)
-                Text("IsExpired: ")
-                Text(trip.isExpired ? "true" : "false")
+            Text("Trip List").padding(12).font(Font.headline.weight(.bold))
+              List {
+                  ForEach(tripCollectionRepository.trips) { trip in
+                      TripRowView(trip: trip)
+                  }
+              }.background(.white)
+              NavigationLink(destination:CreationView()) {
+                  Text("Create New Trip")
+                      .frame(maxWidth: .infinity, maxHeight: 40)
+                      .font(.title3.bold())
+                      .foregroundColor(.white)
+                      .background(Color("PrimaryOrange"))
+                      .cornerRadius(20)
               }
-                NavigationLink(destination:CreationLocationView(userId: userId)) {
-                    Text("Create Trip")
-                }
-              
-            }
           }
       }
   }
@@ -61,8 +61,9 @@ struct TrippView: View {
 struct LoginView: View {
     
     @Binding var signInSuccess:Bool
-    @Binding var userId:UUID
-    @Binding var tripCollectionRepository:TripCollectionRepository
+    
+    @EnvironmentObject var userAuth: UserAutn
+    @EnvironmentObject var tripCollectionRepository:TripCollectionRepository
     
     @State var userName = ""
     @State var pwd = ""
@@ -78,8 +79,8 @@ struct LoginView: View {
                 }
                 Button(action: {
                     if userRepository.verify(userName: userName, pwd: pwd) {
-                        self.userId = userRepository.getUserId(userName: userName)
-                        self.tripCollectionRepository.getById(userId: userId.uuidString)
+                        self.userAuth.userId = userRepository.getUserId(userName: userName)
+                        self.tripCollectionRepository.getById(userId:userAuth.userId.uuidString)
                         self.signInSuccess = true
                     }
                 }) {
@@ -89,3 +90,109 @@ struct LoginView: View {
         }
     }
 }
+
+struct CreationView: View {
+    @State var isActive = false
+    @State private var location = ""
+    @State private var goToStartDate = false
+    
+    @ObservedObject var clothesController = ClothesController()
+    
+    @EnvironmentObject var userAuth:UserAutn
+    //@EnvironmentObject var tripRepository:TripCollectionRepository
+    
+    var body: some View {
+        NavigationView{
+            VStack {
+                Text("Create Your Trip")
+                    .font(.title)
+                    .fontWeight(.bold)
+                Form {
+                    TextField("Location", text: $location)
+                }
+                Text("UserId:\(userAuth.userId)")
+                NavigationLink(
+                    destination:TripStartView(
+                        rootIsActive: self.$isActive,
+                        location: location,
+                        clothesController: clothesController),
+                    isActive: self.$isActive)
+                {
+                    Text("Next Step")
+                        .onTapGesture {
+                            clothesController.getWeatherInfo(city: location)
+                            self.isActive = true
+                        }
+                }
+            }
+        }//.navigationBarHidden(true)
+    }
+}
+
+struct TripStartView: View {
+    
+    @Binding var rootIsActive : Bool
+    @State private var startDate = Date()
+    @EnvironmentObject var userAuth:UserAutn
+    
+    var location = String()
+    var clothesController = ClothesController()
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                Text("When does your trip start?")
+                    .font(.title)
+                    .fontWeight(.bold)
+                DatePicker("Start Date" ,selection: $startDate, displayedComponents: [.date])
+                    .datePickerStyle(.graphical)
+                Text("Location: \(location)")
+                NavigationLink(
+                    destination:TripEndView(
+                        shouldPopToRootView: self.$rootIsActive,
+                        location: location,
+                        startDate: startDate,
+                        clothesController: clothesController)){
+                      Text("Next Step")
+                }
+            }
+        }.navigationBarHidden(true)
+    }
+}
+
+struct TripEndView: View {
+    
+    @Binding var shouldPopToRootView:Bool
+    
+    @State private var endDate = Date()
+    @State private var goToTripView = false
+    @ObservedObject var tripController = TripController()
+    @EnvironmentObject var userAuth:UserAutn
+    @EnvironmentObject var tripCollectionReposiroty:TripCollectionRepository
+    
+    var location = String()
+    var startDate = Date()
+    var clothesController = ClothesController()
+    
+    var body: some View {
+        VStack {
+            Text("When does your trip end?")
+                .font(.title)
+                .fontWeight(.bold)
+            DatePicker("Start Date" ,selection: $endDate, displayedComponents: [.date]).datePickerStyle(.graphical)
+            Text("StartDate: \(location)")
+            Text("StartDate: \(startDate)")
+            Text("EndDate: \(endDate)")
+            Button(action:{
+                var tripId = tripController.update(userId: userAuth.userId, location: location, startDate: startDate, endDate: endDate, tripRepo: tripCollectionReposiroty)
+                clothesController.calculate_date(startDate: startDate, endDate: endDate)
+                clothesController.generateOutfit()
+                clothesController.createOutfit(tripId: tripId, location: location)
+                self.shouldPopToRootView = false
+            }){
+                Text("Create Trip")
+            }
+        }.navigationBarHidden(true)
+    }
+}
+

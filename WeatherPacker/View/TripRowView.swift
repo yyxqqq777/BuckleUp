@@ -2,19 +2,35 @@
 //  TripRowView.swift
 //  WeatherPacker
 //
-//  Created by 薛渤凡 on 11/6/22.
+//  Created by 薛渤凡 on 11/9/22.
 //
 
 import SwiftUI
 
 struct TripRowView: View {
+    var trip : Trip
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Spacer()
+            HStack {
+                Spacer()
+                Text("\(trip.tripLocation)")
+                    .font(.title2)
+                    .bold()
+                    .foregroundColor(.white)
+                Spacer()
+            }
+            
+            Text("\(trip.tripStartDate) - \(trip.tripEndDate)")
+                .foregroundColor(.white)
+            Spacer()
+        }
+        .listRowBackground(Color("PrimaryOrange"))
     }
 }
 
-struct TripRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        TripRowView()
-    }
-}
+//struct TripRowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TripRowView()
+//    }
+//}

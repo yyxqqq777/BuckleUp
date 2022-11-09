@@ -29,15 +29,15 @@ struct CreationEndView: View {
                 Text("StartDate: \(startDate)")
                 Text("EndDate: \(endDate)")
                 NavigationLink(destination:TripView(), isActive: $goToTripView){
-                    Button(action:{
-                        var tripId = tripController.update(userId: userId, location: location, startDate: startDate, endDate: endDate)
-                        clothesController.calculate_date(startDate: startDate, endDate: endDate)
-                        clothesController.generateOutfit()
-                        clothesController.createOutfit(tripId: tripId, location: location)
-                        goToTripView = true
-                    }){
-                        Text("Create Trip")
-                    }
+//                    Button(action:{
+//                        var tripId = tripController.update(userId: userId, location: location, startDate: startDate, endDate: endDate)
+//                        clothesController.calculate_date(startDate: startDate, endDate: endDate)
+//                        clothesController.generateOutfit()
+//                        clothesController.createOutfit(tripId: tripId, location: location)
+//                        goToTripView = true
+//                    }){
+//                        Text("Create Trip")
+//                    }
                 }
             }
         }.navigationBarHidden(true)
