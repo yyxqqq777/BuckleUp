@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct PlanOutfitsView: View {
-  @ObservedObject var dailyOutfitCollectionRepo = DailyOutfitCollectionRepository()
+  @EnvironmentObject var dailyOutfitCollectionRepo:DailyOutfitCollectionRepository
 
     var body: some View {
-      let outfits = dailyOutfitCollectionRepo.outfits
-      let currentOutfit = dailyOutfitCollectionRepo.currentOutfit
+      let outfits = self.dailyOutfitCollectionRepo.outfits
+      let currentOutfit = self.dailyOutfitCollectionRepo.currentOutfit
       
       VStack(alignment: .leading) {
         ScrollView(.horizontal, showsIndicators: false) {

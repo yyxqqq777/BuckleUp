@@ -44,7 +44,7 @@ struct TrippView: View {
             Text("Trip List").padding(12).font(Font.headline.weight(.bold))
               List {
                   ForEach(tripCollectionRepository.trips) { trip in
-                      TripRowView(trip: trip)
+                    TripRowView(trip: trip)
                   }
               }.background(.white)
               NavigationLink(destination:CreationView()) {

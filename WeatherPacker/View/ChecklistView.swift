@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChecklistView: View {
-  @ObservedObject var dailyOutfitCollectionRepo = DailyOutfitCollectionRepository()
+  @EnvironmentObject var dailyOutfitCollectionRepo:DailyOutfitCollectionRepository
 
     var body: some View {
       let items = dailyOutfitCollectionRepo.items

@@ -27,10 +27,10 @@ class DailyOutfitCollectionRepository: ObservableObject {
   private var cancellables: Set<AnyCancellable> = []
 
   init() {
-    self.get()
+    
   }
 
-  func get() {
+  func get(tripId: UUID) {
     
     // get clothes data
     store.collection(path)
@@ -46,7 +46,7 @@ class DailyOutfitCollectionRepository: ObservableObject {
         
         
         for collection in self.dailyOutfitCollection {
-          if collection.id == UUID(uuidString: "B799B543-5DEF-40DF-9042-E41F576B1AE6")! {
+          if collection.id.uuidString == tripId.uuidString {
             for outfit in collection.outfits {
               self.outfits.append(outfit)
               for item in outfit.itemLists {

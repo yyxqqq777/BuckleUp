@@ -11,6 +11,7 @@ struct DailyOutfitCollectionView: View {
     
     @State var isLeftNav = false
     @State var isRightNav = false
+    @EnvironmentObject var dailyOutfitCollectionRepo : DailyOutfitCollectionRepository
     
     init() {
         //修改导航栏文字颜色
