@@ -75,6 +75,7 @@ class TripCollectionRepository: ObservableObject {
         }
     }
     
+    
     func updateTrip(tripCollection:TripCollection) {
         let tripCollectionId = tripCollection.id.uuidString
         
@@ -83,6 +84,20 @@ class TripCollectionRepository: ObservableObject {
         } catch {
             fatalError("Unable to update trip collection: \(error.localizedDescription).")
         }
+    }
+    
+    func getTripById(userId:String) -> [Trip] {
+          
+          for collection in self.tripCollection {
+              if collection.id.uuidString == userId {
+                  
+                  for trip in collection.trips {
+                    self.trips.append(trip)
+                  }
+                  break
+              }
+          }
+        return self.trips
     }
 }
 

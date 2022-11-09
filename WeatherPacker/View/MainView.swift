@@ -33,36 +33,28 @@ struct TrippView: View {
     var userId : UUID
     var tripCollectionRepository:TripCollectionRepository
     
-//    func getByUserId(userId:String) {
-//        for collection in tripCollectionRepository.tripCollection {
-//            if collection.id.uuidString == userId {
-//
-//                for trip in collection.trips {
-//                  self.trips.append(trip)
-//                }
-//                break
-//            }
-//        }
-//    }
-    
   var body: some View {
     let trips = tripCollectionRepository.trips
-      
-    VStack {
-      Text("Trip Data").padding(12).font(Font.headline.weight(.bold))
-        Text("UserId:\(userId.uuidString)")
-      ForEach(trips) { trip in
-        VStack {
-          Text("Id: " + trip.id.uuidString)
-          Text("Location: " + trip.tripLocation)
-          Text("Start: " + trip.tripStartDate)
-          Text("End: " + trip.tripEndDate)
-          Text("IsExpired: ")
-          Text(trip.isExpired ? "true" : "false")
-        }
-        
+      NavigationView {
+          VStack {
+            Text("Trip Data").padding(12).font(Font.headline.weight(.bold))
+              Text("UserId:\(userId.uuidString)")
+            ForEach(trips) { trip in
+              VStack {
+                Text("Id: " + trip.id.uuidString)
+                Text("Location: " + trip.tripLocation)
+                Text("Start: " + trip.tripStartDate)
+                Text("End: " + trip.tripEndDate)
+                Text("IsExpired: ")
+                Text(trip.isExpired ? "true" : "false")
+              }
+                NavigationLink(destination:CreationLocationView(userId: userId)) {
+                    Text("Create Trip")
+                }
+              
+            }
+          }
       }
-    }
   }
 }
 

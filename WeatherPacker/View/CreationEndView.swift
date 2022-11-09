@@ -9,11 +9,14 @@ import SwiftUI
 
 struct CreationEndView: View {
     
-    @State private var EndDate = Date()
+    @State private var endDate = Date()
+    @State private var goToTripView = false
+    @ObservedObject var tripController = TripController()
     
-    var Location = String()
-    var StartDate = Date()
-    var userId = String()
+    var location = String()
+    var startDate = Date()
+    var userId = UUID()
+    var clothesController = ClothesController()
     
     var body: some View {
         NavigationView {
@@ -21,19 +24,23 @@ struct CreationEndView: View {
                 Text("When does your trip end?")
                     .font(.title)
                     .fontWeight(.bold)
-                DatePicker("Start Date" ,selection: $EndDate, displayedComponents: [.date]).datePickerStyle(.graphical)
-                Text("StartDate: \(StartDate)")
-                Text("EndDate: \(EndDate)")
-                NavigationLink(destination:TripView()){
-                      Text("Create Trip")
+                DatePicker("Start Date" ,selection: $endDate, displayedComponents: [.date]).datePickerStyle(.graphical)
+                Text("StartDate: \(location)")
+                Text("StartDate: \(startDate)")
+                Text("EndDate: \(endDate)")
+                NavigationLink(destination:TripView(), isActive: $goToTripView){
+                    Button(action:{
+                        var tripId = tripController.update(userId: userId, location: location, startDate: startDate, endDate: endDate)
+                        clothesController.calculate_date(startDate: startDate, endDate: endDate)
+                        clothesController.generateOutfit()
+                        clothesController.createOutfit(tripId: tripId, location: location)
+                        goToTripView = true
+                    }){
+                        Text("Create Trip")
+                    }
                 }
             }
-        }
-    }
-    
-    func create() {
-        var tripController = TripController()
-//        tripController.update(userId: UUID.init(uuidString: userId), location: Location, startDate: StartDate, endDate: EndDate)
+        }.navigationBarHidden(true)
     }
 }
 

@@ -13,14 +13,18 @@ class TripController: ObservableObject {
     
     init() {
         tripRepo = TripCollectionRepository()
-        self.trips = tripRepo.trips
     }
     
-    func update(userId:UUID,location:String,startDate:Date,endDate:Date) {
+    func update(userId:UUID,location:String,startDate:Date,endDate:Date) -> UUID {
+        self.trips = tripRepo.getTripById(userId: userId.uuidString)
+        print("---------tripsCollection-----------\(tripRepo.tripCollection)")
+        print("---------trips-----------\(tripRepo.trips)")
         let datefmt = DateFormatter()
         datefmt.dateFormat = "yyyy-MM-dd"
-        var trip = Trip(id:userId, tripLocation: location, tripStartDate: datefmt.string(from: startDate), tripEndDate: datefmt.string(from: endDate), isExpired: false)
-        tripRepo.trips.append(trip)
-        tripRepo.updateTrip(tripCollection: TripCollection(id: userId, trips: tripRepo.trips))
+        let tripId = UUID()
+        var trip = Trip(id:tripId, tripLocation: location, tripStartDate: datefmt.string(from: startDate), tripEndDate: datefmt.string(from: endDate), isExpired: false)
+        self.trips.append(trip)
+        tripRepo.updateTrip(tripCollection: TripCollection(id: userId, trips: self.trips))
+        return tripId
     }
 }

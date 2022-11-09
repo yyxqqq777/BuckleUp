@@ -9,7 +9,13 @@ import SwiftUI
 
 struct CreationLocationView: View {
     
-    @State private var Location = ""
+    @State private var location = ""
+    @State private var goToStartDate = false
+    @ObservedObject var clothesController = ClothesController()
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    var userId = UUID()
     
     var body: some View {
         NavigationView{
@@ -18,15 +24,20 @@ struct CreationLocationView: View {
                     .font(.title)
                     .fontWeight(.bold)
                 Form {
-                    TextField("Location", text: $Location)
+                    TextField("Location", text: $location)
                 }
-                NavigationLink(destination:CreationStartView(Location:Location,userId:"A4B1A196-5E05-4A03-ADF8-7AD019C27410")){
-                      Text("Next Step")
-//                      Button("Next Step") {
-//                  }
-                }.navigationBarHidden(true)
+                Text("UserId:\(userId)")
+                NavigationLink(destination:CreationStartView(location:location,userId:userId,clothesController: clothesController), isActive: $goToStartDate)
+                {
+                    Button(action:{
+                        clothesController.getWeatherInfo(city: location)
+                        goToStartDate = true
+                    }) {
+                        Text("Next Step")
+                    }
+                }
             }
-        }
+        }.navigationBarHidden(true)
     }
 }
 
