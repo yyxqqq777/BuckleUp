@@ -33,7 +33,8 @@
 		275BB7BD291A201000A6A876 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BB7BC291A201000A6A876 /* Symbols.swift */; };
 		275BB7BF291A202B00A6A876 /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BB7BE291A202B00A6A876 /* ListRow.swift */; };
 		275BB7C1291A204200A6A876 /* ListDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BB7C0291A204200A6A876 /* ListDetail.swift */; };
-		275BB7C3291AB79900A6A876 /* PlanOutfitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BB7C2291AB79900A6A876 /* PlanOutfitsView.swift */; };
+		275BB7C5291B624900A6A876 /* PlanOutfitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BB7C4291B624900A6A876 /* PlanOutfitsView.swift */; };
+		275BB7C8291B63B900A6A876 /* DailyOutfitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BB7C7291B63B900A6A876 /* DailyOutfitController.swift */; };
 		27A1345B290F1A750082F3AA /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A1345A290F1A750082F3AA /* ItemController.swift */; };
 		27A1345D290F1B100082F3AA /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A1345C290F1B100082F3AA /* ListController.swift */; };
 		27A1345F290F1B250082F3AA /* ClothesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A1345E290F1B250082F3AA /* ClothesController.swift */; };
@@ -75,7 +76,8 @@
 		275BB7BC291A201000A6A876 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		275BB7BE291A202B00A6A876 /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
 		275BB7C0291A204200A6A876 /* ListDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetail.swift; sourceTree = "<group>"; };
-		275BB7C2291AB79900A6A876 /* PlanOutfitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanOutfitsView.swift; sourceTree = "<group>"; };
+		275BB7C4291B624900A6A876 /* PlanOutfitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanOutfitsView.swift; sourceTree = "<group>"; };
+		275BB7C7291B63B900A6A876 /* DailyOutfitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyOutfitController.swift; sourceTree = "<group>"; };
 		27A1345A290F1A750082F3AA /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		27A1345C290F1B100082F3AA /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
 		27A1345E290F1B250082F3AA /* ClothesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesController.swift; sourceTree = "<group>"; };
@@ -172,7 +174,7 @@
 				2738AC452908ED9400DE90CF /* ItemView.swift */,
 				270A47192915DC7A002D46A2 /* DailyOutfitCollectionView.swift */,
 				87ADF5DD291893EC00748EFA /* MainView.swift */,
-				275BB7C2291AB79900A6A876 /* PlanOutfitsView.swift */,
+				275BB7C4291B624900A6A876 /* PlanOutfitsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -209,6 +211,7 @@
 				27A1345E290F1B250082F3AA /* ClothesController.swift */,
 				27A13460290F1B430082F3AA /* TripController.swift */,
 				27A13462290F1B930082F3AA /* UserController.swift */,
+				275BB7C7291B63B900A6A876 /* DailyOutfitController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				27A1345B290F1A750082F3AA /* ItemController.swift in Sources */,
 				270A47122915CF78002D46A2 /* TripCollection.swift in Sources */,
 				2738AC392908C05000DE90CF /* TripView.swift in Sources */,
+				275BB7C8291B63B900A6A876 /* DailyOutfitController.swift in Sources */,
 				270A471A2915DC7A002D46A2 /* DailyOutfitCollectionView.swift in Sources */,
 				2738AC332908B8DA00DE90CF /* Trip.swift in Sources */,
 				2738AC312908B83300DE90CF /* Item.swift in Sources */,
@@ -306,7 +310,7 @@
 				2738AC352908B8FA00DE90CF /* Outfit.swift in Sources */,
 				2738AC422908EBB200DE90CF /* ClothesView.swift in Sources */,
 				2738AC2F2908B7B800DE90CF /* User.swift in Sources */,
-				275BB7C3291AB79900A6A876 /* PlanOutfitsView.swift in Sources */,
+				275BB7C5291B624900A6A876 /* PlanOutfitsView.swift in Sources */,
 				87ADF5DA2918712E00748EFA /* CreationStartView.swift in Sources */,
 				275BB7C1291A204200A6A876 /* ListDetail.swift in Sources */,
 				27A1345F290F1B250082F3AA /* ClothesController.swift in Sources */,

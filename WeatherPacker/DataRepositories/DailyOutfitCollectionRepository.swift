@@ -56,7 +56,7 @@ class DailyOutfitCollectionRepository: ObservableObject {
   }
     
     
-//    // MARK: CRUD methods
+    // MARK: CRUD methods
     func add(_ dailyOutfitcollection: DailyOutfitCollection) {
       do {
         let id = dailyOutfitcollection.id.uuidString
