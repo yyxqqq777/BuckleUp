@@ -21,6 +21,7 @@ class DailyOutfitCollectionRepository: ObservableObject {
   @Published var dailyOutfitCollection: [DailyOutfitCollection] = []
   @Published var outfits: [Outfit] = []
   @Published var items: [Item] = []
+  @Published var index: Int = 0
   
   private var cancellables: Set<AnyCancellable> = []
 
@@ -44,19 +45,20 @@ class DailyOutfitCollectionRepository: ObservableObject {
         
         
         for collection in self.dailyOutfitCollection {
-          for outfit in collection.outfits {
-            self.outfits.append(outfit)
-            for item in outfit.itemLists {
-              self.items.append(item)
+          if collection.id == UUID(uuidString: "7D6E98EF-2D94-428B-B1F5-8CD6A7AA0901")! {
+            for outfit in collection.outfits {
+              self.outfits.append(outfit)
+              for item in outfit.itemLists {
+                self.items.append(item)
+              }
             }
           }
         }
-        
       }
   }
     
     
-//    // MARK: CRUD methods
+    // MARK: CRUD methods
     func add(_ dailyOutfitcollection: DailyOutfitCollection) {
       do {
         let id = dailyOutfitcollection.id.uuidString
@@ -67,6 +69,5 @@ class DailyOutfitCollectionRepository: ObservableObject {
     }
     
 }
-
 
 
