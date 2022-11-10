@@ -12,46 +12,58 @@ struct TripRowView: View {
     @EnvironmentObject var listBg: ListBackground
     @State var dailyOutfitCollectionRepo = DailyOutfitCollectionRepository()
     
-    var body: some View {
-      //NavigationView{
-        VStack {
-            Spacer()
-            HStack {
-                Spacer()
-              NavigationLink (destination: DailyOutfitCollectionView()) {
-                Text("\(trip.tripLocation)")
-                .onTapGesture {
-                  dailyOutfitCollectionRepo.get(tripId: trip.id)
-                  print("---------------DailyOutfitCollection-------\(dailyOutfitCollectionRepo)")
-                }
-                .font(.title2)
-                .bold()
-                .foregroundColor(.white)
-              }
-            }
-               Spacer()
-
-            Text("\(trip.tripStartDate) - \(trip.tripEndDate)")
-                .foregroundColor(.white)
-            Spacer()
-        }
-        .frame(height: 130)
-        .listRowBackground(Image("ListBG_\(listBg.getIndex())"))
-      //}
-    }
-//  var body: some View {
-//      NavigationLink(
-//        destination:DailyOutfitCollectionView(),
-//        label: {
-//          Text("\(trip.tripLocation)")
-//            .onTapGesture {
-//              dailyOutfitCollectionRepo.get(tripId: trip.id)
+//    var body: some View {
+//        VStack {
+//            Spacer()
+//            HStack {
+//                Spacer()
+//                NavigationLink (destination: DailyOutfitCollectionView(tripLocation: trip.tripLocation, dailyOutfitCollectionRepo: dailyOutfitCollectionRepo)) {
+//                Text("\(trip.tripLocation)")
+//                .font(.title2)
+//                .bold()
+//                .foregroundColor(.white)
+//              }
+//                .onTapGesture {
+//                  dailyOutfitCollectionRepo.get(tripId: trip.id)
+//                    print("---------------DailyOutfitCollection-------\(dailyOutfitCollectionRepo.dailyOutfitCollection)")
+//                }
 //            }
+//               Spacer()
+//
+//            Text("\(trip.tripStartDate) - \(trip.tripEndDate)")
+//                .foregroundColor(.white)
+//            Spacer()
 //        }
-//      )
-//      Text("\(trip.tripStartDate)-\(trip.tripEndDate)")
+//        .frame(height: 130)
+//        .listRowBackground(Image("ListBG_\(listBg.getIndex())"))
 //    }
-    //.environmentObject(dailyOutfitCollectionRepo)
+        var body: some View {
+            NavigationLink(destination: DailyOutfitCollectionView(tripLocation: trip.tripLocation, tripId: trip.id)) {
+                VStack {
+                    VStack {
+                        Spacer()
+                        HStack {
+                            Text("\(trip.tripLocation)")
+                            .font(.title2)
+                            .bold()
+                            .foregroundColor(.white)
+                            Spacer()
+                        }
+                        Spacer()
+                        HStack {
+                            Text("\(trip.tripStartDate) - \(trip.tripEndDate)")
+                                .foregroundColor(.white)
+                                .bold()
+                            Spacer()
+                        }
+                        Spacer()
+                    }
+                }
+            }
+            .frame(height: 130)
+            .listRowBackground(Image("ListBG_\(listBg.getIndex())"))
+        }
+
 }
 
 //struct TripRowView_Previews: PreviewProvider {

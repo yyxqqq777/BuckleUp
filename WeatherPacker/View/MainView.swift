@@ -74,19 +74,28 @@ struct LoginView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Form{
-                    TextField("User Name", text: $userName)
-                    TextField("Password", text: $pwd)
-                }
-                Button(action: {
-                    if userRepository.verify(userName: userName, pwd: pwd) {
-                        self.userAuth.userId = userRepository.getUserId(userName: userName)
-                        self.tripCollectionRepository.getById(userId:userAuth.userId.uuidString)
-                        self.signInSuccess = true
+            ZStack {
+                VStack {
+                    Spacer()
+                    Image("Login")
+                    Form{
+                        TextField("User Name", text: $userName)
+                        SecureField("Password", text: $pwd)
                     }
-                }) {
-                    Text("Login")
+                    Button(action: {
+                        if userRepository.verify(userName: userName, pwd: pwd) {
+                            self.userAuth.userId = userRepository.getUserId(userName: userName)
+                            self.tripCollectionRepository.getById(userId:userAuth.userId.uuidString)
+                            self.signInSuccess = true
+                        }
+                    }) {
+                        Text("Login")
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: 40)
+                    .font(.title3.bold())
+                    .foregroundColor(.white)
+                    .background(Color("PrimaryOrange"))
+                    .cornerRadius(20)
                 }
             }
         }

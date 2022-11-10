@@ -29,6 +29,13 @@ class DailyOutfitCollectionRepository: ObservableObject {
   init() {
     
   }
+    
+    func reclear() {
+        self.dailyOutfitCollection = []
+        self.outfits = []
+        self.items = []
+        self.currentOutfit = Outfit(id: UUID(), lowTemp: 0.0, highTemp: 0.0, date: "", weatherCode: "", itemLists: [])
+    }
 
   func get(tripId: UUID) {
     
