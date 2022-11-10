@@ -6,7 +6,7 @@
 //
 
 import Foundation
-class UserAutn: ObservableObject {
+class UserAuth: ObservableObject {
     @Published var userId:UUID
     
     init(){
