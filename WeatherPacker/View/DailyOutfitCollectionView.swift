@@ -26,8 +26,8 @@ struct DailyOutfitCollectionView: View {
             // Tab1:
             NavigationView {
               PlanOutfitsView()
-                    .navigationBarTitle(Text("\(tripLocation)").font(.largeTitle), displayMode: .inline)
-                .navigationBarItems(leading: leftNavButton)
+                    .navigationBarTitle(Text("\(tripLocation)").font(.title2.bold()), displayMode: .inline)
+//                .navigationBarItems(leading: leftNavButton)
             }.tabItem {
               Image(uiImage: UIImage(named: "Tabbar_Cloth")!
               )
@@ -37,8 +37,8 @@ struct DailyOutfitCollectionView: View {
             // Tab2:
             NavigationView {
                 ChecklistView()
-                    .navigationBarTitle(Text("New York").font(.largeTitle), displayMode: .inline)
-                .navigationBarItems(leading: leftNavButton)
+                    .navigationBarTitle(Text("\(tripLocation)").font(.title2.bold()), displayMode: .inline)
+//                .navigationBarItems(leading: leftNavButton)
             }.tabItem {
               Image(uiImage: UIImage(named: "Luggage")!
               )
@@ -50,30 +50,31 @@ struct DailyOutfitCollectionView: View {
             dailyOutfitCollectionRepo.get(tripId: tripId)
         })
         .environmentObject(dailyOutfitCollectionRepo)
+        .accentColor(Color("PrimaryOrange"))
     }
     
-    var leftNavButton: some View {
-        Button(action: { self.isLeftNav.toggle() }) {
-            Image(systemName: "person.crop.circle")
-                .imageScale(.large)
-                .accessibility(label: Text("Left"))
-                .padding()
-        }
-        .sheet(isPresented: $isLeftNav) {
-            VStack {
-                Text("Hello, we are QiShare!").foregroundColor(.blue).font(.system(size: 32.0))
-
-                HStack {
-                    Spacer()
-                    Spacer()
-                    Text("an iOS Team. ").fontWeight(.black).foregroundColor(.purple)
-                    Spacer()
-                    Text("We are learning SwiftUI.").foregroundColor(.blue)
-                    Spacer()
-                }
-            }
-        }
-    }
+//    var leftNavButton: some View {
+//        Button(action: { self.isLeftNav.toggle() }) {
+//            Image(systemName: "person.crop.circle")
+//                .imageScale(.large)
+//                .accessibility(label: Text("Left"))
+//                .padding()
+//        }
+//        .sheet(isPresented: $isLeftNav) {
+//            VStack {
+//                Text("Hello, we are QiShare!").foregroundColor(.blue).font(.system(size: 32.0))
+//
+//                HStack {
+//                    Spacer()
+//                    Spacer()
+//                    Text("an iOS Team. ").fontWeight(.black).foregroundColor(.purple)
+//                    Spacer()
+//                    Text("We are learning SwiftUI.").foregroundColor(.blue)
+//                    Spacer()
+//                }
+//            }
+//        }
+//    }
     
 //    var rightNavButton: some View {
 //        Button(action: { self.isRightNav.toggle() }) {

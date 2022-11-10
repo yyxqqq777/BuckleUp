@@ -30,6 +30,10 @@ class DailyOutfitCollectionRepository: ObservableObject {
     
   }
     
+    func setCurrentOutfit(index: Int) {
+        self.currentOutfit = self.outfits[index]
+    }
+    
     func reclear() {
         self.dailyOutfitCollection = []
         self.outfits = []
@@ -72,6 +76,7 @@ class DailyOutfitCollectionRepository: ObservableObject {
       do {
         let id = dailyOutfitcollection.id.uuidString
         try store.collection(path).document(id).setData(from: dailyOutfitcollection)
+          self.outfits = []
       } catch {
         fatalError("Unable to update dailyOutfitcollection: \(error.localizedDescription).")
       }

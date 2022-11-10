@@ -194,6 +194,7 @@ struct TripEndView: View {
     @ObservedObject var tripController = TripController()
     @EnvironmentObject var userAuth:UserAutn
     @EnvironmentObject var tripCollectionReposiroty:TripCollectionRepository
+    @EnvironmentObject var listBG: ListBackground
     
     var location = String()
     var startDate = Date()
@@ -217,6 +218,7 @@ struct TripEndView: View {
                 clothesController.calculate_date(startDate: startDate, endDate: endDate)
                 clothesController.generateOutfit()
                 clothesController.createOutfit(tripId: tripId, location: location)
+                listBG.bgIndex = 0
                 self.shouldPopToRootView = false
             }){
                 Text("Create Trip")

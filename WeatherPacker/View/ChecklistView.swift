@@ -14,7 +14,12 @@ struct ChecklistView: View {
       let items = dailyOutfitCollectionRepo.items
       
       List(items) { item in
-        Text(item.itemTitle)
+          HStack {
+              Text(item.itemTitle)
+              Spacer()
+              Text(String(item.itemQuantity))
+          }
+        
       }
     }
 }
