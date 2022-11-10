@@ -11,13 +11,13 @@ struct MainView: View {
     @State var signInSuccess = false
     @State var userId = UUID()
     var tripCollectionRepository = TripCollectionRepository()
-    var userAuth = UserAutn()
+    var userAuth = UserAuth()
     var listBg = ListBackground()
     
     var body: some View {
         return Group {
             if signInSuccess {
-                TrippView()
+                TripView()
             } else {
                 LoginView(signInSuccess: $signInSuccess)
             }
@@ -34,8 +34,8 @@ struct MainView_Previews: PreviewProvider {
     }
 }
 
-struct TrippView: View {
-    @EnvironmentObject var userAuth: UserAutn
+struct TripView: View {
+    @EnvironmentObject var userAuth: UserAuth
     @EnvironmentObject var tripCollectionRepository:TripCollectionRepository
     
   var body: some View {
@@ -64,7 +64,7 @@ struct LoginView: View {
     
     @Binding var signInSuccess:Bool
     
-    @EnvironmentObject var userAuth: UserAutn
+    @EnvironmentObject var userAuth: UserAuth
     @EnvironmentObject var tripCollectionRepository:TripCollectionRepository
     
     @State var userName = ""
@@ -109,7 +109,7 @@ struct CreationView: View {
     
     @ObservedObject var clothesController = ClothesController()
     
-    @EnvironmentObject var userAuth:UserAutn
+    @EnvironmentObject var userAuth:UserAuth
     //@EnvironmentObject var tripRepository:TripCollectionRepository
     
     var body: some View {
@@ -148,7 +148,7 @@ struct TripStartView: View {
     
     @Binding var rootIsActive : Bool
     @State private var startDate = Date()
-    @EnvironmentObject var userAuth:UserAutn
+    @EnvironmentObject var userAuth:UserAuth
     
     var location = String()
     var clothesController = ClothesController()
@@ -192,7 +192,7 @@ struct TripEndView: View {
     @State private var endDate = Date()
     @State private var goToTripView = false
     @ObservedObject var tripController = TripController()
-    @EnvironmentObject var userAuth:UserAutn
+    @EnvironmentObject var userAuth:UserAuth
     @EnvironmentObject var tripCollectionReposiroty:TripCollectionRepository
     @EnvironmentObject var listBG: ListBackground
     
