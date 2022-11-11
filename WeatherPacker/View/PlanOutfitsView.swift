@@ -20,15 +20,15 @@ struct PlanOutfitsView: View {
             ForEach(0..<outfits.count, id: \.self) { index in
               RoundedRectangle(cornerRadius: 8)
                 .fill(Color("PrimaryOrange"))
-                .frame(width: 90, height: 30)
-                .overlay(Text("day\(index + 1)"))
+                .frame(width: 80, height: 30)
+                .overlay(Text("Day \(index + 1)"))
                 .foregroundColor(.white).bold()
                 .onTapGesture {
                   self.dailyOutfitCollectionRepo.setCurrentOutfit(index: index)
                 }
             }
           }
-        }.padding(EdgeInsets(top: 36, leading: 33, bottom: 0, trailing: 0))
+        }.padding(EdgeInsets(top: 12, leading: 33, bottom: 0, trailing: 0))
         Text("Outfit").padding(EdgeInsets(top: 36, leading: 33, bottom: 16, trailing: 0)).font(.system(size: 24, weight: .bold))
         Spacer()
        

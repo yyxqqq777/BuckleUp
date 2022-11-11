@@ -26,7 +26,7 @@ struct DailyOutfitCollectionView: View {
             // Tab1:
             NavigationView {
               PlanOutfitsView()
-                    .navigationBarTitle(Text("\(tripLocation)").font(.title2.bold()), displayMode: .inline)
+//                    .navigationBarTitle(Text("\(tripLocation)").font(.title2.bold()), displayMode: .inline)
 //                .navigationBarItems(leading: leftNavButton)
             }.tabItem {
               Image(uiImage: UIImage(named: "Tabbar_Cloth")!
@@ -37,7 +37,7 @@ struct DailyOutfitCollectionView: View {
             // Tab2:
             NavigationView {
                 ChecklistView()
-                    .navigationBarTitle(Text("\(tripLocation)").font(.title2.bold()), displayMode: .inline)
+//                    .navigationBarTitle(Text("\(tripLocation)").font(.title2.bold()), displayMode: .inline)
 //                .navigationBarItems(leading: leftNavButton)
             }.tabItem {
               Image(uiImage: UIImage(named: "Luggage")!
@@ -45,6 +45,7 @@ struct DailyOutfitCollectionView: View {
               Text("Pack My Bag").font(.subheadline)
             }
         }
+        .navigationBarTitle(Text("\(tripLocation)").font(.title))
         .onAppear(perform: {
             dailyOutfitCollectionRepo.reclear()
             dailyOutfitCollectionRepo.get(tripId: tripId)
