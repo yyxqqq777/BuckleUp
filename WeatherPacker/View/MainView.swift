@@ -35,28 +35,31 @@ struct MainView_Previews: PreviewProvider {
 }
 
 struct TripView: View {
-    @EnvironmentObject var userAuth: UserAuth
-    @EnvironmentObject var tripCollectionRepository:TripCollectionRepository
-    
+  @EnvironmentObject var userAuth: UserAuth
+  @EnvironmentObject var tripCollectionRepository:TripCollectionRepository
+  
   var body: some View {
-      NavigationView {
+    NavigationView {
+      VStack {
+        Text("Trip List").padding(12).font(Font.headline.weight(.bold))
+        ScrollView {
           VStack {
-            Text("Trip List").padding(12).font(Font.headline.weight(.bold))
-              List {
-                  ForEach(tripCollectionRepository.trips) { trip in
-                    TripRowView(trip: trip)
-                  }
-              }.background(.white)
-              NavigationLink(destination:CreationView()) {
-                  Text("Create New Trip")
-                      .frame(maxWidth: .infinity, maxHeight: 40)
-                      .font(.title3.bold())
-                      .foregroundColor(.white)
-                      .background(Color("PrimaryOrange"))
-                      .cornerRadius(20)
-              }
+            ForEach(tripCollectionRepository.trips) { trip in
+              TripRowView(trip: trip)
+            }
           }
+        }
+        
+        NavigationLink(destination:CreationView()) {
+          Text("Create New Trip")
+            .frame(maxWidth: .infinity, maxHeight: 40)
+            .font(.title3.bold())
+            .foregroundColor(.white)
+            .background(Color("PrimaryOrange"))
+            .cornerRadius(20)
+        }
       }
+    }
   }
 }
 
