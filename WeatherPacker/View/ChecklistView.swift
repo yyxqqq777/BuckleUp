@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ChecklistView: View {
-  @EnvironmentObject var dailyOutfitCollectionRepo:DailyOutfitCollectionRepository
+  @EnvironmentObject var packerRepository:PackerRepository
     
     var body: some View {
-      let items = dailyOutfitCollectionRepo.items
+        let items = packerRepository.items
       
       List(items) { item in
           HStack {

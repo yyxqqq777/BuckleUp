@@ -1,14 +1,13 @@
 //
-//  List.swift
+//  DailyPacker.swift
 //  WeatherPacker
 //
-//  Created by Yunxuan Yu on 10/25/22.
+//  Created by 薛渤凡 on 11/30/22.
 //
 
 import Foundation
-import SwiftUI
 
-struct Outfit: Identifiable, Codable {
+struct DailyPacker: Identifiable, Codable {
   
   var id: UUID
   var lowTemp: Float
@@ -19,7 +18,7 @@ struct Outfit: Identifiable, Codable {
   
   // To conform to Codable protocol
   enum CodingKeys: String, CodingKey {
-    case id = "outfitId"
+    case id = "dailyPackerId"
     case lowTemp
     case highTemp
     case date = "tripDate"
@@ -28,4 +27,3 @@ struct Outfit: Identifiable, Codable {
   }
   
 }
-

@@ -41,7 +41,7 @@ struct TripView: View {
   var body: some View {
     NavigationView {
       VStack {
-        Text("Trip List").padding(12).font(Font.headline.weight(.bold))
+        Text("Coming Trips").padding(12).font(Font.headline.weight(.bold))
         ScrollView {
           VStack {
             ForEach(tripCollectionRepository.trips) { trip in
@@ -88,7 +88,8 @@ struct LoginView: View {
                     Button(action: {
                         if userRepository.verify(userName: userName, pwd: pwd) {
                             self.userAuth.userId = userRepository.getUserId(userName: userName)
-                            self.tripCollectionRepository.getById(userId:userAuth.userId.uuidString)
+                            self.tripCollectionRepository.getById(userId:userAuth.userId)
+                            //self.tripCollectionRepository.checkExpiration(userId: userAuth.userId)
                             self.signInSuccess = true
                         }
                     }) {
@@ -220,7 +221,7 @@ struct TripEndView: View {
                 var tripId = tripController.update(userId: userAuth.userId, location: location, startDate: startDate, endDate: endDate, tripRepo: tripCollectionReposiroty)
                 clothesController.calculate_date(startDate: startDate, endDate: endDate)
                 clothesController.generateOutfit()
-                clothesController.createOutfit(tripId: tripId, location: location)
+                clothesController.createPacker(tripId: tripId, location: location)
                 listBG.bgIndex = 0
                 self.shouldPopToRootView = false
             }){

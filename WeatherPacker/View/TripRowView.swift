@@ -10,11 +10,11 @@ import SwiftUI
 struct TripRowView: View {
   var trip: Trip
   @EnvironmentObject var listBg: ListBackground
-  @State var dailyOutfitCollectionRepo = DailyOutfitCollectionRepository()
+  @State var packerRepository = PackerRepository()
   
   
   var body: some View {
-    NavigationLink(destination: DailyOutfitCollectionView(tripLocation: trip.tripLocation, tripId: trip.id)) {
+    NavigationLink(destination: PackerView(tripLocation: trip.tripLocation, tripId: trip.id)) {
       ZStack {
         Image("ListBG_\(listBg.getIndex())")
           .resizable()

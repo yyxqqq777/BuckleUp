@@ -15,7 +15,7 @@ class ClothesController:ObservableObject {
     private var weather_code:[String]
     private var startIndex = 0
     private var endIndex = 0
-    private var outfits:[Outfit] = []
+    private var dailyPackers:[DailyPacker] = []
     
     init() {
         self.clothes = []
@@ -25,26 +25,26 @@ class ClothesController:ObservableObject {
         self.weather_code = []
     }
     
-    func createOutfit(tripId:UUID, location:String) {
-        var dailyOutfitRepository = DailyOutfitCollectionRepository()
-        dailyOutfitRepository.add(DailyOutfitCollection(id: tripId, location: location, outfits: self.outfits))
+    func createPacker(tripId:UUID, location:String) {
+        let packerRepository = PackerRepository()
+        packerRepository.add(Packer(id: tripId, location: location, dailyPackers: self.dailyPackers))
     }
         
     
     func generateOutfit() {
         for dateIndex in startIndex..<(endIndex + 1) {
-            var itemList:[Item] = generateItem(dateIndex: dateIndex)
-            generateDailyOutfit(dateIndex: dateIndex, itemList: itemList)
+            let itemList:[Item] = generateItem(dateIndex: dateIndex)
+            generateDailyPacker(dateIndex: dateIndex, itemList: itemList)
         }
     }
     
-    func generateDailyOutfit(dateIndex:Int, itemList:[Item]) {
+    func generateDailyPacker(dateIndex:Int, itemList:[Item]) {
         let highTemp = temp_max[dateIndex]
         let lowTemp = temp_min[dateIndex]
         let weatherCode = weather_code[dateIndex]
         let tripDate = "Day \(dateIndex)"
-        var outfit = Outfit(id: UUID(), lowTemp: lowTemp, highTemp: highTemp, date: tripDate, weatherCode: weatherCode, itemLists: itemList)
-        outfits.append(outfit)
+        var dailyPacker = DailyPacker(id: UUID(), lowTemp: lowTemp, highTemp: highTemp, date: tripDate, weatherCode: weatherCode, itemLists: itemList)
+        dailyPackers.append(dailyPacker)
         
     }
     
@@ -54,13 +54,13 @@ class ClothesController:ObservableObject {
         let temp = temp_mean[dateIndex]
         var itemList:[Item] = []
         if (temp <= -4) {
-            var topOutter = Item(id: UUID(), itemTitle: "Winter Jacket", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            var topMiddle = Item(id: UUID(), itemTitle: "Sweater", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            var topInner = Item(id: UUID(), itemTitle: "Long-sleeves Shirt", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            var bottom = Item(id: UUID(), itemTitle: "Winter Pants", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            var shoes = Item(id: UUID(), itemTitle: "Winter Boots", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            var accessoryFirst = Item(id: UUID(), itemTitle: "Gloves", itemCategory: "Accessory", isChecked: false, itemQuantity: 1)
-            var accessorySecond = Item(id: UUID(), itemTitle: "Hats", itemCategory: "Accessory", isChecked: false, itemQuantity: 1)
+            let topOutter = Item(id: UUID(), itemTitle: "Winter Jacket", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let topMiddle = Item(id: UUID(), itemTitle: "Sweater", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let topInner = Item(id: UUID(), itemTitle: "Long-sleeves Shirt", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let bottom = Item(id: UUID(), itemTitle: "Winter Pants", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let shoes = Item(id: UUID(), itemTitle: "Winter Boots", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let accessoryFirst = Item(id: UUID(), itemTitle: "Gloves", itemCategory: "Accessory", isChecked: false, itemQuantity: 1)
+            let accessorySecond = Item(id: UUID(), itemTitle: "Hats", itemCategory: "Accessory", isChecked: false, itemQuantity: 1)
             itemList.append(topOutter)
             itemList.append(topMiddle)
             itemList.append(topInner)
@@ -69,34 +69,34 @@ class ClothesController:ObservableObject {
             itemList.append(accessoryFirst)
             itemList.append(accessorySecond)
         } else if (temp > -4 && temp <= 6) {
-            var topOutter = Item(id: UUID(), itemTitle: "Medium Coat", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            var topInner = Item(id: UUID(), itemTitle: "Long-sleeves Shirt", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            var bottom = Item(id: UUID(), itemTitle: "Jeans", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            var shoes = Item(id: UUID(), itemTitle: "Shoes", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let topOutter = Item(id: UUID(), itemTitle: "Medium Coat", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let topInner = Item(id: UUID(), itemTitle: "Long-sleeves Shirt", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let bottom = Item(id: UUID(), itemTitle: "Jeans", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let shoes = Item(id: UUID(), itemTitle: "Shoes", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
             itemList.append(topOutter)
             itemList.append(topInner)
             itemList.append(bottom)
             itemList.append(shoes)
         } else if (temp > 6 && temp <= 17) {
-            var topOutter = Item(id: UUID(), itemTitle: "Hoodie", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            var topInner = Item(id: UUID(), itemTitle: "T-Shirt", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            var bottom = Item(id: UUID(), itemTitle: "Jeans", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            var shoes = Item(id: UUID(), itemTitle: "Shoes", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let topOutter = Item(id: UUID(), itemTitle: "Hoodie", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let topInner = Item(id: UUID(), itemTitle: "T-Shirt", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let bottom = Item(id: UUID(), itemTitle: "Jeans", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let shoes = Item(id: UUID(), itemTitle: "Shoes", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
             itemList.append(topOutter)
             itemList.append(topInner)
             itemList.append(bottom)
             itemList.append(shoes)
         } else if (temp > 17 && temp <= 26) {
-            var topInner = Item(id: UUID(), itemTitle: "Long-sleeves Shirt", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            var bottom = Item(id: UUID(), itemTitle: "Jeans", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            var shoes = Item(id: UUID(), itemTitle: "Shoes", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let topInner = Item(id: UUID(), itemTitle: "Long-sleeves Shirt", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let bottom = Item(id: UUID(), itemTitle: "Jeans", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let shoes = Item(id: UUID(), itemTitle: "Shoes", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
             itemList.append(topInner)
             itemList.append(bottom)
             itemList.append(shoes)
         } else {
-            var topInner = Item(id: UUID(), itemTitle: "Short-sleeves Shirt", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            var bottom = Item(id: UUID(), itemTitle: "Shorts", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            var shoes = Item(id: UUID(), itemTitle: "Sandals", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let topInner = Item(id: UUID(), itemTitle: "Short-sleeves Shirt", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let bottom = Item(id: UUID(), itemTitle: "Shorts", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let shoes = Item(id: UUID(), itemTitle: "Sandals", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
             itemList.append(topInner)
             itemList.append(bottom)
             itemList.append(shoes)
@@ -197,13 +197,13 @@ class ClothesController:ObservableObject {
               return
           }
             
-            var day1Temp: [Float] = Array(result.hourly.temperature_2m[0...23])
-            var day2Temp: [Float] = Array(result.hourly.temperature_2m[24...47])
-            var day3Temp: [Float] = Array(result.hourly.temperature_2m[48...71])
-            var day4Temp: [Float] = Array(result.hourly.temperature_2m[72...95])
-            var day5Temp: [Float] = Array(result.hourly.temperature_2m[96...119])
-            var day6Temp: [Float] = Array(result.hourly.temperature_2m[120...143])
-            var day7Temp: [Float] = Array(result.hourly.temperature_2m[144...167])
+            let day1Temp: [Float] = Array(result.hourly.temperature_2m[0...23])
+            let day2Temp: [Float] = Array(result.hourly.temperature_2m[24...47])
+            let day3Temp: [Float] = Array(result.hourly.temperature_2m[48...71])
+            let day4Temp: [Float] = Array(result.hourly.temperature_2m[72...95])
+            let day5Temp: [Float] = Array(result.hourly.temperature_2m[96...119])
+            let day6Temp: [Float] = Array(result.hourly.temperature_2m[120...143])
+            let day7Temp: [Float] = Array(result.hourly.temperature_2m[144...167])
             
               self.temp_min.append(day1Temp.min() ?? 0.0)
               self.temp_min.append(day2Temp.min() ?? 0.0)
@@ -230,13 +230,13 @@ class ClothesController:ObservableObject {
               self.temp_mean.append(Float(Double(day7Temp.reduce(0, +)) / Double(day1Temp.count)))
               
             
-            var day1Code: [Int] = Array(result.hourly.code[0...23])
-            var day2Code: [Int] = Array(result.hourly.code[24...47])
-            var day3Code: [Int] = Array(result.hourly.code[48...71])
-            var day4Code: [Int] = Array(result.hourly.code[72...95])
-            var day5Code: [Int] = Array(result.hourly.code[96...119])
-            var day6Code: [Int] = Array(result.hourly.code[120...143])
-            var day7Code: [Int] = Array(result.hourly.code[144...167])
+            let day1Code: [Int] = Array(result.hourly.code[0...23])
+            let day2Code: [Int] = Array(result.hourly.code[24...47])
+            let day3Code: [Int] = Array(result.hourly.code[48...71])
+            let day4Code: [Int] = Array(result.hourly.code[72...95])
+            let day5Code: [Int] = Array(result.hourly.code[96...119])
+            let day6Code: [Int] = Array(result.hourly.code[120...143])
+            let day7Code: [Int] = Array(result.hourly.code[144...167])
             
               self.weather_code.append(String(day1Code[11]))
               self.weather_code.append(String(day2Code[11]))
