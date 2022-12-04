@@ -21,8 +21,9 @@ class TripController: ObservableObject {
         datefmt.dateFormat = "yyyy-MM-dd"
         let tripId = UUID()
         var trip = Trip(id:tripId, tripLocation: location, tripStartDate: datefmt.string(from: startDate), tripEndDate: datefmt.string(from: endDate), isExpired: false)
-        tripRepo.trips.append(trip)
-        tripRepo.updateTrip(tripCollection: TripCollection(id: userId, trips: tripRepo.trips))
+        tripRepo.tripsAll.append(trip)
+        tripRepo.tripsNotExpired.append(trip)
+        tripRepo.updateTrip(tripCollection: TripCollection(id: userId, trips: tripRepo.tripsAll))
         print("--------after update-trips-----------\(tripRepo.trips)")
         tripRepo.trips = []
         return tripId

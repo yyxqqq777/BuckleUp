@@ -41,13 +41,21 @@ struct TripView: View {
   var body: some View {
     NavigationView {
       VStack {
-        Text("Trip List").padding(12).font(Font.headline.weight(.bold))
         ScrollView {
-          VStack {
-            ForEach(tripCollectionRepository.trips) { trip in
-              TripRowView(trip: trip)
+            VStack {
+                Text("Coming Trips").padding(12).font(Font.headline.weight(.bold))
+                VStack {
+                  ForEach(tripCollectionRepository.tripsNotExpired) { trip in
+                    TripRowView(trip: trip)
+                  }
+                }
+                Text("Past Trips").padding(12).font(Font.headline.weight(.bold))
+                VStack {
+                  ForEach(tripCollectionRepository.tripsExpired) { trip in
+                    TripRowView(trip: trip)
+                  }
+                }
             }
-          }
         }
         
         NavigationLink(destination:CreationView()) {
@@ -60,6 +68,9 @@ struct TripView: View {
         }
       }
     }
+    .onAppear(perform: {
+        self.tripCollectionRepository.checkExpiration(userId: userAuth.userId)
+    })
   }
 }
 
@@ -88,7 +99,7 @@ struct LoginView: View {
                     Button(action: {
                         if userRepository.verify(userName: userName, pwd: pwd) {
                             self.userAuth.userId = userRepository.getUserId(userName: userName)
-                            self.tripCollectionRepository.getById(userId:userAuth.userId.uuidString)
+                            self.tripCollectionRepository.getById(userId:userAuth.userId)
                             self.signInSuccess = true
                         }
                     }) {
@@ -219,8 +230,8 @@ struct TripEndView: View {
             Button(action:{
                 var tripId = tripController.update(userId: userAuth.userId, location: location, startDate: startDate, endDate: endDate, tripRepo: tripCollectionReposiroty)
                 clothesController.calculate_date(startDate: startDate, endDate: endDate)
-                clothesController.generateOutfit()
-                clothesController.createOutfit(tripId: tripId, location: location)
+                clothesController.generatePacker()
+                clothesController.createPacker(tripId: tripId, location: location)
                 listBG.bgIndex = 0
                 self.shouldPopToRootView = false
             }){

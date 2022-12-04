@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct DailyOutfitCollectionView: View {
+struct PackerView: View {
     
     @State var isLeftNav = false
     @State var isRightNav = false
     var tripLocation = String()
     var tripId = UUID()
-    var dailyOutfitCollectionRepo = DailyOutfitCollectionRepository()
+    var packerRepository = PackerRepository()
     
 //    init() {
 //        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.black]
@@ -47,10 +47,10 @@ struct DailyOutfitCollectionView: View {
         }
         .navigationBarTitle(Text("\(tripLocation)").font(.title))
         .onAppear(perform: {
-            dailyOutfitCollectionRepo.reclear()
-            dailyOutfitCollectionRepo.get(tripId: tripId)
+            packerRepository.reclear()
+            packerRepository.get(tripId: tripId)
         })
-        .environmentObject(dailyOutfitCollectionRepo)
+        .environmentObject(packerRepository)
         .accentColor(Color("PrimaryOrange"))
     }
     
@@ -96,6 +96,6 @@ struct DailyOutfitCollectionView: View {
 
 struct DailyOutfitCollectionView_Previews: PreviewProvider {
     static var previews: some View {
-      DailyOutfitCollectionView()
+      PackerView()
     }
 }

@@ -19,6 +19,9 @@ class TripCollectionRepository: ObservableObject {
   
   @Published var tripCollection: [TripCollection] = []
   @Published var trips: [Trip] = []
+    @Published var tripsExpired: [Trip] = []
+    @Published var tripsNotExpired: [Trip] = []
+    var tripsAll: [Trip] = []
   
   private var cancellables: Set<AnyCancellable> = []
   
@@ -49,7 +52,7 @@ class TripCollectionRepository: ObservableObject {
       }
   }
     
-    func getById(userId:String) {
+    func getById(userId:UUID) {
       
       // get clothes data
       store.collection(path)
@@ -64,8 +67,7 @@ class TripCollectionRepository: ObservableObject {
           } ?? []
           
           for collection in self.tripCollection {
-              if collection.id.uuidString == userId {
-                  
+              if collection.id.uuidString == userId.uuidString {
                   for trip in collection.trips {
                     self.trips.append(trip)
                   }
@@ -73,6 +75,28 @@ class TripCollectionRepository: ObservableObject {
               }
           }
         }
+    }
+    
+    func checkExpiration(userId: UUID) {
+        for trip in self.trips {
+            var _trip: Trip = Trip(id: trip.id, tripLocation: trip.tripLocation, tripStartDate: trip.tripStartDate, tripEndDate: trip.tripEndDate, isExpired: trip.isExpired)
+            if _trip.isExpired == true {
+                self.tripsExpired.append(_trip)
+            } else {
+                let datefmt = DateFormatter()
+                datefmt.dateFormat = "yyyy-MM-dd"
+                let now = Date()
+                let current = datefmt.string(from: now)
+                if(current > _trip.tripEndDate) {
+                    _trip.isExpired = true
+                    self.tripsExpired.append(_trip)
+                } else {
+                    self.tripsNotExpired.append(_trip)
+                }
+            }
+            self.tripsAll.append(_trip)
+        }
+        self.updateTrip(tripCollection: TripCollection(id: userId, trips: self.tripsAll))
     }
     
     
