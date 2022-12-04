@@ -11,6 +11,7 @@ struct Item: Identifiable, Codable {
   var id: UUID
   var itemTitle: String
   var itemCategory: String
+  var subCategory: String
   var isChecked: Bool
   var itemQuantity: Int
   
@@ -19,6 +20,7 @@ struct Item: Identifiable, Codable {
     case id = "itemId"
     case itemTitle
     case itemCategory
+    case subCategory
     case isChecked
     case itemQuantity
   }

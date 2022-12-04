@@ -16,6 +16,8 @@ class ClothesController:ObservableObject {
     private var startIndex = 0
     private var endIndex = 0
     private var dailyPackers:[DailyPacker] = []
+    private var isSunny = false
+    private var isRainy = false
     
     init() {
         self.clothes = []
@@ -31,10 +33,33 @@ class ClothesController:ObservableObject {
     }
         
     
-    func generateOutfit() {
+    func generatePacker() {
         for dateIndex in startIndex..<(endIndex + 1) {
-            let itemList:[Item] = generateItem(dateIndex: dateIndex)
+            var itemList:[Item] = generateClothes(dateIndex: dateIndex)
+            if (dateIndex == endIndex) {
+                let brush = Item(id: UUID(), itemTitle: "Toothbrush", itemCategory: "Toiletries", subCategory: "Toiletries",  isChecked: false, itemQuantity: 1)
+                let toothPaste = Item(id: UUID(), itemTitle: "Toothpaste", itemCategory: "Toiletries", subCategory: "Toiletries",  isChecked: false, itemQuantity: 1)
+                let mouthWash = Item(id: UUID(), itemTitle: "Mouthwash", itemCategory: "Toiletries", subCategory: "Toiletries",  isChecked: false, itemQuantity: 1)
+                let bodyWash = Item(id: UUID(), itemTitle: "Bodywash", itemCategory: "Toiletries", subCategory: "Toiletries",  isChecked: false, itemQuantity: 1)
+                let shampoo = Item(id: UUID(), itemTitle: "Shampoo", itemCategory: "Toiletries", subCategory: "Toiletries",  isChecked: false, itemQuantity: 1)
+                let moisturizer = Item(id: UUID(), itemTitle: "Moisturizer", itemCategory: "Toiletries", subCategory: "Toiletries",  isChecked: false, itemQuantity: 1)
+                let trimmer = Item(id: UUID(), itemTitle: "Trimmer", itemCategory: "Electronics", subCategory: "Electronics",  isChecked: false, itemQuantity: 1)
+                let phoneCharger = Item(id: UUID(), itemTitle: "Phone Charger", itemCategory: "Electronics", subCategory: "Electronics",  isChecked: false, itemQuantity: 1)
+                let pcCharger = Item(id: UUID(), itemTitle: "Laptop Charger", itemCategory: "Electronics", subCategory: "Electronics",  isChecked: false, itemQuantity: 1)
+                let earphones = Item(id: UUID(), itemTitle: "Earphones", itemCategory: "Electronics", subCategory: "Electronics",  isChecked: false, itemQuantity: 1)
+                itemList.append(brush)
+                itemList.append(toothPaste)
+                itemList.append(mouthWash)
+                itemList.append(bodyWash)
+                itemList.append(shampoo)
+                itemList.append(moisturizer)
+                itemList.append(trimmer)
+                itemList.append(phoneCharger)
+                itemList.append(pcCharger)
+                itemList.append(earphones)
+            }
             generateDailyPacker(dateIndex: dateIndex, itemList: itemList)
+            
         }
     }
     
@@ -48,19 +73,29 @@ class ClothesController:ObservableObject {
         
     }
     
-    func generateItem(dateIndex:Int) -> [Item] {
+    
+    func generateClothes(dateIndex:Int) -> [Item] {
         print("--------------dateIndex: \(dateIndex)")
         print("--------------temp_mean: \(temp_mean)")
         let temp = temp_mean[dateIndex]
+        let weatherCode = weather_code[dateIndex]
+        switch (weatherCode) {
+        case "61", "63", "65", "66", "67", "80", "81", "82":
+            isRainy = true
+        case "0":
+            isSunny = true
+        default:
+            isRainy = false
+        }
         var itemList:[Item] = []
         if (temp <= -4) {
-            let topOutter = Item(id: UUID(), itemTitle: "Winter Jacket", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            let topMiddle = Item(id: UUID(), itemTitle: "Sweater", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            let topInner = Item(id: UUID(), itemTitle: "Long-sleeves Shirt", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            let bottom = Item(id: UUID(), itemTitle: "Winter Pants", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            let shoes = Item(id: UUID(), itemTitle: "Winter Boots", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            let accessoryFirst = Item(id: UUID(), itemTitle: "Gloves", itemCategory: "Accessory", isChecked: false, itemQuantity: 1)
-            let accessorySecond = Item(id: UUID(), itemTitle: "Hats", itemCategory: "Accessory", isChecked: false, itemQuantity: 1)
+            let topOutter = Item(id: UUID(), itemTitle: "Winter Jacket", itemCategory: "Clothes", subCategory: "Jacket",  isChecked: false, itemQuantity: 1)
+            let topMiddle = Item(id: UUID(), itemTitle: "Sweater", itemCategory: "Clothes", subCategory: "Sweater",  isChecked: false, itemQuantity: 1)
+            let topInner = Item(id: UUID(), itemTitle: "Long-sleeves Shirt", itemCategory: "Clothes", subCategory: "Long-Sleeves", isChecked: false, itemQuantity: 1)
+            let bottom = Item(id: UUID(), itemTitle: "Winter Pants", itemCategory: "Clothes", subCategory: "Jeans", isChecked: false, itemQuantity: 1)
+            let shoes = Item(id: UUID(), itemTitle: "Winter Boots", itemCategory: "Clothes", subCategory: "Shoes", isChecked: false, itemQuantity: 1)
+            let accessoryFirst = Item(id: UUID(), itemTitle: "Gloves", itemCategory: "Clothes", subCategory: "Mittens", isChecked: false, itemQuantity: 1)
+            let accessorySecond = Item(id: UUID(), itemTitle: "Hats", itemCategory: "Clothes", subCategory: "Baenie", isChecked: false, itemQuantity: 1)
             itemList.append(topOutter)
             itemList.append(topMiddle)
             itemList.append(topInner)
@@ -69,37 +104,56 @@ class ClothesController:ObservableObject {
             itemList.append(accessoryFirst)
             itemList.append(accessorySecond)
         } else if (temp > -4 && temp <= 6) {
-            let topOutter = Item(id: UUID(), itemTitle: "Medium Coat", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            let topInner = Item(id: UUID(), itemTitle: "Long-sleeves Shirt", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            let bottom = Item(id: UUID(), itemTitle: "Jeans", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            let shoes = Item(id: UUID(), itemTitle: "Shoes", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let topOutter = Item(id: UUID(), itemTitle: "Medium Coat", itemCategory: "Clothes", subCategory: "Coat", isChecked: false, itemQuantity: 1)
+            let topInner = Item(id: UUID(), itemTitle: "Long-sleeves Shirt", itemCategory: "Clothes", subCategory: "Long-Sleeves", isChecked: false, itemQuantity: 1)
+            let bottom = Item(id: UUID(), itemTitle: "Jeans", itemCategory: "Clothes",subCategory: "Jeans",  isChecked: false, itemQuantity: 1)
+            let shoes = Item(id: UUID(), itemTitle: "Shoes", itemCategory: "Clothes", subCategory: "Shoes", isChecked: false, itemQuantity: 1)
             itemList.append(topOutter)
             itemList.append(topInner)
             itemList.append(bottom)
             itemList.append(shoes)
         } else if (temp > 6 && temp <= 17) {
-            let topOutter = Item(id: UUID(), itemTitle: "Hoodie", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            let topInner = Item(id: UUID(), itemTitle: "T-Shirt", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            let bottom = Item(id: UUID(), itemTitle: "Jeans", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            let shoes = Item(id: UUID(), itemTitle: "Shoes", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let topOutter = Item(id: UUID(), itemTitle: "Hoodie", itemCategory: "Clothes", subCategory: "Hoodie", isChecked: false, itemQuantity: 1)
+            let topInner = Item(id: UUID(), itemTitle: "T-Shirt", itemCategory: "Clothes", subCategory: "T-Shirt", isChecked: false, itemQuantity: 1)
+            let bottom = Item(id: UUID(), itemTitle: "Jeans", itemCategory: "Clothes",subCategory: "Jeans",  isChecked: false, itemQuantity: 1)
+            let shoes = Item(id: UUID(), itemTitle: "Shoes", itemCategory: "Clothes",subCategory: "Shoes",  isChecked: false, itemQuantity: 1)
             itemList.append(topOutter)
             itemList.append(topInner)
             itemList.append(bottom)
             itemList.append(shoes)
         } else if (temp > 17 && temp <= 26) {
-            let topInner = Item(id: UUID(), itemTitle: "Long-sleeves Shirt", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            let bottom = Item(id: UUID(), itemTitle: "Jeans", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            let shoes = Item(id: UUID(), itemTitle: "Shoes", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            let topInner = Item(id: UUID(), itemTitle: "Long-sleeves Shirt", itemCategory: "Clothes",subCategory: "Long-Sleeves",  isChecked: false, itemQuantity: 1)
+            let bottom = Item(id: UUID(), itemTitle: "Jeans", itemCategory: "Clothes",subCategory: "Jeans",  isChecked: false, itemQuantity: 1)
+            let shoes = Item(id: UUID(), itemTitle: "Shoes", itemCategory: "Clothes",subCategory: "Shoes",  isChecked: false, itemQuantity: 1)
+            if (isSunny) {
+                let sunscreen = Item(id: UUID(), itemTitle: "Sunscreen", itemCategory: "Accessories", subCategory: "Accessories",  isChecked: false, itemQuantity: 1)
+                itemList.append(sunscreen)
+            }
             itemList.append(topInner)
             itemList.append(bottom)
             itemList.append(shoes)
         } else {
-            let topInner = Item(id: UUID(), itemTitle: "Short-sleeves Shirt", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            let bottom = Item(id: UUID(), itemTitle: "Shorts", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
-            let shoes = Item(id: UUID(), itemTitle: "Sandals", itemCategory: "Clothes", isChecked: false, itemQuantity: 1)
+            isSunny = true
+            let topInner = Item(id: UUID(), itemTitle: "Short-sleeves Shirt", itemCategory: "Clothes", subCategory: "T-Shirt", isChecked: false, itemQuantity: 1)
+            let bottom = Item(id: UUID(), itemTitle: "Shorts", itemCategory: "Clothes", subCategory: "Shorts", isChecked: false, itemQuantity: 1)
+            let shoes = Item(id: UUID(), itemTitle: "Sandals", itemCategory: "Clothes", subCategory: "Shoes", isChecked: false, itemQuantity: 1)
+            let sunglasses = Item(id: UUID(), itemTitle: "Sunglasses", itemCategory: "Clothes", subCategory: "Sunglasses", isChecked: false, itemQuantity: 1)
+            if (isSunny) {
+                let sunscreen = Item(id: UUID(), itemTitle: "Sunscreen", itemCategory: "Accessories", subCategory: "Accessories",  isChecked: false, itemQuantity: 1)
+                itemList.append(sunscreen)
+            }
             itemList.append(topInner)
             itemList.append(bottom)
             itemList.append(shoes)
+        }
+        let underwear = Item(id: UUID(), itemTitle: "Underwear", itemCategory: "Clothes", subCategory: "Underwear", isChecked: false, itemQuantity: 1)
+        let socks = Item(id: UUID(), itemTitle: "Socks", itemCategory: "Clothes", subCategory: "Socks", isChecked: false, itemQuantity: 1)
+        itemList.append(underwear)
+        itemList.append(socks)
+        
+        if (isRainy) {
+            let umbrella = Item(id: UUID(), itemTitle: "Umbrella", itemCategory: "Accessories", subCategory: "Accessories",  isChecked: false, itemQuantity: 1)
+            itemList.append(umbrella)
         }
         return itemList
     }

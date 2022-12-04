@@ -20,6 +20,10 @@ class PackerRepository: ObservableObject {
   
   @Published var packers: [Packer] = []
   @Published var dailyPackers: [DailyPacker] = []
+  @Published var itemsClothes: [Item] = []
+  @Published var itemsAccessories: [Item] = []
+  @Published var itemsToiletries: [Item] = []
+  @Published var itemsElectronics: [Item] = []
   @Published var items: [Item] = []
   @Published var index: Int = 0
   @Published var currentDailyPacker: DailyPacker = DailyPacker(id: UUID(), lowTemp: 0.0, highTemp: 0.0, date: "", weatherCode: "", itemLists: [])
@@ -38,6 +42,10 @@ class PackerRepository: ObservableObject {
         self.packers = []
         self.dailyPackers = []
         self.items = []
+        self.itemsClothes = []
+        self.itemsAccessories = []
+        self.itemsToiletries = []
+        self.itemsElectronics = []
         self.currentDailyPacker = DailyPacker(id: UUID(), lowTemp: 0.0, highTemp: 0.0, date: "", weatherCode: "", itemLists: [])
     }
 
@@ -59,14 +67,37 @@ class PackerRepository: ObservableObject {
         for packer in self.packers {
           if packer.id.uuidString == tripId.uuidString {
               for dailyPacker in packer.dailyPackers {
-              self.dailyPackers.append(dailyPacker)
-              for item in dailyPacker.itemLists {
-                self.items.append(item)
+                  self.dailyPackers.append(dailyPacker)
+                  print(self.dailyPackers)
+                  for item in dailyPacker.itemLists {
+                      if(item.itemCategory == "Clothes") {
+                          self.itemsClothes.append(item)
+                      }
+                      if(item.itemCategory == "Toiletries") {
+                          self.itemsToiletries.append(item)
+                      }
+                      if(item.itemCategory == "Electronics") {
+                          self.itemsElectronics.append(item)
+                      }
+                      if(item.itemCategory == "Accessories") {
+                          self.itemsAccessories.append(item)
+                      }
+                      self.items.append(item)
+                  }
+                  print("+++ItemsList")
+                  print(self.items)
               }
-            }
           }
         }
         self.currentDailyPacker = self.dailyPackers[0]
+          print("+++Packer++")
+          print(self.dailyPackers)
+          print("+++Items+++")
+          print(self.items)
+          print("+++Clothes")
+          print(self.itemsClothes)
+          print("+++Toilets")
+          print(self.itemsToiletries)
       }
   }
     
