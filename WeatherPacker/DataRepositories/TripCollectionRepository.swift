@@ -19,9 +19,8 @@ class TripCollectionRepository: ObservableObject {
   
   @Published var tripCollection: [TripCollection] = []
   @Published var trips: [Trip] = []
-    @Published var tripsExpired: [Trip] = []
-    @Published var tripsNotExpired: [Trip] = []
-    var tripsAll: [Trip] = []
+  @Published var tripsExpired: [Trip] = []
+  @Published var tripsNotExpired: [Trip] = []
   
   private var cancellables: Set<AnyCancellable> = []
   
@@ -77,26 +76,48 @@ class TripCollectionRepository: ObservableObject {
         }
     }
     
+//    func checkExpiration(userId: UUID) {
+//        for trip in self.trips {
+//            var _trip: Trip = Trip(id: trip.id, tripLocation: trip.tripLocation, tripStartDate: trip.tripStartDate, tripEndDate: trip.tripEndDate, isExpired: trip.isExpired)
+//            if _trip.isExpired == true {
+//                self.tripsExpired.append(_trip)
+//            } else {
+//                let datefmt = DateFormatter()
+//                datefmt.dateFormat = "yyyy-MM-dd"
+//                let now = Date()
+//                let current = datefmt.string(from: now)
+//                if(current > _trip.tripEndDate) {
+//                    _trip.isExpired = true
+//                    self.tripsExpired.append(_trip)
+//                } else {
+//                    self.tripsNotExpired.append(_trip)
+//                }
+//            }
+//            self.tripsAll.append(_trip)
+//        }
+//        self.updateTrip(tripCollection: TripCollection(id: userId, trips: self.tripsAll))
+//    }
+    
     func checkExpiration(userId: UUID) {
-        for trip in self.trips {
-            var _trip: Trip = Trip(id: trip.id, tripLocation: trip.tripLocation, tripStartDate: trip.tripStartDate, tripEndDate: trip.tripEndDate, isExpired: trip.isExpired)
-            if _trip.isExpired == true {
-                self.tripsExpired.append(_trip)
+        print("****")
+        print(self.trips[0])
+        for tripIndex in 0..<self.trips.count {
+            if self.trips[tripIndex].isExpired == true {
+                self.tripsExpired.append(self.trips[tripIndex])
             } else {
                 let datefmt = DateFormatter()
                 datefmt.dateFormat = "yyyy-MM-dd"
                 let now = Date()
                 let current = datefmt.string(from: now)
-                if(current > _trip.tripEndDate) {
-                    _trip.isExpired = true
-                    self.tripsExpired.append(_trip)
+                if(current > self.trips[tripIndex].tripEndDate) {
+                    self.trips[tripIndex].isExpired = true
+                    self.tripsExpired.append(self.trips[tripIndex])
                 } else {
-                    self.tripsNotExpired.append(_trip)
+                    self.tripsNotExpired.append(self.trips[tripIndex])
                 }
             }
-            self.tripsAll.append(_trip)
         }
-        self.updateTrip(tripCollection: TripCollection(id: userId, trips: self.tripsAll))
+        self.updateTrip(tripCollection: TripCollection(id: userId, trips: self.trips))
     }
     
     
@@ -124,5 +145,3 @@ class TripCollectionRepository: ObservableObject {
         return self.trips
     }
 }
-
-
