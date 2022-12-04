@@ -35,6 +35,7 @@
 		87ADF5E3291B6CFD00748EFA /* UserAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF5E2291B6CFD00748EFA /* UserAuth.swift */; };
 		87ADF5E7291B7DBB00748EFA /* TripRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF5E6291B7DBB00748EFA /* TripRowView.swift */; };
 		87ADF5E9291C4F1E00748EFA /* ListBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF5E8291C4F1E00748EFA /* ListBackground.swift */; };
+		FF540937293CF05F00BBB8EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF540936293CF05F00BBB8EC /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		87ADF5E2291B6CFD00748EFA /* UserAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuth.swift; sourceTree = "<group>"; };
 		87ADF5E6291B7DBB00748EFA /* TripRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRowView.swift; sourceTree = "<group>"; };
 		87ADF5E8291C4F1E00748EFA /* ListBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBackground.swift; sourceTree = "<group>"; };
+		FF540936293CF05F00BBB8EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -406,6 +408,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WeatherPacker/Preview Content\"";
+				DEVELOPMENT_TEAM = 84Q8TC5NZ9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -434,6 +437,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WeatherPacker/Preview Content\"";
+				DEVELOPMENT_TEAM = 84Q8TC5NZ9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

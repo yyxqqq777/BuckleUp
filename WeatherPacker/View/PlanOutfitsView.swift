@@ -75,14 +75,14 @@ struct PlanOutfitsView: View {
         
         List(self.packerRepository.currentDailyPacker.itemLists) { item in
           DailyPackerItemView(item: item)
-        }
+        }.scrollContentBackground(.hidden)
         //        RoundedRectangle(cornerRadius: 8)
         //          .fill(Color("PrimaryOrange"))
         //          .frame(width: 80, height: 40)
         //          .overlay(Text("Add item")).onTapGesture {
         //
         //          }
-      }
+      }.background(Color.white)
       .environmentObject(packerRepository)
       .environmentObject(editingMode)
     }
