@@ -55,9 +55,10 @@ struct TripView: View {
                     TripRowView(trip: trip)
                   }
                 }
+              
             }
         }
-        
+      
         NavigationLink(destination:CreationView()) {
           Text("Create New Trip")
             .frame(maxWidth: .infinity, maxHeight: 40)
@@ -67,12 +68,16 @@ struct TripView: View {
             .cornerRadius(20)
         }
       }
+      .background(Color.white)
     }
     .onAppear(perform: {
         self.tripCollectionRepository.checkExpiration(userId: userAuth.userId)
     })
   }
 }
+
+
+
 
 struct LoginView: View {
     
@@ -87,15 +92,14 @@ struct LoginView: View {
     @ObservedObject var userRepository = UserRepository()
     
     var body: some View {
-        NavigationView {
+      NavigationView {
             ZStack {
                 VStack {
-                    Spacer()
-                    Image("Login")
+                 Image("Login").resizable().frame(width:360 ,height:300)
                     Form{
                         TextField("User Name", text: $userName)
                         SecureField("Password", text: $pwd)
-                    }
+                    }.scrollContentBackground(.hidden)
                     Button(action: {
                         if userRepository.verify(userName: userName, pwd: pwd) {
                             self.userAuth.userId = userRepository.getUserId(userName: userName)
@@ -110,9 +114,12 @@ struct LoginView: View {
                     .foregroundColor(.white)
                     .background(Color("PrimaryOrange"))
                     .cornerRadius(20)
-                }
+                }.background(Color.white)
+         
             }
+      
         }
+  
     }
 }
 
@@ -134,8 +141,10 @@ struct CreationView: View {
                     .fontWeight(.bold)
                 Form {
                     TextField("Location", text: $location)
-                }
-                NavigationLink(
+                }.scrollContentBackground(.hidden)
+              
+              Image("Creation").resizable().frame(width:350 ,height:210)
+              NavigationLink(
                     destination:TripStartView(
                         rootIsActive: self.$isActive,
                         location: location,
@@ -181,6 +190,7 @@ struct TripStartView: View {
                 .datePickerStyle(.graphical)
                 .accentColor(Color("PrimaryOrange"))
                 Spacer()
+              Image("Creation").resizable().frame(width:350 ,height:210)
                 NavigationLink(
                     destination:TripEndView(
                         shouldPopToRootView: self.$rootIsActive,
@@ -227,6 +237,7 @@ struct TripEndView: View {
             .datePickerStyle(.graphical)
             .accentColor(Color("PrimaryOrange"))
             Spacer()
+          Image("Creation").resizable().frame(width:350 ,height:210)
             Button(action:{
                 var tripId = tripController.update(userId: userAuth.userId, location: location, startDate: startDate, endDate: endDate, tripRepo: tripCollectionReposiroty)
                 clothesController.calculate_date(startDate: startDate, endDate: endDate)

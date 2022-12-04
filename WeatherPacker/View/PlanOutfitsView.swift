@@ -35,7 +35,7 @@ struct PlanOutfitsView: View {
           HStack {
               VStack {
                   Text(showWeatherResult(weathercode: self.packerRepository.currentDailyPacker.weatherCode))
-                      .font(.title2).bold()
+                  .font(.title2).bold()
                       //.padding(EdgeInsets(top: 0, leading: 33, bottom: 0, trailing: 0))
                   HStack {
                       Text("H: \(Int(self.packerRepository.currentDailyPacker.highTemp))°C")
@@ -48,9 +48,7 @@ struct PlanOutfitsView: View {
                   .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 12))
           }
           
-          
           Text("Outfit").padding(EdgeInsets(top: 12, leading: 33, bottom: 16, trailing: 0)).font(.system(size: 24, weight: .bold))
-          
           List(self.packerRepository.currentDailyPacker.itemLists) { item in
               HStack {
                   Image(chooseIcon(subCategory: item.subCategory))
@@ -59,14 +57,15 @@ struct PlanOutfitsView: View {
                       .padding(EdgeInsets(top: 0, leading: 3, bottom: 0, trailing: 6))
                   Text(item.itemTitle)
               }
-          }
+          }.scrollContentBackground(.hidden)
 //        RoundedRectangle(cornerRadius: 8)
 //          .fill(Color("PrimaryOrange"))
 //          .frame(width: 80, height: 40)
 //          .overlay(Text("Add item")).onTapGesture {
 //
 //          }
-      }
+      }.background(Color.white)
+      
     }
     
     func showWeatherResult(weathercode: String) -> String {
