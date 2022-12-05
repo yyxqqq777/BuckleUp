@@ -55,7 +55,6 @@ struct TripView: View {
                     TripRowView(trip: trip)
                   }
                 }
-              
             }
         }
       
@@ -70,9 +69,6 @@ struct TripView: View {
       }
       .background(Color.white)
     }
-    .onAppear(perform: {
-        self.tripCollectionRepository.checkExpiration(userId: userAuth.userId)
-    })
   }
 }
 
@@ -103,7 +99,9 @@ struct LoginView: View {
                     Button(action: {
                         if userRepository.verify(userName: userName, pwd: pwd) {
                             self.userAuth.userId = userRepository.getUserId(userName: userName)
+                            print("Tag - LoginView getById NEXT")
                             self.tripCollectionRepository.getById(userId:userAuth.userId)
+                            print("Tag - LoginView getById FINISHED")
                             self.signInSuccess = true
                         }
                     }) {
@@ -125,6 +123,7 @@ struct LoginView: View {
 
 struct CreationView: View {
     @State var isActive = false
+    @State var isValid = false
     @State private var location = ""
     @State private var goToStartDate = false
     
@@ -132,6 +131,7 @@ struct CreationView: View {
     
     @EnvironmentObject var userAuth:UserAuth
     //@EnvironmentObject var tripRepository:TripCollectionRepository
+    
     
     var body: some View {
         NavigationView{
@@ -153,8 +153,16 @@ struct CreationView: View {
                 {
                     Text("Next Step")
                         .onTapGesture {
-                            clothesController.getWeatherInfo(city: location)
-                            self.isActive = true
+                            isValid = clothesController.getWeatherInfo(city: location)
+                            if isValid {
+                                self.isActive = true
+                            }
+                        }
+                        .alert(isPresented: $isValid) {
+                            Alert(
+                                title: Text("Destination Not Available"),
+                                message: Text("Cannot find the destination typed in, please check spelling")
+                            )
                         }
                         .frame(maxWidth: .infinity, maxHeight: 40)
                         .font(.title3.bold())

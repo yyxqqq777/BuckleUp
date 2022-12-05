@@ -15,7 +15,7 @@ class ListBackground: ObservableObject {
     
     func getIndex() -> Int {
         self.bgIndex = self.bgIndex + 1
-        return self.bgIndex % 10
+        return self.bgIndex % 8
         
     }
 }

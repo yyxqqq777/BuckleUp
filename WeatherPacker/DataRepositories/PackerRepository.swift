@@ -93,7 +93,6 @@ class PackerRepository: ObservableObject {
           }
         }
           self.currentDailyPacker = self.dailyPackers[self.index]
-          print("TAG- PacketRepository.get() is called! The length of dailypacker is \(self.dailyPackers.count)  The length of packers is \(self.packers.count) The length of items is \(self.items.count) The length of itemsClothes is \(self.itemsClothes.count)")
       }
   }
   
@@ -129,14 +128,11 @@ class PackerRepository: ObservableObject {
       }
       break
     }
-      print("TAG- updateCloth is called  The length of dailypacker is \(self.dailyPackers.count)")
   }
   
   func saveUpdatePacker() {
     updatePacker(packer: Packer(id: self.tripId, location: self.tripLocation, dailyPackers: self.dailyPackers))
       setCurrentDailyPacker(index: self.index)
-      //refreshView()
-      print("TAG- saveUpdate is called  The length of dailypacker is \(self.dailyPackers.count)")
   }
   
   func addNewItem(title: String) {

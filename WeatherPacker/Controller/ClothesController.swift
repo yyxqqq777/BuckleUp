@@ -75,8 +75,6 @@ class ClothesController:ObservableObject {
     
     
     func generateClothes(dateIndex:Int) -> [Item] {
-        print("--------------dateIndex: \(dateIndex)")
-        print("--------------temp_mean: \(temp_mean)")
         let temp = temp_mean[dateIndex]
         let weatherCode = weather_code[dateIndex]
         switch (weatherCode) {
@@ -168,15 +166,13 @@ class ClothesController:ObservableObject {
         let currentDate = Date()
         self.startIndex = distancesFrom(currentDate, to: startDate) + 1
         self.endIndex = distancesFrom(currentDate, to: endDate) + 1
-        print("______Start Index \(startIndex)")
-        print("______Start Index \(endIndex)")
     }
     
-    func getWeatherInfo(city:String) {
-        print("---------------getWeatherInfor starts")
+    func getWeatherInfo(city:String) -> Bool {
+        
+        var isValid = true
+        
         let cityToLngAndLatUrl = "https://geocoding-api.open-meteo.com/v1/search?name=\(city)"
-
-        print("---------------getting external API starts")
         
         var lat: Float = 0.0
         var lng: Float = 0.0
@@ -203,14 +199,16 @@ class ClothesController:ObservableObject {
         let searchCityTask = URLSession.shared.dataTask(with: URL(string: cityToLngAndLatUrl)!) { (data, response, error) in
           guard let data = data else {
             print("Error: No data to decode")
+            isValid = false
             return
           }
 
           // Decode the JSON here
           guard let result = try? JSONDecoder().decode(Results.self, from: data) else {
             print("Error: Couldn't decode data into a result")
+            isValid = false
             return
-        }
+          }
 
 
           print("Latitude of \(city) is \(result.citys[0].latitude)")
@@ -299,11 +297,6 @@ class ClothesController:ObservableObject {
               self.weather_code.append(String(day5Code[11]))
               self.weather_code.append(String(day6Code[11]))
               self.weather_code.append(String(day7Code[11]))
-              
-              print("--------------temp_max: \(self.temp_max)")
-              print("--------------temp_min: \(self.temp_min)")
-              print("--------------temp_mean: \(self.temp_mean)")
-              print("--------------weather code: \(self.weather_code)")
           }
 
           searchWeatherTask.resume()
@@ -311,5 +304,6 @@ class ClothesController:ObservableObject {
         }
 
         searchCityTask.resume()
+        return isValid
     }
 }
