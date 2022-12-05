@@ -10,7 +10,9 @@ import SwiftUI
 struct PlanOutfitsView: View {
     @EnvironmentObject var packerRepository:PackerRepository
     @State var isEditing = false
+    @State private var presentAlert = false
     var editingMode = EditingMode()
+    @State var newItemTitle = ""
     
     var buttonLabel: String {
       // Compute the label based on button state
@@ -71,17 +73,46 @@ struct PlanOutfitsView: View {
             })
           .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 12))
         }
-
         
-        List(self.packerRepository.currentDailyPacker.itemLists) { item in
-          DailyPackerItemView(item: item)
-        }.scrollContentBackground(.hidden)
-        //        RoundedRectangle(cornerRadius: 8)
-        //          .fill(Color("PrimaryOrange"))
-        //          .frame(width: 80, height: 40)
-        //          .overlay(Text("Add item")).onTapGesture {
-        //
-        //          }
+        if (!isEditing) {
+          List {
+            ForEach(packerRepository.currentDailyPacker.itemLists) {
+              item in
+              DailyPackerItemView(item: item)
+            }
+          }.scrollContentBackground(.hidden)
+        } else {
+          List {
+            ForEach(packerRepository.currentDailyPacker.itemLists, id: \.self) {
+              item in
+              DailyPackerItemView(item: item)
+            }.onDelete{ indexSet in
+              packerRepository.deleteItem(itemId: indexSet)
+            }
+          }.scrollContentBackground(.hidden)
+        }
+        
+        if (!isEditing) {
+          
+        } else {
+          Button("Add Item") {
+            presentAlert = true
+          }
+          .alert("New Item", isPresented: $presentAlert, actions: {
+            TextField("Please type the item", text: $newItemTitle)
+            Button("Add", action: {packerRepository.addNewItem(title: newItemTitle)})
+            Button("Cancel", role: .cancel, action: {})
+          }, message: {
+            // Any view other than Text would be ignored
+          })
+          //          RoundedRectangle(cornerRadius: 8)
+          //            .fill(Color("PrimaryOrange"))
+          //            .frame(width: 80, height: 40)
+          //            .overlay(Text("Add item")).onTapGesture {
+          //              DailyPackerItemView(item: Item(id: UUID(), itemTitle: "", itemCategory: "Clothes", subCategory: "Customized", isChecked: false, itemQuantity:1))
+          //            }
+        }
+        
       }.background(Color.white)
       .environmentObject(packerRepository)
       .environmentObject(editingMode)
@@ -116,9 +147,6 @@ struct PlanOutfitsView: View {
         default:
             return "Clear Sky"
         }
-//        .onAppear(perform: {
-//          self.btnText = editingMode.btnName
-//        })
     }
     
 }

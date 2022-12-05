@@ -31,27 +31,27 @@ class PackerRepository: ObservableObject {
   var tripLocation = ""
   
   private var cancellables: Set<AnyCancellable> = []
-
+  
   init() {
     
   }
-    
-    func setCurrentDailyPacker(index: Int) {
-        self.index = index
-        self.currentDailyPacker = self.dailyPackers[self.index]
-    }
-    
-    func reclear() {
-        self.packers = []
-        self.dailyPackers = []
-        self.items = []
-        self.itemsClothes = []
-        self.itemsAccessories = []
-        self.itemsToiletries = []
-        self.itemsElectronics = []
-        self.currentDailyPacker = DailyPacker(id: UUID(), lowTemp: 0.0, highTemp: 0.0, date: "", weatherCode: "", itemLists: [])
-    }
-
+  
+  func setCurrentDailyPacker(index: Int) {
+    self.index = index
+    self.currentDailyPacker = self.dailyPackers[self.index]
+  }
+  
+  func reclear() {
+    self.packers = []
+    self.dailyPackers = []
+    self.items = []
+    self.itemsClothes = []
+    self.itemsAccessories = []
+    self.itemsToiletries = []
+    self.itemsElectronics = []
+    self.currentDailyPacker = DailyPacker(id: UUID(), lowTemp: 0.0, highTemp: 0.0, date: "", weatherCode: "", itemLists: [])
+  }
+  
   func get(tripId: UUID) {
     
     // get clothes data
@@ -71,54 +71,54 @@ class PackerRepository: ObservableObject {
           if packer.id.uuidString == tripId.uuidString {
             self.tripId = packer.id
             self.tripLocation = packer.location
-              for dailyPacker in packer.dailyPackers {
-                  self.dailyPackers.append(dailyPacker)
-                  print(self.dailyPackers)
-                  for item in dailyPacker.itemLists {
-                      if(item.itemCategory == "Clothes") {
-                          self.itemsClothes.append(item)
-                      }
-                      if(item.itemCategory == "Toiletries") {
-                          self.itemsToiletries.append(item)
-                      }
-                      if(item.itemCategory == "Electronics") {
-                          self.itemsElectronics.append(item)
-                      }
-                      if(item.itemCategory == "Accessories") {
-                          self.itemsAccessories.append(item)
-                      }
-                      self.items.append(item)
-                  }
-                  print("+++ItemsList")
-                  print(self.items)
+            for dailyPacker in packer.dailyPackers {
+              self.dailyPackers.append(dailyPacker)
+              print(self.dailyPackers)
+              for item in dailyPacker.itemLists {
+                if(item.itemCategory == "Clothes") {
+                  self.itemsClothes.append(item)
+                }
+                if(item.itemCategory == "Toiletries") {
+                  self.itemsToiletries.append(item)
+                }
+                if(item.itemCategory == "Electronics") {
+                  self.itemsElectronics.append(item)
+                }
+                if(item.itemCategory == "Accessories") {
+                  self.itemsAccessories.append(item)
+                }
+                self.items.append(item)
               }
+              print("+++ItemsList")
+              print(self.items)
+            }
           }
         }
         self.currentDailyPacker = self.dailyPackers[0]
       }
   }
-    
+  
   func updatePacker(packer:Packer) {
-      let packerId = packer.id.uuidString
-      
-      do {
-          try store.collection(path).document(packerId).setData(from:packer)
-      } catch {
-          fatalError("Unable to update trip collection: \(error.localizedDescription).")
-      }
+    let packerId = packer.id.uuidString
+    
+    do {
+      try store.collection(path).document(packerId).setData(from:packer)
+    } catch {
+      fatalError("Unable to update trip collection: \(error.localizedDescription).")
+    }
   }
   
   
-    // MARK: CRUD methods
-    func add(_ packer: Packer) {
-      do {
-        let id = packer.id.uuidString
-        try store.collection(path).document(id).setData(from: packer)
-          self.dailyPackers = []
-      } catch {
-        fatalError("Unable to update dailyOutfitcollection: \(error.localizedDescription).")
-      }
+  // MARK: CRUD methods
+  func add(_ packer: Packer) {
+    do {
+      let id = packer.id.uuidString
+      try store.collection(path).document(id).setData(from: packer)
+      self.dailyPackers = []
+    } catch {
+      fatalError("Unable to update dailyOutfitcollection: \(error.localizedDescription).")
     }
+  }
   
   func updateCloth(title: String, itemId: UUID) {
     
@@ -135,10 +135,21 @@ class PackerRepository: ObservableObject {
     updatePacker(packer: Packer(id: self.tripId, location: self.tripLocation, dailyPackers: self.dailyPackers))
   }
   
-  func cancelUpdatePacker() {
-      
+  func addNewItem(title: String) {
+    var item = Item(id: UUID(), itemTitle: title, itemCategory: "Clothes", subCategory: "Customized", isChecked: false, itemQuantity:1)
+    self.dailyPackers[self.index].itemLists.append(item)
+    self.currentDailyPacker.itemLists.append(item)
   }
-    
+  
+  func deleteItem(itemId: IndexSet) {
+    //    for itemIndex in 0..<self.dailyPackers[self.index].itemLists.count {
+    //      if self.dailyPackers[self.index].itemLists[itemIndex].id == itemId {
+    //        self.dailyPackers[self.index].itemLists.remove(self.dailyPackers[self.index].itemLists[itemIndex]:Item)
+    //self.items[itemindex].itemTitle = title
+    self.dailyPackers[self.index].itemLists.remove(atOffsets: itemId)
+    self.currentDailyPacker.itemLists.remove(atOffsets: itemId)
+  }
+  //      break
 }
 
 
