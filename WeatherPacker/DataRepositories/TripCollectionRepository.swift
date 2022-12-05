@@ -21,38 +21,20 @@ class TripCollectionRepository: ObservableObject {
   @Published var trips: [Trip] = []
   @Published var tripsExpired: [Trip] = []
   @Published var tripsNotExpired: [Trip] = []
+    var isChecked = false
   
   private var cancellables: Set<AnyCancellable> = []
   
     init() {
-      self.get()
-      //self.getById(userId: userId)
+
   }
   
-  func get() {
     
-    // get clothes data
-    store.collection(path)
-      .addSnapshotListener { querySnapshot, error in
-        if let error = error {
-          print("Error getting trip: \(error.localizedDescription)")
-          return
-        }
-        
-        self.tripCollection = querySnapshot?.documents.compactMap { document in
-          try? document.data(as: TripCollection.self)
-        } ?? []
-        
-//        for collection in self.tripCollection {
-//          for trip in collection.trips {
-//            self.trips.append(trip)
-//          }
-//        }
-      }
-  }
+    func refreshContains(){
+        self.trips = []
+    }
     
     func getById(userId:UUID) {
-      
       // get clothes data
       store.collection(path)
         .addSnapshotListener { querySnapshot, error in
@@ -65,6 +47,8 @@ class TripCollectionRepository: ObservableObject {
             try? document.data(as: TripCollection.self)
           } ?? []
           
+            self.refreshContains()
+            
           for collection in self.tripCollection {
               if collection.id.uuidString == userId.uuidString {
                   for trip in collection.trips {
@@ -73,52 +57,30 @@ class TripCollectionRepository: ObservableObject {
                   break
               }
           }
-        }
-    }
-    
-//    func checkExpiration(userId: UUID) {
-//        for trip in self.trips {
-//            var _trip: Trip = Trip(id: trip.id, tripLocation: trip.tripLocation, tripStartDate: trip.tripStartDate, tripEndDate: trip.tripEndDate, isExpired: trip.isExpired)
-//            if _trip.isExpired == true {
-//                self.tripsExpired.append(_trip)
-//            } else {
-//                let datefmt = DateFormatter()
-//                datefmt.dateFormat = "yyyy-MM-dd"
-//                let now = Date()
-//                let current = datefmt.string(from: now)
-//                if(current > _trip.tripEndDate) {
-//                    _trip.isExpired = true
-//                    self.tripsExpired.append(_trip)
-//                } else {
-//                    self.tripsNotExpired.append(_trip)
-//                }
-//            }
-//            self.tripsAll.append(_trip)
-//        }
-//        self.updateTrip(tripCollection: TripCollection(id: userId, trips: self.tripsAll))
-//    }
-    
-    func checkExpiration(userId: UUID) {
-        for tripIndex in 0..<self.trips.count {
-            if self.trips[tripIndex].isExpired == true {
-                self.tripsExpired.append(self.trips[tripIndex])
-            } else {
-                let datefmt = DateFormatter()
-                datefmt.dateFormat = "yyyy-MM-dd"
-                let now = Date()
-                let current = datefmt.string(from: now)
-                if(current > self.trips[tripIndex].tripEndDate) {
-                    self.trips[tripIndex].isExpired = true
-                    self.tripsExpired.append(self.trips[tripIndex])
-                } else {
-                    self.tripsNotExpired.append(self.trips[tripIndex])
+
+            if (!self.isChecked) {
+                for tripIndex in 0..<self.trips.count {
+                    if self.trips[tripIndex].isExpired == true {
+                        self.tripsExpired.append(self.trips[tripIndex])
+                    } else {
+                        let datefmt = DateFormatter()
+                        datefmt.dateFormat = "yyyy-MM-dd"
+                        let now = Date()
+                        let current = datefmt.string(from: now)
+                        if(current > self.trips[tripIndex].tripEndDate) {
+                            self.trips[tripIndex].isExpired = true
+                            self.tripsExpired.append(self.trips[tripIndex])
+                        } else {
+                            self.tripsNotExpired.append(self.trips[tripIndex])
+                        }
+                    }
                 }
+                self.isChecked = true
+                self.updateTrip(tripCollection: TripCollection(id: userId, trips: self.trips))
             }
         }
-        self.updateTrip(tripCollection: TripCollection(id: userId, trips: self.trips))
     }
-    
-    
+       
     func updateTrip(tripCollection:TripCollection) {
         let tripCollectionId = tripCollection.id.uuidString
         
