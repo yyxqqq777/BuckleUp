@@ -18,7 +18,8 @@ class PackerRepository: ObservableObject {
   
   private let store = Firestore.firestore()
   
-  @Published var packers: [Packer] = []
+  //@Published var packers: [Packer] = []
+    var packers: [Packer] = []
   @Published var dailyPackers: [DailyPacker] = []
   @Published var itemsClothes: [Item] = []
   @Published var itemsAccessories: [Item] = []
@@ -42,14 +43,12 @@ class PackerRepository: ObservableObject {
   }
   
   func reclear() {
-    self.packers = []
     self.dailyPackers = []
     self.items = []
     self.itemsClothes = []
     self.itemsAccessories = []
     self.itemsToiletries = []
     self.itemsElectronics = []
-    self.currentDailyPacker = DailyPacker(id: UUID(), lowTemp: 0.0, highTemp: 0.0, date: "", weatherCode: "", itemLists: [])
   }
   
   func get(tripId: UUID) {
@@ -66,6 +65,7 @@ class PackerRepository: ObservableObject {
           try? document.data(as: Packer.self)
         } ?? []
         
+        self.reclear()
         
         for packer in self.packers {
           if packer.id.uuidString == tripId.uuidString {
@@ -89,12 +89,11 @@ class PackerRepository: ObservableObject {
                 }
                 self.items.append(item)
               }
-              print("+++ItemsList")
-              print(self.items)
             }
           }
         }
-        self.currentDailyPacker = self.dailyPackers[0]
+          self.currentDailyPacker = self.dailyPackers[self.index]
+          print("TAG- PacketRepository.get() is called! The length of dailypacker is \(self.dailyPackers.count)  The length of packers is \(self.packers.count) The length of items is \(self.items.count) The length of itemsClothes is \(self.itemsClothes.count)")
       }
   }
   
@@ -125,14 +124,19 @@ class PackerRepository: ObservableObject {
     for itemIndex in 0..<self.dailyPackers[self.index].itemLists.count {
       if self.dailyPackers[self.index].itemLists[itemIndex].id == itemId {
         self.dailyPackers[self.index].itemLists[itemIndex].itemTitle = title
+          //self.currentDailyPacker.itemLists[itemIndex].itemTitle = title
         //self.items[itemindex].itemTitle = title
       }
       break
     }
+      print("TAG- updateCloth is called  The length of dailypacker is \(self.dailyPackers.count)")
   }
   
   func saveUpdatePacker() {
     updatePacker(packer: Packer(id: self.tripId, location: self.tripLocation, dailyPackers: self.dailyPackers))
+      setCurrentDailyPacker(index: self.index)
+      //refreshView()
+      print("TAG- saveUpdate is called  The length of dailypacker is \(self.dailyPackers.count)")
   }
   
   func addNewItem(title: String) {
@@ -149,7 +153,6 @@ class PackerRepository: ObservableObject {
     self.dailyPackers[self.index].itemLists.remove(atOffsets: itemId)
     self.currentDailyPacker.itemLists.remove(atOffsets: itemId)
   }
-  //      break
 }
 
 

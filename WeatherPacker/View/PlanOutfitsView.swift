@@ -23,7 +23,7 @@ struct PlanOutfitsView: View {
       VStack(alignment: .leading) {
         ScrollView(.horizontal, showsIndicators: false) {
           HStack {
-            ForEach(0..<self.packerRepository.dailyPackers.count, id: \.self) { index in
+              ForEach(0..<self.packerRepository.dailyPackers.count, id: \.self) { index in
               RoundedRectangle(cornerRadius: 8)
                 .fill(Color("PrimaryOrange"))
                 .frame(width: 80, height: 30)
@@ -39,10 +39,10 @@ struct PlanOutfitsView: View {
         Spacer()
         
         HStack {
-          VStack {
+            VStack(alignment: .leading) {
             Text(showWeatherResult(weathercode: self.packerRepository.currentDailyPacker.weatherCode))
               .font(.title2).bold()
-            //.padding(EdgeInsets(top: 0, leading: 33, bottom: 0, trailing: 0))
+              .frame(alignment: .leading)
             HStack {
               Text("H: \(Int(self.packerRepository.currentDailyPacker.highTemp))°C")
               Text("L: \(Int(self.packerRepository.currentDailyPacker.lowTemp))°C")
@@ -78,14 +78,18 @@ struct PlanOutfitsView: View {
           List {
             ForEach(packerRepository.currentDailyPacker.itemLists) {
               item in
-              DailyPackerItemView(item: item)
+                if (item.itemCategory == "Clothes" || item.itemCategory == "Accessories") {
+                    DailyPackerItemView(item: item)
+                }
             }
           }.scrollContentBackground(.hidden)
         } else {
           List {
             ForEach(packerRepository.currentDailyPacker.itemLists, id: \.self) {
               item in
-              DailyPackerItemView(item: item)
+                if (item.itemCategory == "Clothes" || item.itemCategory == "Accessories") {
+                    DailyPackerItemView(item: item)
+                }
             }.onDelete{ indexSet in
               packerRepository.deleteItem(itemId: indexSet)
             }
