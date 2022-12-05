@@ -2,7 +2,7 @@
 //  TripCollectionRepository.swift
 //  WeatherPacker
 //
-//  Created by Yunxuan Yu on 11/4/22.
+//  Created by Yunxuan Yu on 11/4/22
 //
 
 import Foundation
@@ -99,8 +99,6 @@ class TripCollectionRepository: ObservableObject {
 //    }
     
     func checkExpiration(userId: UUID) {
-        print("****")
-        print(self.trips[0])
         for tripIndex in 0..<self.trips.count {
             if self.trips[tripIndex].isExpired == true {
                 self.tripsExpired.append(self.trips[tripIndex])

@@ -152,7 +152,7 @@ class ClothesController:ObservableObject {
         itemList.append(socks)
         
         if (isRainy) {
-            let umbrella = Item(id: UUID(), itemTitle: "Umbrella", itemCategory: "Accessories", subCategory: "Accessories",  isChecked: false, itemQuantity: 1)
+            let umbrella = Item(id: UUID(), itemTitle: "Umbrella", itemCategory: "Accessories", subCategory: "Umbrella",  isChecked: false, itemQuantity: 1)
             itemList.append(umbrella)
         }
         return itemList
