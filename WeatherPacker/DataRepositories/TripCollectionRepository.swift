@@ -29,7 +29,6 @@ class TripCollectionRepository: ObservableObject {
 
   }
   
-    
     func refreshContains(){
         self.trips = []
     }
@@ -38,26 +37,31 @@ class TripCollectionRepository: ObservableObject {
       // get clothes data
       store.collection(path)
         .addSnapshotListener { querySnapshot, error in
-          if let error = error {
-            print("Error getting trip: \(error.localizedDescription)")
-            return
-          }
+            if let error = error {
+              print("Error getting trip: \(error.localizedDescription)")
+              return
+            }
           
-          self.tripCollection = querySnapshot?.documents.compactMap { document in
-            try? document.data(as: TripCollection.self)
-          } ?? []
-          
-            self.refreshContains()
+            self.tripCollection = querySnapshot?.documents.compactMap { document in
+              try? document.data(as: TripCollection.self)
+            } ?? []
             
-          for collection in self.tripCollection {
-              if collection.id.uuidString == userId.uuidString {
-                  for trip in collection.trips {
-                    self.trips.append(trip)
-                  }
-                  break
-              }
-          }
-
+            self.refreshContains()
+              
+            for collection in self.tripCollection {
+                
+                if collection.id.uuidString == userId.uuidString {
+                    for trip in collection.trips {
+                        print(trip)
+                        self.trips.append(trip)
+                    }
+                    break
+                }
+            }
+            self.isChecked = false
+            self.tripsExpired = []
+            self.tripsNotExpired = []
+          
             if (!self.isChecked) {
                 for tripIndex in 0..<self.trips.count {
                     if self.trips[tripIndex].isExpired == true {

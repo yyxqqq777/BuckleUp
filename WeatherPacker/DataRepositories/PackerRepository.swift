@@ -157,6 +157,18 @@ class PackerRepository: ObservableObject {
             }
         }
     }
+  
+    func updateItemCheckStatueById(itemId: UUID) {
+          print("VERSION 2 - updateItemCheckStatueById is called!")
+          for itemIndex in 0..<self.dailyPackers[self.lasting].itemLists.count {
+              print("VERSION 2 - Searching for checklist item")
+              if self.dailyPackers[self.lasting].itemLists[itemIndex].id == itemId {
+                  print("VERSION 2 - checklist item is found")
+                self.dailyPackers[self.lasting].itemLists[itemIndex].isChecked.toggle()
+                  break
+              }
+          }
+      }
     
 //    func updateChecklistByQuantity(quantity: Int, itemId: UUID) {
 //

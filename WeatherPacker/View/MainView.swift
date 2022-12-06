@@ -17,7 +17,7 @@ struct MainView: View {
     var body: some View {
         return Group {
             if signInSuccess {
-                TripView()
+                TripView(signInSuccess: $signInSuccess)
             } else {
                 LoginView(signInSuccess: $signInSuccess)
             }
@@ -35,11 +35,12 @@ struct MainView_Previews: PreviewProvider {
 }
 
 struct TripView: View {
+  @Binding var signInSuccess:Bool
   @EnvironmentObject var userAuth: UserAuth
   @EnvironmentObject var tripCollectionRepository:TripCollectionRepository
   
   var body: some View {
-    NavigationView {
+    NavigationStack {
       VStack {
         ScrollView {
             VStack {
@@ -55,6 +56,7 @@ struct TripView: View {
                     TripRowView(trip: trip)
                   }
                 }
+                
             }
         }
       
@@ -65,9 +67,26 @@ struct TripView: View {
             .foregroundColor(.white)
             .background(Color("PrimaryOrange"))
             .cornerRadius(20)
+            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         }
       }
       .background(Color.white)
+      .navigationBarTitle("Trips", displayMode: .inline)
+      .toolbarBackground(Color("PrimaryOrange"),
+                         for: .navigationBar)
+      .toolbarBackground(.visible, for: .navigationBar)
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          HStack {
+            Image("Logout")
+              .resizable()
+              .frame(width: 24, height: 24)
+              .onTapGesture {
+                self.signInSuccess = false
+              }
+          }
+        }
+      }
     }
   }
 }
@@ -112,6 +131,7 @@ struct LoginView: View {
                     .foregroundColor(.white)
                     .background(Color("PrimaryOrange"))
                     .cornerRadius(20)
+                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 }.background(Color.white)
          
             }
@@ -155,11 +175,18 @@ struct CreationView: View {
                             clothesController.getWeatherInfo(city: location)
                             self.isActive = true
                         }
+//                        .alert(isPresented: $isValid) {
+//                            Alert(
+//                                title: Text("Destination Not Available"),
+//                                message: Text("Cannot find the destination typed in, please check spelling")
+//                            )
+//                        }
                         .frame(maxWidth: .infinity, maxHeight: 40)
                         .font(.title3.bold())
                         .foregroundColor(.white)
                         .background(Color("PrimaryOrange"))
                         .cornerRadius(20)
+                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 }
             }
         }//.navigationBarHidden(true)
@@ -202,6 +229,7 @@ struct TripStartView: View {
                                 .foregroundColor(.white)
                                 .background(Color("PrimaryOrange"))
                                 .cornerRadius(20)
+                                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 }
             }
         }.navigationBarHidden(true)
@@ -251,6 +279,7 @@ struct TripEndView: View {
                     .foregroundColor(.white)
                     .background(Color("PrimaryOrange"))
                     .cornerRadius(20)
+                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
             }
         }.navigationBarHidden(true)
     }

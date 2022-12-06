@@ -44,6 +44,7 @@ class UserRepository: ObservableObject {
         for _user in user {
             if (_user.name == userName && _user.pwd == pwd) {
                 isVerified = true
+                print(_user.id)
                 break
             }
         }
