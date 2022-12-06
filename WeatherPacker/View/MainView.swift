@@ -123,7 +123,6 @@ struct LoginView: View {
 
 struct CreationView: View {
     @State var isActive = false
-    @State var isValid = false
     @State private var location = ""
     @State private var goToStartDate = false
     
@@ -153,16 +152,8 @@ struct CreationView: View {
                 {
                     Text("Next Step")
                         .onTapGesture {
-                            isValid = clothesController.getWeatherInfo(city: location)
-                            if isValid {
-                                self.isActive = true
-                            }
-                        }
-                        .alert(isPresented: $isValid) {
-                            Alert(
-                                title: Text("Destination Not Available"),
-                                message: Text("Cannot find the destination typed in, please check spelling")
-                            )
+                            clothesController.getWeatherInfo(city: location)
+                            self.isActive = true
                         }
                         .frame(maxWidth: .infinity, maxHeight: 40)
                         .font(.title3.bold())
