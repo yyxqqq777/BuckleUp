@@ -168,7 +168,7 @@ class ClothesController:ObservableObject {
         self.endIndex = distancesFrom(currentDate, to: endDate) + 1
     }
     
-    func getWeatherInfo(city:String) -> Bool {
+    func getWeatherInfo(city:String) {
         
         var isValid = true
         
@@ -304,6 +304,5 @@ class ClothesController:ObservableObject {
         }
 
         searchCityTask.resume()
-        return isValid
     }
 }
