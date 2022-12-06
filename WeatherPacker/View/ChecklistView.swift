@@ -11,6 +11,7 @@ struct ChecklistView: View {
     @EnvironmentObject var packerRepository:PackerRepository
     var editingMode = EditingMode()
     
+    @State var isEditing_Clothes = false
     @State var isEditing_Toiletries = false
     @State var isEditing_Electronics = false
     @State var isEditing_Accessories = false
@@ -23,6 +24,12 @@ struct ChecklistView: View {
     @State var presentAlert_Electronics = false
     @State var presentAlert_Accessories = false
     
+  
+    var buttonLabel_Clothes: String {
+      // Compute the label based on button state
+      isEditing_Clothes ? "Done" : "Edit"
+    }
+  
     var buttonLabel_Toiletries: String {
       // Compute the label based on button state
       isEditing_Toiletries ? "Done" : "Edit"
@@ -41,21 +48,35 @@ struct ChecklistView: View {
     var body: some View {
         
         VStack {
+            //_________
             HStack {
                 Text("Clothes")
                     .font(.title3).bold()
                     .padding(EdgeInsets(top: 0, leading: 36, bottom: 0, trailing: 0))
                 Spacer()
+                
+                Button(action:{
+                  if (!isEditing_Clothes) {
+                      isEditing_Clothes = true
+                      editingMode.isEditing_Checklist["Clothes"] = true
+                  }
+                  else {
+                      isEditing_Clothes = false
+                      editingMode.isEditing_Checklist["Clothes"] = false
+                      packerRepository.saveUpdatePacker()
+                  }}, label: {
+                    // DECLARE what you want to see
+                    Text(buttonLabel_Clothes)
+                  })
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 12))
             }
-            List {
-                ForEach(packerRepository.aggregatedClothes) { item in
-                    HStack {
-                        Text(item.itemTitle)
-                        Spacer()
-                        Text(String(item.itemQuantity))
-                    }
-                }
-            }
+              List {
+                  ForEach(packerRepository.checklistPacker.itemLists) { item in
+                      if(item.itemCategory == "Clothes") {
+                          CheckListRowView(item:item)
+                      }
+                  }
+              }
             //_________________
             HStack {
                 Text("Toiletries")

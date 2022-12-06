@@ -7,8 +7,10 @@
 
 import Foundation
 class EditingMode: ObservableObject {
-  @Published var isEditing: Bool
-  @Published var btnName: String
+    @Published var isEditing: Bool
+    @Published var btnName: String
+    @Published var isEditing_Clothes: Bool
+    @Published var btnName_Clothes: String
     @Published var isEditing_Toiletries: Bool
     @Published var btnName_Toiletries: String
     @Published var isEditing_Electronics: Bool
@@ -17,22 +19,33 @@ class EditingMode: ObservableObject {
     @Published var btnName_Accessories: String
     @Published var isEditing_Checklist: [String:Bool]
   
-  init(){
-    isEditing = false
-    btnName = "Edit"
-      isEditing_Toiletries = false
-      btnName_Toiletries = "Edit"
-      isEditing_Electronics = false
-      btnName_Electronics = "Edit"
-      isEditing_Accessories = false
-      btnName_Accessories = "Edit"
-      isEditing_Checklist = ["Toiletries":false, "Electronics":false, "Accessories": false]
-  }
+    init(){
+        isEditing = false
+        btnName = "Edit"
+        isEditing_Clothes = false
+        btnName_Clothes = "Edit"
+        isEditing_Toiletries = false
+        btnName_Toiletries = "Edit"
+        isEditing_Electronics = false
+        btnName_Electronics = "Edit"
+        isEditing_Accessories = false
+        btnName_Accessories = "Edit"
+        isEditing_Checklist = [
+          "Clothes": false,
+          "Toiletries" : false,
+          "Electronics" : false,
+          "Accessories": false
+        ]
+    }
   
-  func setEdit() {
-    btnName = "Edit"
-  }
+    func setEdit() {
+      btnName = "Edit"
+    }
     
+    func setEditClothes() {
+      btnName_Clothes = "Edit"
+    }
+  
     func setEditToiletries() {
       btnName_Toiletries = "Edit"
     }
@@ -45,9 +58,13 @@ class EditingMode: ObservableObject {
       btnName_Accessories = "Edit"
     }
   
-  func setDone() {
-    btnName = "Done"
-  }
+    func setDone() {
+      btnName = "Done"
+    }
+  
+    func setDoneClothes() {
+      btnName_Clothes = "Done"
+    }
     
     func setDoneToiletries() {
       btnName_Toiletries = "Done"

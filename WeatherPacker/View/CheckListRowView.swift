@@ -26,7 +26,7 @@ struct CheckListRowView: View {
                 Text(item.itemTitle)
             }
             Spacer()
-            if (editingMode.isEditing_Checklist[item.itemCategory]!) {
+            if (editingMode.isEditing_Checklist[item.itemCategory]! && item.itemCategory != "Clothes") {
                 ZStack {
                   Circle()
                     .fill(Color("PrimaryOrange"))
