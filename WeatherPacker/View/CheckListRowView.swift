@@ -27,25 +27,36 @@ struct CheckListRowView: View {
             }
             Spacer()
             if (editingMode.isEditing_Checklist[item.itemCategory]!) {
-                
-                Button(action:{
+                ZStack {
+                  Circle()
+                    .fill(Color("PrimaryOrange"))
+                    .frame(width: 24, height: 24)
+                  Image("Subtract")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 16, height: 16)
+                }.onTapGesture {
                   print("DEBUG - Click on button -")
+                  if (item.itemQuantity > 1) {
                     item.itemQuantity = item.itemQuantity - 1
                     packerRepository.updateChecklistByQuantity(isAdd: false, itemId: item.id)
-                }) {
-                    Text("-")
+                  }
                 }
-                .buttonStyle(BorderlessButtonStyle())
                 Text(String(item.itemQuantity))
 //                Text(String(item.itemQuantity))
-                Button(action:{
-                  print("DEBUG - Click on button +")
+                ZStack {
+                  Circle()
+                    .fill(Color("PrimaryOrange"))
+                    .frame(width: 24, height: 24)
+                  Image("Plus")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 16, height: 16)
+                }.onTapGesture {
+                    print("DEBUG - Click on button +")
                     item.itemQuantity = item.itemQuantity + 1
                     packerRepository.updateChecklistByQuantity(isAdd: true, itemId: item.id)
-                }) {
-                    Text("+")
                 }
-                .buttonStyle(BorderlessButtonStyle())
             } else {
                 Text(String(item.itemQuantity))
             }
