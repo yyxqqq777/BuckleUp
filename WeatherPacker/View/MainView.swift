@@ -65,6 +65,7 @@ struct TripView: View {
             .foregroundColor(.white)
             .background(Color("PrimaryOrange"))
             .cornerRadius(20)
+            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         }
       }
       .background(Color.white)
@@ -112,6 +113,7 @@ struct LoginView: View {
                     .foregroundColor(.white)
                     .background(Color("PrimaryOrange"))
                     .cornerRadius(20)
+                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 }.background(Color.white)
          
             }
@@ -155,11 +157,18 @@ struct CreationView: View {
                             clothesController.getWeatherInfo(city: location)
                             self.isActive = true
                         }
+//                        .alert(isPresented: $isValid) {
+//                            Alert(
+//                                title: Text("Destination Not Available"),
+//                                message: Text("Cannot find the destination typed in, please check spelling")
+//                            )
+//                        }
                         .frame(maxWidth: .infinity, maxHeight: 40)
                         .font(.title3.bold())
                         .foregroundColor(.white)
                         .background(Color("PrimaryOrange"))
                         .cornerRadius(20)
+                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 }
             }
         }//.navigationBarHidden(true)
@@ -202,6 +211,7 @@ struct TripStartView: View {
                                 .foregroundColor(.white)
                                 .background(Color("PrimaryOrange"))
                                 .cornerRadius(20)
+                                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 }
             }
         }.navigationBarHidden(true)
@@ -251,6 +261,7 @@ struct TripEndView: View {
                     .foregroundColor(.white)
                     .background(Color("PrimaryOrange"))
                     .cornerRadius(20)
+                    .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
             }
         }.navigationBarHidden(true)
     }
