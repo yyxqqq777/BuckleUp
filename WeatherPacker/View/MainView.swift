@@ -17,7 +17,7 @@ struct MainView: View {
     var body: some View {
         return Group {
             if signInSuccess {
-                TripView()
+                TripView(signInSuccess: $signInSuccess)
             } else {
                 LoginView(signInSuccess: $signInSuccess)
             }
@@ -35,11 +35,12 @@ struct MainView_Previews: PreviewProvider {
 }
 
 struct TripView: View {
+  @Binding var signInSuccess:Bool
   @EnvironmentObject var userAuth: UserAuth
   @EnvironmentObject var tripCollectionRepository:TripCollectionRepository
   
   var body: some View {
-    NavigationView {
+    NavigationStack {
       VStack {
         ScrollView {
             VStack {
@@ -55,6 +56,7 @@ struct TripView: View {
                     TripRowView(trip: trip)
                   }
                 }
+                
             }
         }
       
@@ -69,6 +71,22 @@ struct TripView: View {
         }
       }
       .background(Color.white)
+      .navigationBarTitle("Trips", displayMode: .inline)
+      .toolbarBackground(Color("PrimaryOrange"),
+                         for: .navigationBar)
+      .toolbarBackground(.visible, for: .navigationBar)
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          HStack {
+            Image("Logout")
+              .resizable()
+              .frame(width: 24, height: 24)
+              .onTapGesture {
+                self.signInSuccess = false
+              }
+          }
+        }
+      }
     }
   }
 }
