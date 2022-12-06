@@ -124,7 +124,7 @@ struct ChecklistView: View {
                     Button("Add Item") {
                       presentAlert_Toiletries = true
                     }
-                    .alert("New Item", isPresented: $presentAlert_Toiletries, actions: {
+                    .alert("New Item", isPresented: $presentAlert_Electronics, actions: {
                       TextField("Please type the item", text: $newItemTitle_Toiletries)
                       Button("Add", action: {packerRepository.addNewItemFromChecklist(title: newItemTitle_Toiletries, category: "Electronics")})
                       Button("Cancel", role: .cancel, action: {})
@@ -179,7 +179,7 @@ struct ChecklistView: View {
                     Button("Add Item") {
                       presentAlert_Accessories = true
                     }
-                    .alert("New Item", isPresented: $presentAlert_Toiletries, actions: {
+                    .alert("New Item", isPresented: $presentAlert_Accessories, actions: {
                       TextField("Please type the item", text: $newItemTitle_Toiletries)
                       Button("Add", action: {packerRepository.addNewItemFromChecklist(title: newItemTitle_Toiletries, category: "Accessories")})
                       Button("Cancel", role: .cancel, action: {})

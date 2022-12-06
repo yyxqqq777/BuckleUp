@@ -14,7 +14,7 @@ struct TripRowView: View {
   
   
   var body: some View {
-    NavigationLink(destination: PackerView(tripLocation: trip.tripLocation, tripId: trip.id)) {
+      NavigationLink(destination: PackerView(tripLocation: trip.tripLocation, tripId: trip.id, tripStartDate: trip.tripStartDate)) {
       ZStack {
         Image("ListBG_\(listBg.getIndex())")
           .resizable()
