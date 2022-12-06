@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct PlanOutfitsView: View {
+    var startDateString = String()
     @EnvironmentObject var packerRepository:PackerRepository
     @State var isEditing = false
     @State private var presentAlert = false
-    var editingMode = EditingMode()
     @State var newItemTitle = ""
+    var editingMode = EditingMode()
+    var tripController = TripController()
     
     var buttonLabel: String {
       // Compute the label based on button state
@@ -26,8 +28,13 @@ struct PlanOutfitsView: View {
               ForEach(0..<self.packerRepository.dailyPackers.count, id: \.self) { index in
               RoundedRectangle(cornerRadius: 8)
                 .fill(Color("PrimaryOrange"))
-                .frame(width: 80, height: 30)
-                .overlay(Text("Day \(index + 1)"))
+                .frame(width: 100, height: 60)
+                .overlay(
+                    VStack {
+                        Text("Day \(index + 1)")
+                        Text(self.tripController.calculateDate(startDateString: startDateString, index: index))
+                    }
+                )
                 .foregroundColor(.white).bold()
                 .onTapGesture {
                   self.packerRepository.setCurrentDailyPacker(index: index)

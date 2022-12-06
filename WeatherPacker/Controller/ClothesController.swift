@@ -18,6 +18,8 @@ class ClothesController:ObservableObject {
     private var dailyPackers:[DailyPacker] = []
     private var isSunny = false
     private var isRainy = false
+    private var bringSunscreen = false
+    private var bringUmbrella = false
     
     init() {
         self.clothes = []
@@ -47,6 +49,8 @@ class ClothesController:ObservableObject {
                 let phoneCharger = Item(id: UUID(), itemTitle: "Phone Charger", itemCategory: "Electronics", subCategory: "Electronics",  isChecked: false, itemQuantity: 1)
                 let pcCharger = Item(id: UUID(), itemTitle: "Laptop Charger", itemCategory: "Electronics", subCategory: "Electronics",  isChecked: false, itemQuantity: 1)
                 let earphones = Item(id: UUID(), itemTitle: "Earphones", itemCategory: "Electronics", subCategory: "Electronics",  isChecked: false, itemQuantity: 1)
+                let sunscreen = Item(id: UUID(), itemTitle: "Sunscreen", itemCategory: "Accessories", subCategory: "Accessories",  isChecked: false, itemQuantity: 1)
+                let umbrella = Item(id: UUID(), itemTitle: "Umbrella", itemCategory: "Accessories", subCategory: "Umbrella",  isChecked: false, itemQuantity: 1)
                 itemList.append(brush)
                 itemList.append(toothPaste)
                 itemList.append(mouthWash)
@@ -57,6 +61,12 @@ class ClothesController:ObservableObject {
                 itemList.append(phoneCharger)
                 itemList.append(pcCharger)
                 itemList.append(earphones)
+                if bringSunscreen {
+                    itemList.append(sunscreen)
+                }
+                if bringUmbrella {
+                    itemList.append(umbrella)
+                }
             }
             generateDailyPacker(dateIndex: dateIndex, itemList: itemList)
             
@@ -124,8 +134,7 @@ class ClothesController:ObservableObject {
             let bottom = Item(id: UUID(), itemTitle: "Jeans", itemCategory: "Clothes",subCategory: "Jeans",  isChecked: false, itemQuantity: 1)
             let shoes = Item(id: UUID(), itemTitle: "Shoes", itemCategory: "Clothes",subCategory: "Shoes",  isChecked: false, itemQuantity: 1)
             if (isSunny) {
-                let sunscreen = Item(id: UUID(), itemTitle: "Sunscreen", itemCategory: "Accessories", subCategory: "Accessories",  isChecked: false, itemQuantity: 1)
-                itemList.append(sunscreen)
+                bringSunscreen = true
             }
             itemList.append(topInner)
             itemList.append(bottom)
@@ -150,8 +159,7 @@ class ClothesController:ObservableObject {
         itemList.append(socks)
         
         if (isRainy) {
-            let umbrella = Item(id: UUID(), itemTitle: "Umbrella", itemCategory: "Accessories", subCategory: "Umbrella",  isChecked: false, itemQuantity: 1)
-            itemList.append(umbrella)
+            bringUmbrella = true
         }
         return itemList
     }

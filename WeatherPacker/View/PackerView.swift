@@ -13,6 +13,7 @@ struct PackerView: View {
     @State var isRightNav = false
     var tripLocation = String()
     var tripId = UUID()
+    var tripStartDate = String()
     var packerRepository = PackerRepository()
     
 //    init() {
@@ -25,7 +26,7 @@ struct PackerView: View {
         TabView {
             // Tab1:
             NavigationView {
-              PlanOutfitsView()
+              PlanOutfitsView(startDateString: tripStartDate)
 //                    .navigationBarTitle(Text("\(tripLocation)").font(.title2.bold()), displayMode: .inline)
 //                .navigationBarItems(leading: leftNavButton)
             }.tabItem {
