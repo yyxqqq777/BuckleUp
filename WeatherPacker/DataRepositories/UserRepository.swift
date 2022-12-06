@@ -61,6 +61,15 @@ class UserRepository: ObservableObject {
         }
         return userId
     }
+  
+    func signUp(user: User) {
+        do {
+          let newUser = user
+          _ = try store.collection(path).document(newUser.id.uuidString).setData(from: newUser)
+        } catch {
+          fatalError("Unable to add user: \(error.localizedDescription).")
+        }
+    }
         
   
   // MARK: CRUD methods

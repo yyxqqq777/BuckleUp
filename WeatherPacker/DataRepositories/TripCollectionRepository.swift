@@ -47,12 +47,9 @@ class TripCollectionRepository: ObservableObject {
             } ?? []
             
             self.refreshContains()
-              
             for collection in self.tripCollection {
-                
                 if collection.id.uuidString == userId.uuidString {
                     for trip in collection.trips {
-                        print(trip)
                         self.trips.append(trip)
                     }
                     break
