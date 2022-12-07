@@ -70,13 +70,20 @@ struct ChecklistView: View {
                   })
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 12))
             }
-              List {
-                  ForEach(packerRepository.checklistPacker.itemLists) { item in
-                      if(item.itemCategory == "Clothes") {
-                          CheckListRowView(item:item)
-                      }
-                  }
-              }
+            
+            if (!isEditing_Clothes) {
+                List {
+                    ForEach(packerRepository.aggregatedClothes) { item in
+                        CheckListRowView(item:item)
+                    }
+                }
+            } else {
+                List {
+                    ForEach(packerRepository.aggregatedClothes) { item in
+                        CheckListRowView(item:item)
+                    }
+                }
+            }
             //_________________
             HStack {
                 Text("Toiletries")

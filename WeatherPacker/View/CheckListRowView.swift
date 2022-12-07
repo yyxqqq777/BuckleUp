@@ -17,12 +17,13 @@ struct CheckListRowView: View {
     var body: some View {
         HStack {
             if (editingMode.isEditing_Checklist[item.itemCategory]!) {
-                CheckBtn(isChecked: item.isChecked, itemId: item.id)
+                CheckBtn(isChecked: item.isChecked, itemId: item.id, itemTitle: item.itemTitle, itemCategory: item.itemCategory)
                 TextField(item.itemTitle, text: $item.itemTitle)
                     .onChange(of: item.itemTitle, perform: { newValue in
                   packerRepository.updateChecklistByTitle(title: item.itemTitle, itemId: item.id)
                 })
             } else {
+                CheckBtn(isChecked: item.isChecked, itemId: item.id, itemTitle: item.itemTitle, itemCategory: item.itemCategory)
                 Text(item.itemTitle)
             }
             Spacer()
@@ -66,32 +67,54 @@ struct CheckListRowView: View {
 
 struct CheckBtn: View {
   @State var isChecked: Bool
-  @State var itemId: UUID
+  var itemId: UUID
+  var itemTitle: String
+  var itemCategory:String
   @EnvironmentObject var packerRepository:PackerRepository
+  @EnvironmentObject var editingMode: EditingMode
   
   var body: some View {
-    if isChecked {
-      ZStack {
-        Circle()
-          .fill(Color("PrimaryOrange"))
-          .frame(width: 24, height: 24)
-        Image("Done")
-          .resizable()
-          .scaledToFill()
-          .frame(width: 16, height: 16)
-      }.onTapGesture {
-        isChecked.toggle()
-        packerRepository.updateItemCheckStatueById(itemId: itemId)
+      if (editingMode.isEditing_Checklist[itemCategory]!) {
+          if isChecked {
+            ZStack {
+              Circle()
+                .fill(Color("PrimaryOrange"))
+                .frame(width: 24, height: 24)
+              Image("Done")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 16, height: 16)
+            }.onTapGesture {
+              isChecked.toggle()
+              packerRepository.updateItemCheckStatus(itemId: itemId, itemTitle: itemTitle, itemCategory: itemCategory)
+            }
+          } else {
+            Circle()
+              .strokeBorder(Color("Gray"), lineWidth: 2)
+              .frame(width: 24, height: 24)
+              .onTapGesture {
+                isChecked.toggle()
+                  packerRepository.updateItemCheckStatus(itemId: itemId, itemTitle: itemTitle, itemCategory: itemCategory)
+              }
+          }
+      } else {
+          if isChecked {
+            ZStack {
+              Circle()
+                .fill(Color("PrimaryOrange"))
+                .frame(width: 24, height: 24)
+              Image("Done")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 16, height: 16)
+            }
+          } else {
+            Circle()
+              .strokeBorder(Color("Gray"), lineWidth: 2)
+              .frame(width: 24, height: 24)
+              
+          }
       }
-    } else {
-      Circle()
-        .strokeBorder(Color("Gray"), lineWidth: 2)
-        .frame(width: 24, height: 24)
-        .onTapGesture {
-          isChecked.toggle()
-          packerRepository.updateItemCheckStatueById(itemId: itemId)
-        }
-    }
   }
 }
 
