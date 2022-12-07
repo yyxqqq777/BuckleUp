@@ -83,19 +83,6 @@ class PackerRepository: ObservableObject {
             for dailyPacker in packer.dailyPackers {
               self.dailyPackers.append(dailyPacker)
               for item in dailyPacker.itemLists {
-//                if(item.itemCategory == "Clothes") {
-//                  self.itemsClothes.append(item)
-//                }
-//                if(item.itemCategory == "Toiletries") {
-//                  self.itemsToiletries.append(item)
-//                }
-//                if(item.itemCategory == "Electronics") {
-//                  self.itemsElectronics.append(item)
-//                }
-//                if(item.itemCategory == "Accessories") {
-//                  self.itemsAccessories.append(item)
-//                }
-
                   self.items.append(item)
               }
             }

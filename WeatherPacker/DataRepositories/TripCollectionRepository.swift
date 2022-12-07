@@ -26,7 +26,7 @@ class TripCollectionRepository: ObservableObject {
   private var cancellables: Set<AnyCancellable> = []
   
     init() {
-
+        print("UnitTest: tripCollectionRepository initialized")
   }
   
     func refreshContains(){
@@ -47,10 +47,13 @@ class TripCollectionRepository: ObservableObject {
             } ?? []
             
             self.refreshContains()
+            
+            print("UnitTest: start finding trips")
             for collection in self.tripCollection {
                 if collection.id.uuidString == userId.uuidString {
                     for trip in collection.trips {
                         self.trips.append(trip)
+                        print("UnitTest: append trips")
                     }
                     break
                 }
