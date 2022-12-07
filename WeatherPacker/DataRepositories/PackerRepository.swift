@@ -158,16 +158,28 @@ class PackerRepository: ObservableObject {
         }
     }
   
-    func updateItemCheckStatueById(itemId: UUID) {
+    func updateItemCheckStatus(itemId: UUID, itemTitle: String, itemCategory: String) {
           print("VERSION 2 - updateItemCheckStatueById is called!")
-          for itemIndex in 0..<self.dailyPackers[self.lasting].itemLists.count {
-              print("VERSION 2 - Searching for checklist item")
-              if self.dailyPackers[self.lasting].itemLists[itemIndex].id == itemId {
-                  print("VERSION 2 - checklist item is found")
-                self.dailyPackers[self.lasting].itemLists[itemIndex].isChecked.toggle()
-                  break
-              }
-          }
+        if (itemCategory != "Clothes") {
+            for itemIndex in 0..<self.dailyPackers[self.lasting].itemLists.count {
+                print("VERSION 2 - Searching for checklist item")
+                if self.dailyPackers[self.lasting].itemLists[itemIndex].id == itemId {
+                    print("VERSION 2 - checklist item is found")
+                  self.dailyPackers[self.lasting].itemLists[itemIndex].isChecked.toggle()
+                    break
+                }
+            }
+        } else {
+            for index in 0..<(self.lasting + 1) {
+                for itemIndex in 0..<self.dailyPackers[index].itemLists.count {
+                    if self.dailyPackers[index].itemLists[itemIndex].itemCategory == "Clothes" {
+                        if (self.dailyPackers[index].itemLists[itemIndex].itemTitle == itemTitle) {
+                            self.dailyPackers[index].itemLists[itemIndex].isChecked.toggle()
+                        }
+                    }
+                }
+            }
+        }
       }
     
 //    func updateChecklistByQuantity(quantity: Int, itemId: UUID) {
@@ -246,10 +258,6 @@ class PackerRepository: ObservableObject {
     }
   
   func deleteItem(itemId: IndexSet) {
-    //    for itemIndex in 0..<self.dailyPackers[self.index].itemLists.count {
-    //      if self.dailyPackers[self.index].itemLists[itemIndex].id == itemId {
-    //        self.dailyPackers[self.index].itemLists.remove(self.dailyPackers[self.index].itemLists[itemIndex]:Item)
-    //self.items[itemindex].itemTitle = title
     self.dailyPackers[self.index].itemLists.remove(atOffsets: itemId)
     self.currentDailyPacker.itemLists.remove(atOffsets: itemId)
   }
