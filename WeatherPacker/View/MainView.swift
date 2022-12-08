@@ -35,60 +35,79 @@ struct MainView_Previews: PreviewProvider {
 }
 
 struct TripView: View {
-  @Binding var signInSuccess:Bool
-  @EnvironmentObject var userAuth: UserAuth
-  @EnvironmentObject var tripCollectionRepository:TripCollectionRepository
-  
-  var body: some View {
-    NavigationView{
-      VStack {
-        ScrollView {
+    @Binding var signInSuccess:Bool
+    @EnvironmentObject var userAuth: UserAuth
+    @EnvironmentObject var tripCollectionRepository:TripCollectionRepository
+    
+    var body: some View {
+        NavigationView{
             VStack {
-                Text("Coming Trips").padding(12).font(Font.headline.weight(.bold))
-                VStack {
-                  ForEach(tripCollectionRepository.tripsNotExpired) { trip in
-                    TripRowView(trip: trip)
-                  }
-                }
-                Text("Past Trips").padding(12).font(Font.headline.weight(.bold))
-                VStack {
-                  ForEach(tripCollectionRepository.tripsExpired) { trip in
-                    TripRowView(trip: trip)
-                  }
+                ScrollView {
+                    VStack {
+                        HStack {
+                            Text("Coming Trips").font(.title2).bold()
+                            Spacer()
+                        }
+                        VStack {
+                            if tripCollectionRepository.tripsNotExpired.count > 0 {
+                                ForEach(tripCollectionRepository.tripsNotExpired) { trip in
+                                    TripRowView(trip: trip)
+                                }
+                            } else {
+                                Image("NoTrip")
+                                    .resizable()
+                                    .frame(width: 360, height: 300)
+                            }
+                            
+                        }
+                        Divider().frame(minHeight: 8).foregroundColor(Color("Gray")).bold()
+                        HStack {
+                            Text("Past Trips").font(.title2).bold()
+                            Spacer()
+                        }
+                        if tripCollectionRepository.tripsExpired.count > 0 {
+                            VStack {
+                                ForEach(tripCollectionRepository.tripsExpired) { trip in
+                                    TripRowView(trip: trip)
+                                }
+                            }
+                        }else {
+                            Image("NoTrip")
+                                .resizable()
+                                .frame(width: 360, height: 300)
+                        }
+                    }.padding(EdgeInsets(top: 24, leading: 16, bottom: 24, trailing: 16))
                 }
                 
+                NavigationLink(destination:CreationView()) {
+                    Text("Create New Trip")
+                        .frame(maxWidth: .infinity, maxHeight: 40)
+                        .font(.title3.bold())
+                        .foregroundColor(.white)
+                        .background(Color("PrimaryOrange"))
+                        .cornerRadius(20)
+                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                }
+            }
+            .background(Color.white)
+            .navigationBarTitle("Trips", displayMode: .inline)
+            .toolbarBackground(Color("PrimaryOrange"),
+                               for: .navigationBar)
+            .toolbarBackground(.visible, for: .navigationBar)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    HStack {
+                        Image("Logout")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .onTapGesture {
+                                self.signInSuccess = false
+                            }
+                    }
+                }
             }
         }
-      
-        NavigationLink(destination:CreationView()) {
-          Text("Create New Trip")
-            .frame(maxWidth: .infinity, maxHeight: 40)
-            .font(.title3.bold())
-            .foregroundColor(.white)
-            .background(Color("PrimaryOrange"))
-            .cornerRadius(20)
-            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-        }
-      }
-      .background(Color.white)
-      .navigationBarTitle("Trips", displayMode: .inline)
-      .toolbarBackground(Color("PrimaryOrange"),
-                         for: .navigationBar)
-      .toolbarBackground(.visible, for: .navigationBar)
-      .toolbar {
-        ToolbarItem(placement: .navigationBarTrailing) {
-          HStack {
-            Image("Logout")
-              .resizable()
-              .frame(width: 24, height: 24)
-              .onTapGesture {
-                self.signInSuccess = false
-              }
-          }
-        }
-      }
     }
-  }
 }
 
 
@@ -104,48 +123,48 @@ struct LoginView: View {
     @State var userName = ""
     @State var pwd = ""
     
-  var body: some View {
-    if userAuth.currentUserViewState == UserViewState.login {
-      NavigationView {
-        ZStack {
-          VStack {
-            Image("Login").resizable().frame(width:360 ,height:300)
-            Form{
-              TextField("User Name", text: $userName)
-              SecureField("Password", text: $pwd)
-            }.scrollContentBackground(.hidden)
-            Button(action: {
-              if userRepository.verify(userName: userName, pwd: pwd) {
-                self.userAuth.userId = userRepository.getUserId(userName: userName)
-                print("Tag - LoginView getById NEXT")
-                self.tripCollectionRepository.getById(userId:userAuth.userId)
-                print("Tag - LoginView getById FINISHED")
-                self.signInSuccess = true
-              }
-            }) {
-              Text("Login")
+    var body: some View {
+        if userAuth.currentUserViewState == UserViewState.login {
+            NavigationView {
+                ZStack {
+                    VStack {
+                        Image("Login").resizable().frame(width:360 ,height:300)
+                        Form{
+                            TextField("User Name", text: $userName)
+                            SecureField("Password", text: $pwd)
+                        }.scrollContentBackground(.hidden)
+                        Button(action: {
+                            if userRepository.verify(userName: userName, pwd: pwd) {
+                                self.userAuth.userId = userRepository.getUserId(userName: userName)
+                                print("Tag - LoginView getById NEXT")
+                                self.tripCollectionRepository.getById(userId:userAuth.userId)
+                                print("Tag - LoginView getById FINISHED")
+                                self.signInSuccess = true
+                            }
+                        }) {
+                            Text("Login")
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: 40)
+                        .font(.title3.bold())
+                        .foregroundColor(.white)
+                        .background(Color("PrimaryOrange"))
+                        .cornerRadius(20)
+                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                        HStack {
+                            Text("New to Buckle Up?")
+                                .foregroundColor(.gray)
+                            NavigationLink(destination: SignUpView()) {
+                                Text("Create account")
+                                    .foregroundColor(Color("PrimaryOrange"))
+                            }
+                        }
+                    }.background(Color.white)
+                }
             }
-            .frame(maxWidth: .infinity, maxHeight: 40)
-            .font(.title3.bold())
-            .foregroundColor(.white)
-            .background(Color("PrimaryOrange"))
-            .cornerRadius(20)
-            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-            HStack {
-              Text("New to Buckle Up?")
-              .foregroundColor(.gray)
-              NavigationLink(destination: SignUpView()) {
-                Text("Create account")
-                .foregroundColor(Color("PrimaryOrange"))
-              }
-            }
-          }.background(Color.white)
+        } else {
+            SignUpView()
         }
-      }
-    } else {
-      SignUpView()
     }
-  }
 }
 
 struct CreationView: View {
@@ -222,7 +241,7 @@ struct TripStartView: View {
                 .datePickerStyle(.graphical)
                 .accentColor(Color("PrimaryOrange"))
                 Spacer()
-              Image("Creation").resizable().frame(width:350 ,height:210)
+                Image("Creation").resizable().frame(width:350 ,height:210)
                 NavigationLink(
                     destination:TripEndView(
                         shouldPopToRootView: self.$rootIsActive,
@@ -236,7 +255,7 @@ struct TripStartView: View {
                                 .background(Color("PrimaryOrange"))
                                 .cornerRadius(20)
                                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-                }
+                        }
             }
         }.navigationBarHidden(true)
     }
@@ -270,7 +289,7 @@ struct TripEndView: View {
             .datePickerStyle(.graphical)
             .accentColor(Color("PrimaryOrange"))
             Spacer()
-          Image("Creation").resizable().frame(width:350 ,height:210)
+            Image("Creation").resizable().frame(width:350 ,height:210)
             Button(action:{
                 var tripId = tripController.update(userId: userAuth.userId, location: location, startDate: startDate, endDate: endDate, tripRepo: tripCollectionReposiroty)
                 clothesController.calculate_date(startDate: startDate, endDate: endDate)
@@ -300,41 +319,41 @@ struct SignUpView: View {
     @State var cfmpwdError: String = ""
     @EnvironmentObject var userAuth: UserAuth
     @ObservedObject var userRepository = UserRepository()
-
+    
     var body: some View {
         VStack {
-          Form{
-              TextField("User Name", text: $userName)
-              .onChange(of: userName, perform: {newValue in self.nameError = ""})
-              Text(nameError)
-              .foregroundColor(.red)
-              SecureField("Password", text: $pwd)
-              .onChange(of: pwd, perform: {newValue in self.pwdError = ""})
-              Text(pwdError)
-              .foregroundColor(.red)
-              SecureField("Comfirm Password", text: $cfmpwd)
-              .onChange(of: cfmpwd, perform: {newValue in self.cfmpwdError = ""})
-              Text(cfmpwdError)
-              .foregroundColor(.red)
-          }.scrollContentBackground(.hidden)
-          Spacer()
-          Button(action: {
-              pwdError = pwd == "" ? "Empty Password" : ""
-              cfmpwdError = pwd != cfmpwd ? "Passwords do not match." : ""
-              nameError = userName == "" ? "User Name can not be empty" : ""
-              if nameError == "" && pwdError == "" && cfmpwd == "" {
-                  let newUser = User(id: UUID(), name: userName, pwd: pwd)
-                  userRepository.signUp(user: newUser)
-              }
-          }) {
-              Text("Sign Up")
-          }
-          .frame(maxWidth: .infinity, maxHeight: 40)
-          .font(.title3.bold())
-          .foregroundColor(.white)
-          .background(Color("PrimaryOrange"))
-          .cornerRadius(20)
-          .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+            Form{
+                TextField("User Name", text: $userName)
+                    .onChange(of: userName, perform: {newValue in self.nameError = ""})
+                Text(nameError)
+                    .foregroundColor(.red)
+                SecureField("Password", text: $pwd)
+                    .onChange(of: pwd, perform: {newValue in self.pwdError = ""})
+                Text(pwdError)
+                    .foregroundColor(.red)
+                SecureField("Comfirm Password", text: $cfmpwd)
+                    .onChange(of: cfmpwd, perform: {newValue in self.cfmpwdError = ""})
+                Text(cfmpwdError)
+                    .foregroundColor(.red)
+            }.scrollContentBackground(.hidden)
+            Spacer()
+            Button(action: {
+                pwdError = pwd == "" ? "Empty Password" : ""
+                cfmpwdError = pwd != cfmpwd ? "Passwords do not match." : ""
+                nameError = userName == "" ? "User Name can not be empty" : ""
+                if nameError == "" && pwdError == "" && cfmpwd == "" {
+                    let newUser = User(id: UUID(), name: userName, pwd: pwd)
+                    userRepository.signUp(user: newUser)
+                }
+            }) {
+                Text("Sign Up")
+            }
+            .frame(maxWidth: .infinity, maxHeight: 40)
+            .font(.title3.bold())
+            .foregroundColor(.white)
+            .background(Color("PrimaryOrange"))
+            .cornerRadius(20)
+            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
         }
     }
 }
