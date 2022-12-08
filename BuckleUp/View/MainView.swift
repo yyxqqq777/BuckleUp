@@ -38,6 +38,7 @@ struct TripView: View {
     @Binding var signInSuccess:Bool
     @EnvironmentObject var userAuth: UserAuth
     @EnvironmentObject var tripCollectionRepository:TripCollectionRepository
+    @EnvironmentObject var listBg: ListBackground
     
     var body: some View {
         NavigationView{
@@ -79,7 +80,9 @@ struct TripView: View {
                     }.padding(EdgeInsets(top: 24, leading: 16, bottom: 24, trailing: 16))
                 }
                 
-                NavigationLink(destination:CreationView()) {
+                NavigationLink(
+                    destination: CreationView()
+                ) {
                     Text("Create New Trip")
                         .frame(maxWidth: .infinity, maxHeight: 40)
                         .font(.title3.bold())
@@ -110,63 +113,6 @@ struct TripView: View {
     }
 }
 
-
-
-
-struct LoginView: View {
-    
-    @Binding var signInSuccess:Bool
-    @EnvironmentObject var userAuth: UserAuth
-    @EnvironmentObject var tripCollectionRepository:TripCollectionRepository
-    @ObservedObject var userRepository = UserRepository()
-    
-    @State var userName = ""
-    @State var pwd = ""
-    
-    var body: some View {
-        if userAuth.currentUserViewState == UserViewState.login {
-            NavigationView {
-                ZStack {
-                    VStack {
-                        Image("Login").resizable().frame(width:360 ,height:300)
-                        Form{
-                            TextField("User Name", text: $userName)
-                            SecureField("Password", text: $pwd)
-                        }.scrollContentBackground(.hidden)
-                        Button(action: {
-                            if userRepository.verify(userName: userName, pwd: pwd) {
-                                self.userAuth.userId = userRepository.getUserId(userName: userName)
-                                print("Tag - LoginView getById NEXT")
-                                self.tripCollectionRepository.getById(userId:userAuth.userId)
-                                print("Tag - LoginView getById FINISHED")
-                                self.signInSuccess = true
-                            }
-                        }) {
-                            Text("Login")
-                        }
-                        .frame(maxWidth: .infinity, maxHeight: 40)
-                        .font(.title3.bold())
-                        .foregroundColor(.white)
-                        .background(Color("PrimaryOrange"))
-                        .cornerRadius(20)
-                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-                        HStack {
-                            Text("New to Buckle Up?")
-                                .foregroundColor(.gray)
-                            NavigationLink(destination: SignUpView()) {
-                                Text("Create account")
-                                    .foregroundColor(Color("PrimaryOrange"))
-                            }
-                        }
-                    }.background(Color.white)
-                }
-            }
-        } else {
-            SignUpView()
-        }
-    }
-}
-
 struct CreationView: View {
     @State var isActive = false
     @State private var location = ""
@@ -175,46 +121,71 @@ struct CreationView: View {
     @ObservedObject var clothesController = ClothesController()
 
     @EnvironmentObject var userAuth:UserAuth
-    //@EnvironmentObject var tripRepository:TripCollectionRepository
+    @EnvironmentObject var listBg:ListBackground
 
     var body: some View {
         NavigationView{
-            VStack {
-                Text("Create Your Trip")
-                    .font(.title)
-                    .fontWeight(.bold)
-                Form {
-                    TextField("Location", text: $location)
-                }.scrollContentBackground(.hidden)
-              
-              Image("Creation").resizable().frame(width:350 ,height:210)
-              NavigationLink(
-                    destination:TripStartView(
-                        rootIsActive: self.$isActive,
-                        location: location,
-                        clothesController: clothesController),
-                    isActive: self.$isActive)
-                {
-                    Text("Next Step")
-                        .onTapGesture {
-                            clothesController.getWeatherInfo(city: location)
-                            self.isActive = true
-                        }
-//                        .alert(isPresented: $isValid) {
-//                            Alert(
-//                                title: Text("Destination Not Available"),
-//                                message: Text("Cannot find the destination typed in, please check spelling")
-//                            )
-//                        }
-                        .frame(maxWidth: .infinity, maxHeight: 40)
-                        .font(.title3.bold())
-                        .foregroundColor(.white)
-                        .background(Color("PrimaryOrange"))
-                        .cornerRadius(20)
-                        .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+            ZStack {
+                VStack {
+                    Text("Create Your Trip")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    Form {
+                        TextField("Location", text: $location)
+                    }.scrollContentBackground(.hidden)
+                    
+                    Image("Creation").resizable().frame(width:350 ,height:210)
+                    NavigationLink(
+                        destination:TripStartView(
+                            rootIsActive: self.$isActive,
+                            location: location,
+                            clothesController: clothesController),
+                        isActive: self.$isActive)
+                    {
+                        Text("Next Step")
+                            .onTapGesture {
+                                clothesController.getWeatherInfo(city: location)
+                                self.isActive = true
+                            }
+                        //                        .alert(isPresented: $isValid) {
+                        //                            Alert(
+                        //                                title: Text("Destination Not Available"),
+                        //                                message: Text("Cannot find the destination typed in, please check spelling")
+                        //                            )
+                        //                        }
+                            .frame(maxWidth: .infinity, maxHeight: 40)
+                            .font(.title3.bold())
+                            .foregroundColor(.white)
+                            .background(Color("PrimaryOrange"))
+                            .cornerRadius(20)
+                            .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+                    }
+                }
+                if (listBg.showingTripModal) {
+                    ZStack {
+                        Color.black.opacity(0.2)
+                            .edgesIgnoringSafeArea(.vertical)
+                        VStack {
+                            Image("ThumbsUp").resizable().frame(width: 40, height: 40)
+                            Text("Awesome")
+                                .font(.title)
+                                .padding(12)
+                            Text("Your just create a new trip")
+                                .foregroundColor(Color("SecondaryBlack"))
+                            Text("Click the Trip button to return to Trip page")
+                                .foregroundColor(Color("SecondaryBlack"))
+                                .bold()
+                        }.frame(width: 360, height: 240)
+                            .background(Color.white)
+                            .cornerRadius(20).shadow(radius: 8)
+                        
+                    }
                 }
             }
-        }//.navigationBarHidden(true)
+        }.onAppear(
+            perform: {
+                listBg.showingTripModal = false
+            })
     }
 }
 
@@ -297,6 +268,7 @@ struct TripEndView: View {
                 clothesController.createPacker(tripId: tripId, location: location)
                 listBG.bgIndex = 0
                 self.shouldPopToRootView = false
+                listBG.showingTripModal = true
             }){
                 Text("Create Trip")
                     .frame(maxWidth: .infinity, maxHeight: 40)
@@ -307,78 +279,5 @@ struct TripEndView: View {
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
             }
         }.navigationBarHidden(true)
-    }
-}
-
-struct SignUpView: View {
-    @State var userName: String = ""
-    @State var pwd: String = ""
-    @State var cfmpwd: String = ""
-    @State var nameError: String = ""
-    @State var pwdError: String = ""
-    @State var cfmpwdError: String = ""
-    @EnvironmentObject var userAuth: UserAuth
-    @ObservedObject var userRepository = UserRepository()
-    @State var showingModal = false
-    
-    var body: some View {
-        ZStack {
-            VStack {
-                Form{
-                    TextField("User Name", text: $userName)
-                        .onChange(of: userName, perform: {newValue in self.nameError = ""})
-                    Text(nameError)
-                        .foregroundColor(.red)
-                    TextField("Password", text: $pwd)
-                        .onChange(of: pwd, perform: {newValue in self.pwdError = ""})
-                    Text(pwdError)
-                        .foregroundColor(.red)
-                    TextField("Confirm Password", text: $cfmpwd)
-                        .onChange(of: cfmpwd, perform: {newValue in self.cfmpwdError = ""})
-                    Text(cfmpwdError)
-                        .foregroundColor(.red)
-                }.scrollContentBackground(.hidden)
-                Spacer()
-                Button(action: {
-                    if pwd.count >= 6 && userName != "" && pwd == cfmpwd {
-//                        let newUser = User(id: UUID(), name: userName, pwd: pwd)
-//                        userRepository.signUp(user: newUser)
-                        self.showingModal = true
-                    } else {
-                        pwdError = pwd.count < 6 ? "Empty Password or too short" : ""
-                        nameError = userName == "" ? "User Name can not be empty" : ""
-                        cfmpwdError = cfmpwd != pwd ? "Password do not match" : ""
-                    }
-                }) {
-                    Text("Sign Up")
-                }
-                .frame(maxWidth: .infinity, maxHeight: 40)
-                .font(.title3.bold())
-                .foregroundColor(.white)
-                .background(Color("PrimaryOrange"))
-                .cornerRadius(20)
-                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-            }
-            if $showingModal.wrappedValue {
-                ZStack {
-                    Color.black.opacity(0.2)
-                        .edgesIgnoringSafeArea(.vertical)
-                    VStack {
-                        Image("ThumbsUp").resizable().frame(width: 40, height: 40)
-                        Text("Congratulations")
-                            .font(.title)
-                            .padding(12)
-                        Text("Your account has been set up")
-                            .foregroundColor(Color("SecondaryBlack"))
-                        Text("Click the Back button to return to login page")
-                            .foregroundColor(Color("SecondaryBlack"))
-                            .bold()
-                    }.frame(width: 360, height: 240)
-                        .background(Color.white)
-                        .cornerRadius(20).shadow(radius: 8)
-
-                }
-            }
-        }
     }
 }
