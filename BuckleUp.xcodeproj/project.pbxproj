@@ -43,7 +43,7 @@
 		270A47112915CF78002D46A2 /* TripCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCollection.swift; sourceTree = "<group>"; };
 		270A47152915D98E002D46A2 /* TripCollectionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCollectionRepository.swift; sourceTree = "<group>"; };
 		270A47192915DC7A002D46A2 /* PackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackerView.swift; sourceTree = "<group>"; };
-		27139384290828B0007363E2 /* WeatherPacker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherPacker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27139384290828B0007363E2 /* BuckleUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuckleUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27139387290828B0007363E2 /* WeatherPackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPackerApp.swift; sourceTree = "<group>"; };
 		2713938B290828B1007363E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2713938E290828B1007363E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		2713937B290828B0007363E2 = {
 			isa = PBXGroup;
 			children = (
-				27139386290828B0007363E2 /* WeatherPacker */,
+				27139386290828B0007363E2 /* BuckleUp */,
 				27139385290828B0007363E2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,12 +95,12 @@
 		27139385290828B0007363E2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				27139384290828B0007363E2 /* WeatherPacker.app */,
+				27139384290828B0007363E2 /* BuckleUp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		27139386290828B0007363E2 /* WeatherPacker */ = {
+		27139386290828B0007363E2 /* BuckleUp */ = {
 			isa = PBXGroup;
 			children = (
 				27621950293CEEDC00A966E8 /* GoogleService-Info.plist */,
@@ -113,7 +113,7 @@
 				2713938B290828B1007363E2 /* Assets.xcassets */,
 				2713938D290828B1007363E2 /* Preview Content */,
 			);
-			path = WeatherPacker;
+			path = BuckleUp;
 			sourceTree = "<group>";
 		};
 		2713938D290828B1007363E2 /* Preview Content */ = {
@@ -186,9 +186,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		27139383290828B0007363E2 /* WeatherPacker */ = {
+		27139383290828B0007363E2 /* BuckleUp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 27139392290828B1007363E2 /* Build configuration list for PBXNativeTarget "WeatherPacker" */;
+			buildConfigurationList = 27139392290828B1007363E2 /* Build configuration list for PBXNativeTarget "BuckleUp" */;
 			buildPhases = (
 				27139380290828B0007363E2 /* Sources */,
 				27139381290828B0007363E2 /* Frameworks */,
@@ -198,13 +198,13 @@
 			);
 			dependencies = (
 			);
-			name = WeatherPacker;
+			name = BuckleUp;
 			packageProductDependencies = (
 				271393962908299E007363E2 /* FirebaseFirestore */,
 				271393982908299E007363E2 /* FirebaseFirestoreSwift */,
 			);
 			productName = WeatherPacker;
-			productReference = 27139384290828B0007363E2 /* WeatherPacker.app */;
+			productReference = 27139384290828B0007363E2 /* BuckleUp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -222,7 +222,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2713937F290828B0007363E2 /* Build configuration list for PBXProject "WeatherPacker" */;
+			buildConfigurationList = 2713937F290828B0007363E2 /* Build configuration list for PBXProject "BuckleUp" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -238,7 +238,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				27139383290828B0007363E2 /* WeatherPacker */,
+				27139383290828B0007363E2 /* BuckleUp */,
 			);
 		};
 /* End PBXProject section */
@@ -413,10 +413,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WeatherPacker/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BuckleUp/Preview Content\"";
 				DEVELOPMENT_TEAM = 7T977Y5R8K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -427,7 +428,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cmu.edu.f22.yyx.WeatherPacker;
+				PRODUCT_BUNDLE_IDENTIFIER = cmu.edu.f22.yyx.BuckleUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -442,10 +443,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"WeatherPacker/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BuckleUp/Preview Content\"";
 				DEVELOPMENT_TEAM = 84Q8TC5NZ9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -456,7 +458,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cmu.edu.f22.WeatherPacker;
+				PRODUCT_BUNDLE_IDENTIFIER = cmu.edu.f22.yyx.BuckleUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -467,7 +469,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2713937F290828B0007363E2 /* Build configuration list for PBXProject "WeatherPacker" */ = {
+		2713937F290828B0007363E2 /* Build configuration list for PBXProject "BuckleUp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				27139390290828B1007363E2 /* Debug */,
@@ -476,7 +478,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		27139392290828B1007363E2 /* Build configuration list for PBXNativeTarget "WeatherPacker" */ = {
+		27139392290828B1007363E2 /* Build configuration list for PBXNativeTarget "BuckleUp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				27139393290828B1007363E2 /* Debug */,
