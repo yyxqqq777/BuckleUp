@@ -414,7 +414,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WeatherPacker/Preview Content\"";
-				DEVELOPMENT_TEAM = 84Q8TC5NZ9;
+				DEVELOPMENT_TEAM = 7T977Y5R8K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -427,7 +427,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = cmu.edu.f22.WeatherPacker;
+				PRODUCT_BUNDLE_IDENTIFIER = cmu.edu.f22.yyx.WeatherPacker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
