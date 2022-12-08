@@ -40,7 +40,7 @@ struct TripView: View {
   @EnvironmentObject var tripCollectionRepository:TripCollectionRepository
   
   var body: some View {
-    NavigationStack {
+    NavigationView{
       VStack {
         ScrollView {
             VStack {
@@ -103,7 +103,6 @@ struct LoginView: View {
     
     @State var userName = ""
     @State var pwd = ""
-    @State var isActive : Bool = false
     
   var body: some View {
     if userAuth.currentUserViewState == UserViewState.login {
@@ -153,13 +152,12 @@ struct CreationView: View {
     @State var isActive = false
     @State private var location = ""
     @State private var goToStartDate = false
-    
+
     @ObservedObject var clothesController = ClothesController()
-    
+
     @EnvironmentObject var userAuth:UserAuth
     //@EnvironmentObject var tripRepository:TripCollectionRepository
-    
-    
+
     var body: some View {
         NavigationView{
             VStack {

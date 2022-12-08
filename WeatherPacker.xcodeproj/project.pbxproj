@@ -16,6 +16,7 @@
 		271393972908299E007363E2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 271393962908299E007363E2 /* FirebaseFirestore */; };
 		271393992908299E007363E2 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 271393982908299E007363E2 /* FirebaseFirestoreSwift */; };
 		271D3852291B8F51003E73DF /* PlanOutfitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271D3851291B8F51003E73DF /* PlanOutfitsView.swift */; };
+		27362FC72941935C0013D550 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27362FC62941935C0013D550 /* CircleProgressView.swift */; };
 		2738AC2C2908B74200DE90CF /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC2B2908B74200DE90CF /* UserRepository.swift */; };
 		2738AC2F2908B7B800DE90CF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC2E2908B7B800DE90CF /* User.swift */; };
 		2738AC312908B83300DE90CF /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC302908B83300DE90CF /* Item.swift */; };
@@ -47,6 +48,7 @@
 		2713938B290828B1007363E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2713938E290828B1007363E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		271D3851291B8F51003E73DF /* PlanOutfitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanOutfitsView.swift; sourceTree = "<group>"; };
+		27362FC62941935C0013D550 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		2738AC2B2908B74200DE90CF /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		2738AC2E2908B7B800DE90CF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2738AC302908B83300DE90CF /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		2738AC292908B6ED00DE90CF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				27362FC62941935C0013D550 /* CircleProgressView.swift */,
 				270A47192915DC7A002D46A2 /* PackerView.swift */,
 				87ADF5DD291893EC00748EFA /* MainView.swift */,
 				87ADF5E6291B7DBB00748EFA /* TripRowView.swift */,
@@ -260,6 +263,7 @@
 			files = (
 				27A13463290F1B930082F3AA /* UserController.swift in Sources */,
 				27A1345B290F1A750082F3AA /* ItemController.swift in Sources */,
+				27362FC72941935C0013D550 /* CircleProgressView.swift in Sources */,
 				270A47122915CF78002D46A2 /* TripCollection.swift in Sources */,
 				270A471A2915DC7A002D46A2 /* PackerView.swift in Sources */,
 				2738AC332908B8DA00DE90CF /* Trip.swift in Sources */,
