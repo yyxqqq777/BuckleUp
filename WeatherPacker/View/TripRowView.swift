@@ -8,35 +8,48 @@
 import SwiftUI
 
 struct TripRowView: View {
-  var trip: Trip
-  @EnvironmentObject var listBg: ListBackground
-  @State var packerRepository = PackerRepository()
-  
-  
-  var body: some View {
-      NavigationLink(destination: PackerView(tripLocation: trip.tripLocation, tripId: trip.id, tripStartDate: trip.tripStartDate)) {
-      ZStack {
-        Image("ListBG_\(listBg.getIndex())")
-          .resizable()
-          .aspectRatio(contentMode: .fill)
-          .frame(width: 350, height: 200, alignment: .center)
-          .clipShape(RoundedRectangle(cornerRadius: 16))
-          .overlay(RoundedRectangle(cornerRadius: 16)
-            .fill(Color.black.opacity(0.15)).frame(width: 350, height: 200))
-        VStack (alignment: .leading) {
-          Text("\(trip.tripLocation)")
-            .font(.title)
-            .bold()
-            .foregroundColor(.white)
-            .padding(EdgeInsets(top: 32, leading: -80, bottom: 0, trailing: 0))
-          Spacer()
-          Text("\(trip.tripStartDate) - \(trip.tripEndDate)")
-            .foregroundColor(.white)
-            .bold()
-            .padding(EdgeInsets(top: 0, leading: -80, bottom: 32, trailing: 0))
+    var trip: Trip
+    @EnvironmentObject var listBg: ListBackground
+    @State var packerRepository = PackerRepository()
+    @State var tripController = TripController()
+    @State var progress = Double.random(in: 0..<1)
+    
+    
+    var body: some View {
+        NavigationLink(destination: PackerView(tripLocation: trip.tripLocation, tripId: trip.id, tripStartDate: trip.tripStartDate)) {
+            ZStack {
+                Image("ListBG_\(listBg.getIndex())")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 350, height: 200, alignment: .center)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .overlay(RoundedRectangle(cornerRadius: 16)
+                        .fill(Color.black.opacity(0.15)).frame(width: 350, height: 200))
+                HStack {
+                    VStack (alignment: .leading) {
+                        Text("\(trip.tripLocation)")
+                            .font(.title)
+                            .bold()
+                            .foregroundColor(.white)
+                            .padding(EdgeInsets(top: 32, leading: 0, bottom: 0, trailing: 0))
+                        Spacer()
+                        Text("\(tripController.calculateDateDot(startDateString: trip.tripStartDate)) - \(tripController.calculateDateDot(startDateString: trip.tripEndDate))")
+                            .foregroundColor(.white)
+                            .font(.title3)
+                            .bold()
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 32, trailing: 0))
+                    }
+                    .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 80))
+                    ZStack {
+                        CircularProgressView(progress: progress)
+                        
+                        Text("\(progress * 100, specifier: "%.0f")%")
+                            .bold()
+                            .foregroundColor(.white)
+                    }.frame(width: 55, height: 55)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 40))
+                }
+            }
         }
-      }
-      
     }
-  }
 }
