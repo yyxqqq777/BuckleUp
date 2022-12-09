@@ -15,6 +15,13 @@
 		2713938F290828B1007363E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2713938E290828B1007363E2 /* Preview Assets.xcassets */; };
 		271393972908299E007363E2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 271393962908299E007363E2 /* FirebaseFirestore */; };
 		271393992908299E007363E2 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 271393982908299E007363E2 /* FirebaseFirestoreSwift */; };
+		271A7C662942998A00D41FE3 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A7C652942998A00D41FE3 /* SignUpView.swift */; };
+		271A7C68294299BD00D41FE3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A7C67294299BD00D41FE3 /* LoginView.swift */; };
+		271A7C702942D29100D41FE3 /* BuckleUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A7C6F2942D29100D41FE3 /* BuckleUpTests.swift */; };
+		271A7C792942D75D00D41FE3 /* ItemTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A7C782942D75D00D41FE3 /* ItemTest.swift */; };
+		271A7C7B2942D79A00D41FE3 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A7C7A2942D79A00D41FE3 /* MockData.swift */; };
+		271A7C7D2942E87300D41FE3 /* TripTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A7C7C2942E87300D41FE3 /* TripTest.swift */; };
+		271A7C822942EBA700D41FE3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 271A7C812942EBA700D41FE3 /* FirebaseFirestore */; };
 		271D3852291B8F51003E73DF /* PlanOutfitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271D3851291B8F51003E73DF /* PlanOutfitsView.swift */; };
 		27362FC72941935C0013D550 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27362FC62941935C0013D550 /* CircleProgressView.swift */; };
 		2738AC2C2908B74200DE90CF /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738AC2B2908B74200DE90CF /* UserRepository.swift */; };
@@ -39,6 +46,16 @@
 		87ADF5E9291C4F1E00748EFA /* ListBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87ADF5E8291C4F1E00748EFA /* ListBackground.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		271A7C712942D29100D41FE3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2713937C290828B0007363E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27139383290828B0007363E2;
+			remoteInfo = BuckleUp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		270A47112915CF78002D46A2 /* TripCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCollection.swift; sourceTree = "<group>"; };
 		270A47152915D98E002D46A2 /* TripCollectionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCollectionRepository.swift; sourceTree = "<group>"; };
@@ -47,6 +64,13 @@
 		27139387290828B0007363E2 /* BuckleUpApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuckleUpApp.swift; sourceTree = "<group>"; };
 		2713938B290828B1007363E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2713938E290828B1007363E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		271A7C652942998A00D41FE3 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		271A7C67294299BD00D41FE3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		271A7C6D2942D29100D41FE3 /* BuckleUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuckleUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		271A7C6F2942D29100D41FE3 /* BuckleUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuckleUpTests.swift; sourceTree = "<group>"; };
+		271A7C782942D75D00D41FE3 /* ItemTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTest.swift; sourceTree = "<group>"; };
+		271A7C7A2942D79A00D41FE3 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		271A7C7C2942E87300D41FE3 /* TripTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTest.swift; sourceTree = "<group>"; };
 		271D3851291B8F51003E73DF /* PlanOutfitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanOutfitsView.swift; sourceTree = "<group>"; };
 		27362FC62941935C0013D550 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		2738AC2B2908B74200DE90CF /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -81,6 +105,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		271A7C6A2942D29100D41FE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				271A7C822942EBA700D41FE3 /* FirebaseFirestore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -88,7 +120,9 @@
 			isa = PBXGroup;
 			children = (
 				27139386290828B0007363E2 /* BuckleUp */,
+				271A7C6E2942D29100D41FE3 /* BuckleUpTests */,
 				27139385290828B0007363E2 /* Products */,
+				271A7C802942EBA700D41FE3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				27139384290828B0007363E2 /* BuckleUp.app */,
+				271A7C6D2942D29100D41FE3 /* BuckleUpTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,6 +159,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		271A7C6E2942D29100D41FE3 /* BuckleUpTests */ = {
+			isa = PBXGroup;
+			children = (
+				271A7C6F2942D29100D41FE3 /* BuckleUpTests.swift */,
+				271A7C782942D75D00D41FE3 /* ItemTest.swift */,
+				271A7C7A2942D79A00D41FE3 /* MockData.swift */,
+				271A7C7C2942E87300D41FE3 /* TripTest.swift */,
+			);
+			path = BuckleUpTests;
+			sourceTree = "<group>";
+		};
+		271A7C802942EBA700D41FE3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2738AC282908B6E200DE90CF /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +201,8 @@
 				27D6EDB4291C318D00DF6C59 /* ChecklistView.swift */,
 				27621952293CFAD900A966E8 /* DailyPackerItemView.swift */,
 				8763E6E4293ED6BA00D1C492 /* CheckListRowView.swift */,
+				271A7C652942998A00D41FE3 /* SignUpView.swift */,
+				271A7C67294299BD00D41FE3 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,6 +262,27 @@
 			productReference = 27139384290828B0007363E2 /* BuckleUp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		271A7C6C2942D29100D41FE3 /* BuckleUpTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 271A7C732942D29100D41FE3 /* Build configuration list for PBXNativeTarget "BuckleUpTests" */;
+			buildPhases = (
+				271A7C692942D29100D41FE3 /* Sources */,
+				271A7C6A2942D29100D41FE3 /* Frameworks */,
+				271A7C6B2942D29100D41FE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				271A7C722942D29100D41FE3 /* PBXTargetDependency */,
+			);
+			name = BuckleUpTests;
+			packageProductDependencies = (
+				271A7C812942EBA700D41FE3 /* FirebaseFirestore */,
+			);
+			productName = BuckleUpTests;
+			productReference = 271A7C6D2942D29100D41FE3 /* BuckleUpTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -214,11 +290,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					27139383290828B0007363E2 = {
 						CreatedOnToolsVersion = 14.0.1;
+					};
+					271A7C6C2942D29100D41FE3 = {
+						CreatedOnToolsVersion = 14.1;
+						TestTargetID = 27139383290828B0007363E2;
 					};
 				};
 			};
@@ -239,6 +319,7 @@
 			projectRoot = "";
 			targets = (
 				27139383290828B0007363E2 /* BuckleUp */,
+				271A7C6C2942D29100D41FE3 /* BuckleUpTests */,
 			);
 		};
 /* End PBXProject section */
@@ -251,6 +332,13 @@
 				2713938F290828B1007363E2 /* Preview Assets.xcassets in Resources */,
 				2713938C290828B1007363E2 /* Assets.xcassets in Resources */,
 				27621951293CEEDC00A966E8 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		271A7C6B2942D29100D41FE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +357,7 @@
 				2738AC332908B8DA00DE90CF /* Trip.swift in Sources */,
 				2738AC312908B83300DE90CF /* Item.swift in Sources */,
 				270A47162915D98E002D46A2 /* TripCollectionRepository.swift in Sources */,
+				271A7C662942998A00D41FE3 /* SignUpView.swift in Sources */,
 				271D3852291B8F51003E73DF /* PlanOutfitsView.swift in Sources */,
 				2738AC2F2908B7B800DE90CF /* User.swift in Sources */,
 				87520B2629381EF500C16D98 /* Packer.swift in Sources */,
@@ -281,6 +370,7 @@
 				87ADF5E3291B6CFD00748EFA /* UserAuth.swift in Sources */,
 				27A13461290F1B430082F3AA /* TripController.swift in Sources */,
 				27D6EDB5291C318D00DF6C59 /* ChecklistView.swift in Sources */,
+				271A7C68294299BD00D41FE3 /* LoginView.swift in Sources */,
 				87ADF5E9291C4F1E00748EFA /* ListBackground.swift in Sources */,
 				87ADF5DE291893EC00748EFA /* MainView.swift in Sources */,
 				87ADF5E7291B7DBB00748EFA /* TripRowView.swift in Sources */,
@@ -289,7 +379,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		271A7C692942D29100D41FE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				271A7C7D2942E87300D41FE3 /* TripTest.swift in Sources */,
+				271A7C792942D75D00D41FE3 /* ItemTest.swift in Sources */,
+				271A7C7B2942D79A00D41FE3 /* MockData.swift in Sources */,
+				271A7C702942D29100D41FE3 /* BuckleUpTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		271A7C722942D29100D41FE3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27139383290828B0007363E2 /* BuckleUp */;
+			targetProxy = 271A7C712942D29100D41FE3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		27139390290828B1007363E2 /* Debug */ = {
@@ -444,7 +553,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BuckleUp/Preview Content\"";
-				DEVELOPMENT_TEAM = 84Q8TC5NZ9;
+				DEVELOPMENT_TEAM = 7T977Y5R8K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "";
@@ -466,6 +575,44 @@
 			};
 			name = Release;
 		};
+		271A7C742942D29100D41FE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7T977Y5R8K;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cmu.edu.f22.BuckleUpTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BuckleUp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BuckleUp";
+			};
+			name = Debug;
+		};
+		271A7C752942D29100D41FE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7T977Y5R8K;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cmu.edu.f22.BuckleUpTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BuckleUp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BuckleUp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -483,6 +630,15 @@
 			buildConfigurations = (
 				27139393290828B1007363E2 /* Debug */,
 				27139394290828B1007363E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		271A7C732942D29100D41FE3 /* Build configuration list for PBXNativeTarget "BuckleUpTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				271A7C742942D29100D41FE3 /* Debug */,
+				271A7C752942D29100D41FE3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -510,6 +666,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 271393952908299E007363E2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		271A7C812942EBA700D41FE3 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 271393952908299E007363E2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
