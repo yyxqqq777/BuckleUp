@@ -20,8 +20,8 @@ struct CheckListRowView: View {
                 CheckBtn(isChecked: item.isChecked, itemId: item.id, itemTitle: item.itemTitle, itemCategory: item.itemCategory)
                 TextField(item.itemTitle, text: $item.itemTitle)
                     .onChange(of: item.itemTitle, perform: { newValue in
-                  packerRepository.updateChecklistByTitle(title: item.itemTitle, itemId: item.id)
-                })
+                        packerRepository.updateChecklistByTitle(title: item.itemTitle, itemId: item.id)
+                    })
             } else {
                 CheckBtn(isChecked: item.isChecked, itemId: item.id, itemTitle: item.itemTitle, itemCategory: item.itemCategory)
                 Text(item.itemTitle)
@@ -29,30 +29,36 @@ struct CheckListRowView: View {
             Spacer()
             if (editingMode.isEditing_Checklist[item.itemCategory]! && item.itemCategory != "Clothes") {
                 ZStack {
-                  Circle()
-                    .fill(Color("PrimaryOrange"))
-                    .frame(width: 24, height: 24)
-                  Image("Subtract")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 16, height: 16)
+                    if (item.itemQuantity == 1) {
+                        Circle()
+                            .fill(Color("Gray"))
+                            .frame(width: 24, height: 24)
+                    } else {
+                        Circle()
+                            .fill(Color("PrimaryOrange"))
+                            .frame(width: 24, height: 24)
+                    }
+                    Image("Subtract")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 16, height: 16)
                 }.onTapGesture {
-                  print("DEBUG - Click on button -")
-                  if (item.itemQuantity > 1) {
-                    item.itemQuantity = item.itemQuantity - 1
-                    packerRepository.updateChecklistByQuantity(isAdd: false, itemId: item.id)
-                  }
+                    print("DEBUG - Click on button -")
+                    if (item.itemQuantity > 1) {
+                        item.itemQuantity = item.itemQuantity - 1
+                        packerRepository.updateChecklistByQuantity(isAdd: false, itemId: item.id)
+                    }
                 }
                 Text(String(item.itemQuantity))
-//                Text(String(item.itemQuantity))
+                //                Text(String(item.itemQuantity))
                 ZStack {
-                  Circle()
-                    .fill(Color("PrimaryOrange"))
-                    .frame(width: 24, height: 24)
-                  Image("Plus")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 16, height: 16)
+                    Circle()
+                        .fill(Color("PrimaryOrange"))
+                        .frame(width: 24, height: 24)
+                    Image("Plus")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 16, height: 16)
                 }.onTapGesture {
                     print("DEBUG - Click on button +")
                     item.itemQuantity = item.itemQuantity + 1
