@@ -16,6 +16,7 @@ struct LoginView: View {
     
     @State var userName = ""
     @State var pwd = ""
+    @State var error = ""
     
     var body: some View {
         if userAuth.currentUserViewState == UserViewState.login {
@@ -25,7 +26,11 @@ struct LoginView: View {
                         Image("Login").resizable().frame(width:360 ,height:300)
                         Form{
                             TextField("User Name", text: $userName)
+                                .onChange(of: userName, perform: {newValue in self.error = ""})
                             SecureField("Password", text: $pwd)
+                                .onChange(of: pwd, perform: {newValue in self.error = ""})
+                            Text(error)
+                                .foregroundColor(.red)
                         }.scrollContentBackground(.hidden)
                         Button(action: {
                             if userRepository.verify(userName: userName, pwd: pwd) {
@@ -34,9 +39,12 @@ struct LoginView: View {
                                 self.tripCollectionRepository.getById(userId:userAuth.userId)
                                 print("Tag - LoginView getById FINISHED")
                                 self.signInSuccess = true
+                            } else {
+                                error = "User does not exist or wrong password"
                             }
                         }) {
                             Text("Login")
+                                .frame(maxWidth: .infinity, maxHeight: 40)
                         }
                         .frame(maxWidth: .infinity, maxHeight: 40)
                         .font(.title3.bold())
