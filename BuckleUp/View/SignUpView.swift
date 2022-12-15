@@ -58,7 +58,7 @@ struct SignUpView: View {
             }
             if $showingModal.wrappedValue {
                 ZStack {
-                    Color.black.opacity(0.2)
+                    Color.black.opacity(0.01)
                         .edgesIgnoringSafeArea(.vertical)
                     VStack {
                         Image("ThumbsUp").resizable().frame(width: 40, height: 40)

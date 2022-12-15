@@ -26,19 +26,38 @@ struct PlanOutfitsView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(0..<self.packerRepository.dailyPackers.count, id: \.self) { index in
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color("PrimaryOrange"))
-                            .frame(width: 100, height: 60)
-                            .overlay(
-                                VStack {
-                                    Text("Day \(index + 1)")
-                                    Text(self.tripController.calculateDate(startDateString: startDateString, index: index))
+                        if index == self.packerRepository.index {
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color("PrimaryOrange"))
+                                .frame(width: 100, height: 60)
+                                .overlay(
+                                    VStack {
+                                        Text("Day \(index + 1)")
+                                        Text(self.tripController.calculateDate(startDateString: startDateString, index: index))
+                                    }
+                                )
+                                .foregroundColor(.white).bold()
+                                .onTapGesture {
+                                    self.packerRepository.setCurrentDailyPacker(index: index)
                                 }
-                            )
-                            .foregroundColor(.white).bold()
-                            .onTapGesture {
-                                self.packerRepository.setCurrentDailyPacker(index: index)
-                            }
+                        }
+                        else {
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color.white)
+                                .frame(width: 100, height: 60)
+                                .border(Color("PrimaryOrange"))
+                                .cornerRadius(8)
+                                .overlay(
+                                    VStack {
+                                        Text("Day \(index + 1)")
+                                        Text(self.tripController.calculateDate(startDateString: startDateString, index: index))
+                                    }
+                                )
+                                .foregroundColor(Color("PrimaryOrange")).bold()
+                                .onTapGesture {
+                                    self.packerRepository.setCurrentDailyPacker(index: index)
+                                }
+                        }
                     }
                 }
             }.padding(EdgeInsets(top: 0, leading: 33, bottom: 0, trailing: 0))
@@ -76,7 +95,6 @@ struct PlanOutfitsView: View {
                         Button("Add", action: {packerRepository.addNewItem(title: newItemTitle)})
                         Button("Cancel", role: .cancel, action: {})
                     }, message: {
-                        // Any view other than Text would be ignored
                     })
                 }
                 Button(action:{

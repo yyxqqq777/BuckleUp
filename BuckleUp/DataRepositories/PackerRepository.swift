@@ -66,7 +66,6 @@ class PackerRepository: ObservableObject {
         store.collection(path)
             .addSnapshotListener { querySnapshot, error in
                 if let error = error {
-                    print("Error getting trip: \(error.localizedDescription)")
                     return
                 }
                 
@@ -118,27 +117,17 @@ class PackerRepository: ObservableObject {
     }
     
     func updateCloth(title: String, itemId: UUID) {
-        print("VERSION 2 - updateCloth is called!")
         for itemIndex in 0..<self.dailyPackers[self.index].itemLists.count {
-            print("VERSION 2 - Searching for cloth")
-            print("VERSION 2 - Size of itemLists is \(self.dailyPackers[self.index].itemLists.count)")
-            print("VERSION 2 - Searching for cloth")
             if self.dailyPackers[self.index].itemLists[itemIndex].id == itemId {
-                print("VERSION 2 - Cloth is found!")
                 self.dailyPackers[self.index].itemLists[itemIndex].itemTitle = title
-                //self.currentDailyPacker.itemLists[itemIndex].itemTitle = title
-                //self.items[itemindex].itemTitle = title
                 break
             }
         }
     }
     
     func updateChecklistByTitle(title: String, itemId: UUID) {
-        print("VERSION 2 - updateChecklistByTitle is called!")
         for itemIndex in 0..<self.dailyPackers[self.lasting].itemLists.count {
-            print("VERSION 2 - Searching for checklist item")
             if self.dailyPackers[self.lasting].itemLists[itemIndex].id == itemId {
-                print("VERSION 2 - checklist item is found")
                 self.dailyPackers[self.lasting].itemLists[itemIndex].itemTitle = title
                 break
             }
@@ -146,12 +135,9 @@ class PackerRepository: ObservableObject {
     }
     
     func updateItemCheckStatus(itemId: UUID, itemTitle: String, itemCategory: String) {
-        print("VERSION 2 - updateItemCheckStatueById is called!")
         if (itemCategory != "Clothes") {
             for itemIndex in 0..<self.dailyPackers[self.lasting].itemLists.count {
-                print("VERSION 2 - Searching for checklist item")
                 if self.dailyPackers[self.lasting].itemLists[itemIndex].id == itemId {
-                    print("VERSION 2 - checklist item is found")
                     self.dailyPackers[self.lasting].itemLists[itemIndex].isChecked.toggle()
                     break
                 }
@@ -168,16 +154,6 @@ class PackerRepository: ObservableObject {
             }
         }
     }
-    
-    //    func updateChecklistByQuantity(quantity: Int, itemId: UUID) {
-    //
-    //        for itemIndex in 0..<self.dailyPackers[self.lasting].itemLists.count {
-    //            if self.dailyPackers[self.lasting].itemLists[itemIndex].id == itemId {
-    //                self.dailyPackers[self.lasting].itemLists[itemIndex].itemQuantity = quantity
-    //        }
-    //        break
-    //      }
-    //    }
     
     func aggregateClothes() {
         self.aggregatedClothes = []
@@ -204,12 +180,10 @@ class PackerRepository: ObservableObject {
     
     
     func updateChecklistByQuantity(isAdd: Bool, itemId: UUID) {
-        print("VERSION 2 - updateChecklistByQuantity is called!")
         if isAdd {
             for itemIndex in 0..<self.dailyPackers[self.lasting].itemLists.count {
                 if self.dailyPackers[self.lasting].itemLists[itemIndex].id == itemId {
                     self.dailyPackers[self.lasting].itemLists[itemIndex].itemQuantity = self.dailyPackers[self.lasting].itemLists[itemIndex].itemQuantity + 1
-                    print("VERSION 2 - add 1")
                     return
                 }
             }
@@ -217,7 +191,6 @@ class PackerRepository: ObservableObject {
             for itemIndex in 0..<self.dailyPackers[self.lasting].itemLists.count {
                 if self.dailyPackers[self.lasting].itemLists[itemIndex].id == itemId {
                     self.dailyPackers[self.lasting].itemLists[itemIndex].itemQuantity = self.dailyPackers[self.lasting].itemLists[itemIndex].itemQuantity - 1
-                    print("VERSION 2 - minus 1")
                     return
                 }
             }
@@ -225,7 +198,6 @@ class PackerRepository: ObservableObject {
     }
     
     func saveUpdatePacker() {
-        print("VERSION 2 - saveUpdatePacker is called!")
         updatePacker(packer: Packer(id: self.tripId, location: self.tripLocation, dailyPackers: self.dailyPackers))
         setCurrentDailyPacker(index: self.index)
         setChecklistPacker()

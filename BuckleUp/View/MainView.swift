@@ -147,12 +147,6 @@ struct CreationView: View {
                                 clothesController.getWeatherInfo(city: location)
                                 self.isActive = true
                             }
-                        //                        .alert(isPresented: $isValid) {
-                        //                            Alert(
-                        //                                title: Text("Destination Not Available"),
-                        //                                message: Text("Cannot find the destination typed in, please check spelling")
-                        //                            )
-                        //                        }
                             .frame(maxWidth: .infinity, maxHeight: 40)
                             .font(.title3.bold())
                             .foregroundColor(.white)
@@ -161,31 +155,8 @@ struct CreationView: View {
                             .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                     }
                 }
-                if (listBg.showingTripModal) {
-                    ZStack {
-                        Color.black.opacity(0.2)
-                            .edgesIgnoringSafeArea(.vertical)
-                        VStack {
-                            Image("ThumbsUp").resizable().frame(width: 40, height: 40)
-                            Text("Awesome")
-                                .font(.title)
-                                .padding(12)
-                            Text("Your just create a new trip")
-                                .foregroundColor(Color("SecondaryBlack"))
-                            Text("Click the Trip button to return to Trip page")
-                                .foregroundColor(Color("SecondaryBlack"))
-                                .bold()
-                        }.frame(width: 360, height: 240)
-                            .background(Color.white)
-                            .cornerRadius(20).shadow(radius: 8)
-                        
-                    }
-                }
             }
-        }.onAppear(
-            perform: {
-                listBg.showingTripModal = false
-            })
+        }
     }
 }
 
@@ -246,6 +217,7 @@ struct TripEndView: View {
     var location = String()
     var startDate = Date()
     var clothesController = ClothesController()
+    @State var showAlert = false
     
     var body: some View {
         VStack {
@@ -268,7 +240,7 @@ struct TripEndView: View {
                 clothesController.createPacker(tripId: tripId, location: location)
                 listBG.bgIndex = 0
                 self.shouldPopToRootView = false
-                listBG.showingTripModal = true
+                self.showAlert = true
             }){
                 Text("Create Trip")
                     .frame(maxWidth: .infinity, maxHeight: 40)
@@ -277,7 +249,13 @@ struct TripEndView: View {
                     .background(Color("PrimaryOrange"))
                     .cornerRadius(20)
                     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
-            }
+            }.alert("Trip created", isPresented: $showAlert, actions: {
+                Button("Confirm", action: {
+                    self.showAlert = false
+                })
+              }, message: {
+                  Text("Please go back to the trip")
+              })
         }.navigationBarHidden(true)
     }
 }

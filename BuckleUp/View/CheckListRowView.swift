@@ -43,7 +43,6 @@ struct CheckListRowView: View {
                         .scaledToFill()
                         .frame(width: 16, height: 16)
                 }.onTapGesture {
-                    print("DEBUG - Click on button -")
                     if (item.itemQuantity > 1) {
                         item.itemQuantity = item.itemQuantity - 1
                         packerRepository.updateChecklistByQuantity(isAdd: false, itemId: item.id)
@@ -60,7 +59,6 @@ struct CheckListRowView: View {
                         .scaledToFill()
                         .frame(width: 16, height: 16)
                 }.onTapGesture {
-                    print("DEBUG - Click on button +")
                     item.itemQuantity = item.itemQuantity + 1
                     packerRepository.updateChecklistByQuantity(isAdd: true, itemId: item.id)
                 }
@@ -72,55 +70,55 @@ struct CheckListRowView: View {
 }
 
 struct CheckBtn: View {
-  @State var isChecked: Bool
-  var itemId: UUID
-  var itemTitle: String
-  var itemCategory:String
-  @EnvironmentObject var packerRepository:PackerRepository
-  @EnvironmentObject var editingMode: EditingMode
-  
-  var body: some View {
-      if (editingMode.isEditing_Checklist[itemCategory]!) {
-          if isChecked {
-            ZStack {
-              Circle()
-                .fill(Color("PrimaryOrange"))
-                .frame(width: 24, height: 24)
-              Image("Done")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 16, height: 16)
-            }.onTapGesture {
-              isChecked.toggle()
-              packerRepository.updateItemCheckStatus(itemId: itemId, itemTitle: itemTitle, itemCategory: itemCategory)
+    @State var isChecked: Bool
+    var itemId: UUID
+    var itemTitle: String
+    var itemCategory:String
+    @EnvironmentObject var packerRepository:PackerRepository
+    @EnvironmentObject var editingMode: EditingMode
+    
+    var body: some View {
+        if (editingMode.isEditing_Checklist[itemCategory]!) {
+            if isChecked {
+                ZStack {
+                    Circle()
+                        .fill(Color("PrimaryOrange"))
+                        .frame(width: 24, height: 24)
+                    Image("Done")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 16, height: 16)
+                }.onTapGesture {
+                    isChecked.toggle()
+                    packerRepository.updateItemCheckStatus(itemId: itemId, itemTitle: itemTitle, itemCategory: itemCategory)
+                }
+            } else {
+                Circle()
+                    .strokeBorder(Color("Gray"), lineWidth: 2)
+                    .frame(width: 24, height: 24)
+                    .onTapGesture {
+                        isChecked.toggle()
+                        packerRepository.updateItemCheckStatus(itemId: itemId, itemTitle: itemTitle, itemCategory: itemCategory)
+                    }
             }
-          } else {
-            Circle()
-              .strokeBorder(Color("Gray"), lineWidth: 2)
-              .frame(width: 24, height: 24)
-              .onTapGesture {
-                isChecked.toggle()
-                  packerRepository.updateItemCheckStatus(itemId: itemId, itemTitle: itemTitle, itemCategory: itemCategory)
-              }
-          }
-      } else {
-          if isChecked {
-            ZStack {
-              Circle()
-                .fill(Color("PrimaryOrange"))
-                .frame(width: 24, height: 24)
-              Image("Done")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 16, height: 16)
+        } else {
+            if isChecked {
+                ZStack {
+                    Circle()
+                        .fill(Color("PrimaryOrange"))
+                        .frame(width: 24, height: 24)
+                    Image("Done")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 16, height: 16)
+                }
+            } else {
+                Circle()
+                    .strokeBorder(Color("Gray"), lineWidth: 2)
+                    .frame(width: 24, height: 24)
+                
             }
-          } else {
-            Circle()
-              .strokeBorder(Color("Gray"), lineWidth: 2)
-              .frame(width: 24, height: 24)
-              
-          }
-      }
-  }
+        }
+    }
 }
 

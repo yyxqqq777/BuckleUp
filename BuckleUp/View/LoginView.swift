@@ -35,9 +35,7 @@ struct LoginView: View {
                         Button(action: {
                             if userRepository.verify(userName: userName, pwd: pwd) {
                                 self.userAuth.userId = userRepository.getUserId(userName: userName)
-                                print("Tag - LoginView getById NEXT")
                                 self.tripCollectionRepository.getById(userId:userAuth.userId)
-                                print("Tag - LoginView getById FINISHED")
                                 self.signInSuccess = true
                             } else {
                                 error = "User does not exist or wrong password"
