@@ -185,7 +185,6 @@ class ClothesController:ObservableObject {
         var lat: Float = 0.0
         var lng: Float = 0.0
 
-        // Your structs go here
         struct Results: Decodable {
           let citys: [City]
 
@@ -206,21 +205,17 @@ class ClothesController:ObservableObject {
 
         let searchCityTask = URLSession.shared.dataTask(with: URL(string: cityToLngAndLatUrl)!) { (data, response, error) in
           guard let data = data else {
-            print("Error: No data to decode")
             isValid = false
             return
           }
 
           // Decode the JSON here
           guard let result = try? JSONDecoder().decode(Results.self, from: data) else {
-            print("Error: Couldn't decode data into a result")
             isValid = false
             return
           }
 
 
-          print("Latitude of \(city) is \(result.citys[0].latitude)")
-          print("Longitude of \(city) \(result.citys[0].longitude)")
           lat = result.citys[0].latitude
           lng = result.citys[0].longitude
 
@@ -247,13 +242,10 @@ class ClothesController:ObservableObject {
 
           let searchWeatherTask = URLSession.shared.dataTask(with: URL(string: weatherForcastUrl)!) { (data, response, error) in
             guard let data = data else {
-              print("Error: No data to decode")
               return
             }
-            
             // Decode the JSON here
             guard let result = try? JSONDecoder().decode(WeatherForecast.self, from: data) else {
-              print("Error: Couldn't decode data into a result")
               return
           }
             

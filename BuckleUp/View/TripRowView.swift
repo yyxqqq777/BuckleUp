@@ -13,8 +13,7 @@ struct TripRowView: View {
     @State var packerRepository = PackerRepository()
     @State var tripController = TripController()
     @State var progress = Double.random(in: 0..<1)
-    
-    
+
     var body: some View {
         NavigationLink(destination: PackerView(tripLocation: trip.tripLocation, tripId: trip.id, tripStartDate: trip.tripStartDate)) {
             ZStack {
@@ -39,15 +38,7 @@ struct TripRowView: View {
                             .bold()
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 32, trailing: 0))
                     }
-                    .padding(EdgeInsets(top: 0, leading: 24, bottom: 0, trailing: 80))
-                    ZStack {
-                        CircularProgressView(progress: progress)
-                        
-                        Text("\(progress * 100, specifier: "%.0f")%")
-                            .bold()
-                            .foregroundColor(.white)
-                    }.frame(width: 55, height: 55)
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 40))
+                    .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 120))
                 }
             }
         }

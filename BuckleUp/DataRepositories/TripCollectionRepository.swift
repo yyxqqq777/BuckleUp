@@ -38,7 +38,6 @@ class TripCollectionRepository: ObservableObject {
         store.collection(path)
             .addSnapshotListener { querySnapshot, error in
                 if let error = error {
-                    print("Error getting trip: \(error.localizedDescription)")
                     return
                 }
                 
