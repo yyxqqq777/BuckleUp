@@ -35,7 +35,16 @@ To edit items, please also click on **"edit"**, the operations are the same with
 | Feature      | Feature Details     |
 | :-----| :---- |
 | Login      | User can log in to the app and see the home screen     |
-| Trip creation       | User can create a Trip     |
+| Date        | User can input Start Date;  User can input End Date;|
+| Checklist view        | User can view the weather card and the recommendations for each day of the trip in Plan outfits     |
+| Checklist Edition         | User can view the checklist of items without the counter and check and uncheck what they pack|
+| Checklist Detail Edition         | User can add item in plan outfit screen;  User can delete the item in plan outfit screen;  User can edit item in plan outfit screen;   User can add item in pack my bag screen;|
+
+### B-Level
+| Feature      | Feature Details     |
+| :-----| :---- |
+| Additional checklist module        | User can add another personalized module for their checks and add more items they want to pack for their trips  |
+
 
 ## Features that we may remove in version2
 At first we plan to add a circle to give users an idea of how many items he/she has already checked. To implement this function, we tried over 2 days, but we still got some bugs. As data need to be passed through multiple views and two repositories, the firebase keeps refreshing, which leads to our UI keeps refreshing too, there might be some deadlocks currently we cannot solve.  
