@@ -18,7 +18,7 @@ struct PackerView: View {
     
     var body: some View {
         TabView {
-            // Tab1:
+            // Plan Outfits Tab:
             NavigationView {
                 PlanOutfitsView(startDateString: tripStartDate)
                     .padding(EdgeInsets(top: 32, leading: 0, bottom: 0, trailing: 0))
@@ -28,7 +28,7 @@ struct PackerView: View {
                 Text("Plan Outfits").font(.subheadline)
             }
             
-            // Tab2:
+            // checklist Tab:
             NavigationView {
                 ChecklistView()
                     .padding(EdgeInsets(top: 32, leading: 0, bottom: 0, trailing: 0))

@@ -30,7 +30,6 @@ class UserRepository: ObservableObject {
         store.collection(path)
             .addSnapshotListener { querySnapshot, error in
                 if let error = error {
-                    print("Error getting user: \(error.localizedDescription)")
                     return
                 }
                 self.user = querySnapshot?.documents.compactMap { document in
@@ -44,7 +43,6 @@ class UserRepository: ObservableObject {
         for _user in user {
             if (_user.name == userName && _user.pwd == pwd) {
                 isVerified = true
-                print(_user.id)
                 break
             }
         }
@@ -70,36 +68,5 @@ class UserRepository: ObservableObject {
             fatalError("Unable to add user: \(error.localizedDescription).")
         }
     }
-    
-    
-    // MARK: CRUD methods
-    //  func add(_ user: User) {
-    //    do {
-    //      let newUser = user
-    //      _ = try store.collection(path).document(newUser.id.uuidString).setData(from: newUser)
-    //    } catch {
-    //      fatalError("Unable to add user: \(error.localizedDescription).")
-    //    }
-    //  }
-    //
-    //  func update(_ user: User) {
-    //    do {
-    //      let id = user.id.uuidString
-    //      try store.collection(path).document(id).setData(from: user)
-    //    } catch {
-    //      fatalError("Unable to update user: \(error.localizedDescription).")
-    //    }
-    //  }
-    //
-    //  func remove(_ user: User) {
-    //    do {
-    //      let id = user.id.uuidString
-    //      store.collection(path).document(id).delete { error in
-    //        if let error = error {
-    //          print("Unable to remove user: \(error.localizedDescription)")
-    //        }
-    //      }
-    //    }
-    //  }
 }
 

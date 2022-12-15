@@ -147,12 +147,6 @@ struct CreationView: View {
                                 clothesController.getWeatherInfo(city: location)
                                 self.isActive = true
                             }
-                        //                        .alert(isPresented: $isValid) {
-                        //                            Alert(
-                        //                                title: Text("Destination Not Available"),
-                        //                                message: Text("Cannot find the destination typed in, please check spelling")
-                        //                            )
-                        //                        }
                             .frame(maxWidth: .infinity, maxHeight: 40)
                             .font(.title3.bold())
                             .foregroundColor(.white)

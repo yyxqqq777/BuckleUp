@@ -48,7 +48,7 @@ struct ChecklistView: View {
     var body: some View {
         
         ScrollView {
-            //_________
+            //cloth category
             VStack {
                 HStack {
                     Text("Clothes")
@@ -66,7 +66,6 @@ struct ChecklistView: View {
                             editingMode.isEditing_Checklist["Clothes"] = false
                             packerRepository.saveUpdatePacker()
                         }}, label: {
-                            // DECLARE what you want to see
                             Text(buttonLabel_Clothes)
                                 .foregroundColor(.white)
                         })
@@ -96,10 +95,8 @@ struct ChecklistView: View {
             Rectangle()
                 .fill(Color("SystemGray"))
                 .frame(width: .infinity, height: 20)
-            //_________________
+            //_________________Toiletries category
             VStack {
-                
-                
                 HStack {
                     Text("Toiletries")
                         .font(.title3).bold()
@@ -165,10 +162,9 @@ struct ChecklistView: View {
             Rectangle()
                 .fill(Color("SystemGray"))
                 .frame(width: .infinity, height: 20)
-            //_________
+            
+            //_________Electronics category
             VStack {
-                
-                
                 HStack {
                     Text("Electronics")
                         .font(.title3).bold()
@@ -234,7 +230,7 @@ struct ChecklistView: View {
             Rectangle()
                 .fill(Color("SystemGray"))
                 .frame(width: .infinity, height: 20)
-            //________
+            //____________Accessories category
             VStack {
                 HStack {
                     Text("Accessories")

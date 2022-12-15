@@ -95,7 +95,6 @@ struct PlanOutfitsView: View {
                         Button("Add", action: {packerRepository.addNewItem(title: newItemTitle)})
                         Button("Cancel", role: .cancel, action: {})
                     }, message: {
-                        // Any view other than Text would be ignored
                     })
                 }
                 Button(action:{
