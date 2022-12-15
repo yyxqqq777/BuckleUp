@@ -14,7 +14,8 @@ Users can view trips or create trips
 
 ### Create Trip
 ![Imgur](https://i.imgur.com/3PAhCDNl.png)  
-To create the trip, it will start from this page, asking for location, **We recommend to type in famous cities(Pittsburgh, Boston, Shanghai, Beijing, Seoul, tec.) just to make sure the api we use has that data**, then choose start date and end date, after users select end date, **it will jump back to the location page, but the trip has already been created, just click on back.**
+To create the trip, it will start from this page, asking for location, **We recommend to type in famous cities(Pittsburgh, Boston, Shanghai, Beijing, Seoul, tec.) just to make sure the api we use has that data**, then choose start date and end date, after users select end date, **it will jump back to the location page, but the trip has already been created, just click on back.**  
+**PS: You may be confused that why the trip selection date is limited in 7 days, it's because the weather API we used is free, and the max date it can forecast is the 7th day.**
 
 ### Outfit View
 ![Imgur](https://i.imgur.com/kwVX4c7l.png)  
