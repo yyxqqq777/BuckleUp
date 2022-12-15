@@ -33,9 +33,7 @@ To edit items, please also click on **"edit"**, the operations are the same with
 ## User Cases
 ### A-Level
 | Feature      | Feature Details     |
-| ---------- | :-----------:  |
 | Login      | User can log in to the app and see the home screen     |
-| ---------- | :-----------:  |
 | Trip creation       | User can create a Trip     |
 
 ## Features that we may remove in version2
