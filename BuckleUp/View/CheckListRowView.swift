@@ -49,7 +49,6 @@ struct CheckListRowView: View {
                     }
                 }
                 Text(String(item.itemQuantity))
-                //                Text(String(item.itemQuantity))
                 ZStack {
                     Circle()
                         .fill(Color("PrimaryOrange"))
