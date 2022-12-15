@@ -48,7 +48,7 @@ struct ChecklistView: View {
     var body: some View {
         
         ScrollView {
-            //cloth category
+            //——————————————cloth category
             VStack {
                 HStack {
                     Text("Clothes")
