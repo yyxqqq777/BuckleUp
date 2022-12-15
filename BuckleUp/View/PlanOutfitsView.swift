@@ -87,7 +87,7 @@ struct PlanOutfitsView: View {
                 if (!isEditing) {
                     
                 } else {
-                    Button("Add Item") {
+                    Button("✚Add Item") {
                         presentAlert = true
                     }
                     .alert("New Item", isPresented: $presentAlert, actions: {
@@ -109,8 +109,12 @@ struct PlanOutfitsView: View {
                     }}, label: {
                         // DECLARE what you want to see
                         Text(buttonLabel)
+                            .foregroundColor(.white)
                     })
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 12))
+                .padding(EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12))
+                .background(Color("PrimaryOrange"))
+                .cornerRadius(8)
+                .frame(width: 85)
             }
             
             if (!isEditing) {
