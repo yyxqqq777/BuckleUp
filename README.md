@@ -44,7 +44,7 @@ To edit items, please also click on **"edit"**, the operations are the same with
 | Feature      | Feature Details     |
 | :-----| :---- |
 | Additional checklist module        | User can add another personalized module for their checks and add more items they want to pack for their trips  |
-
+| Sign Up         | User can create accounts|
 
 ## Features that we may remove in version2
 At first we plan to add a circle to give users an idea of how many items he/she has already checked. To implement this function, we tried over 2 days, but we still got some bugs. As data need to be passed through multiple views and two repositories, the firebase keeps refreshing, which leads to our UI keeps refreshing too, there might be some deadlocks currently we cannot solve.  
